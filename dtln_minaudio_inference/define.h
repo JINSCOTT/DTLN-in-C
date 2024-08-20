@@ -51,11 +51,11 @@ enum NODE_TYPE {
 }typedef NODE_TYPE;
 
 
-//enum datatype {
-//	UKNOWN,
-//	INT32,
-//	INT64,
-//	FLOAT32
-//};
+enum datatype {
+	UKNOWN,
+	INT32,
+	INT64,
+	FLOAT32
+};
 
 #endif // !DEFINE_H
