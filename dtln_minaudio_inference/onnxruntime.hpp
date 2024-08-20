@@ -60,4 +60,5 @@ private:
 	// Outputs
 	std::string conv1d_3 = "conv1d_3";
 	std::string tf_op_layer_stack_5 = "tf_op_layer_stack_5";
+	std::string conv1d_2 = "conv1d_2";
 };

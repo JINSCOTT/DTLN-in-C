@@ -204,7 +204,7 @@ struct node* create_split_node(int64_t* axis, int64_t* num_outputs, struct tenso
 	output_list = calloc(1, sizeof(struct list));
 	if (output_list == NULL) return NULL;
 
-	va_start(ptr, *split);
+	va_start(ptr, split);
 	for (i = 0; i < *num_outputs; i++) {
 		struct tensor* temp = va_arg(ptr, int64_t*);
 		printf("temp\n");
@@ -1176,27 +1176,6 @@ cleanup:
 	if (get_data_list(&n->attribute, 5) == NULL) safe_free(strides);
 	return error;
 }
-
-//
-//push_back_list(&new_node->attribute, activation_alpha);
-//push_back_list(&new_node->attribute, activation_beta);
-//push_back_list(&new_node->attribute, activations);
-//push_back_list(&new_node->attribute, clip);
-//push_back_list(&new_node->attribute, direction);
-//push_back_list(&new_node->attribute, hidden_size);
-//push_back_list(&new_node->attribute, input_forget);
-//push_back_list(&new_node->attribute, layout);
-//push_back_list(&new_node->input, x);
-//push_back_list(&new_node->input, w);
-//push_back_list(&new_node->input, r);
-//push_back_list(&new_node->input, b);
-//push_back_list(&new_node->input, sequence_lens);
-//push_back_list(&new_node->input, initial_h);
-//push_back_list(&new_node->input, initial_c);
-//push_back_list(&new_node->input, p);
-//push_back_list(&new_node->output, y);
-//push_back_list(&new_node->output, y_h);
-//push_back_list(&new_node->output, y_c);
 
 
 
