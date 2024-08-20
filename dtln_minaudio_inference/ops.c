@@ -26,7 +26,7 @@ int16_t broadcast_function(struct tensor* A, struct tensor* B, struct tensor* C,
 
 	// Main loop
 	while (1) {
-		if (A->type == FLOAT32) {
+		if (A->type == DATATYPE_FLOAT32) {
 			if (op_type == Add) {
 				*(float*)get_data_tensor_iter(C_iter) = *(float*)get_data_tensor_iter(A_iter) + *(float*)get_data_tensor_iter(B_iter);
 			}
@@ -44,7 +44,7 @@ int16_t broadcast_function(struct tensor* A, struct tensor* B, struct tensor* C,
 			}
 
 		}
-		else if (A->type == INT32) {
+		else if (A->type == DATATYPE_INT32) {
 			if (op_type == Add) {
 				*(int32_t*)get_data_tensor_iter(C_iter) = *(int32_t*)get_data_tensor_iter(A_iter) + *(int32_t*)get_data_tensor_iter(B_iter);
 			}
@@ -62,7 +62,7 @@ int16_t broadcast_function(struct tensor* A, struct tensor* B, struct tensor* C,
 			}
 
 		}
-		else if (A->type == INT64) {
+		else if (A->type == DATATYPE_INT64) {
 			if (op_type == Add) {
 				*(int64_t*)get_data_tensor_iter(C_iter) = *(int64_t*)get_data_tensor_iter(A_iter) + *(int64_t*)get_data_tensor_iter(B_iter);
 			}
@@ -121,7 +121,7 @@ int tanh_function(struct tensor* A, struct tensor* B) {
 	if (B_iter <= 0) return OPS_ALLOCATION_FAIL;
 
 	while (1) {
-		if (A->type == FLOAT32) {
+		if (A->type == DATATYPE_FLOAT32) {
 			*(float*)get_data_tensor_iter(B_iter) = tanhf(*(float*)get_data_tensor_iter(A_iter));
 		}
 		else {
@@ -149,7 +149,7 @@ int sigmoid_function(struct tensor* A, struct tensor* B) {
 	if (B_iter <= 0) return OPS_ALLOCATION_FAIL;
 
 	while (1) {
-		if (A->type == FLOAT32) {
+		if (A->type == DATATYPE_FLOAT32) {
 			*(float*)get_data_tensor_iter(B_iter) = 1.f / (1.0f + expf(-*(float*)get_data_tensor_iter(A_iter)));
 		}
 		else {
@@ -177,7 +177,7 @@ int relu_function(struct tensor* A, struct tensor* B) {
 	if (B_iter <= 0) return OPS_ALLOCATION_FAIL;
 
 	while (1) {
-		if (A->type == FLOAT32) {
+		if (A->type == DATATYPE_FLOAT32) {
 			*(float*)get_data_tensor_iter(B_iter) = max(0.0f, *(float*)get_data_tensor_iter(A_iter));
 		}
 		else {
@@ -205,7 +205,7 @@ int sqrt_function(struct tensor* A, struct tensor* B) {
 	if (B_iter <= 0) return OPS_ALLOCATION_FAIL;
 
 	while (1) {
-		if (A->type == FLOAT32) {
+		if (A->type == DATATYPE_FLOAT32) {
 			*(float*)get_data_tensor_iter(B_iter) = sqrtf(*(float*)get_data_tensor_iter(A_iter));
 		}
 		else {
@@ -233,7 +233,7 @@ int copy_function(struct tensor* A, struct tensor* B) {
 	if (B_iter <= 0) return OPS_ALLOCATION_FAIL;
 
 	while (1) {
-		if (A->type == FLOAT32) {
+		if (A->type == DATATYPE_FLOAT32) {
 			*(float*)get_data_tensor_iter(B_iter) = *(float*)get_data_tensor_iter(A_iter);
 		}
 		else {
@@ -338,7 +338,7 @@ int transpose_function(struct tensor* data, struct tensor* transposed, int64_t* 
 int matmul_array(void* A, void* B, void* C, int64_t n, int64_t m, int64_t p, int type) {
 	int64_t i = 0, j = 0, k = 0;
 
-	if (type == FLOAT32) {
+	if (type == DATATYPE_FLOAT32) {
 		for (i = 0; i < n; i++) {
 			for (j = 0; j < p; j++) {
 				((float*)C)[i * p + j] = 0;
@@ -348,7 +348,7 @@ int matmul_array(void* A, void* B, void* C, int64_t n, int64_t m, int64_t p, int
 			}
 		}
 	}
-	else if (type == INT32) {
+	else if (type == DATATYPE_FLOAT32) {
 		for (i = 0; i < n; i++) {
 			for (j = 0; j < p; j++) {
 				((int32_t*)C)[i * p + j] = 0;
@@ -359,7 +359,7 @@ int matmul_array(void* A, void* B, void* C, int64_t n, int64_t m, int64_t p, int
 			}
 		}
 	}
-	else if (type == INT64) {
+	else if (type == DATATYPE_INT64) {
 		for (i = 0; i < n; i++) {
 			for (j = 0; j < p; j++) {
 				((int64_t*)C)[i * p + j] = 0;
@@ -377,21 +377,21 @@ int matmul_array(void* A, void* B, void* C, int64_t n, int64_t m, int64_t p, int
 int mean_array(void* array, void* result, int64_t num_elements, int type) {
 	int64_t i = 0;
 	if (array == NULL || result == NULL) return OPS_INPUT_IS_NULL;
-	if (type == FLOAT32) {
+	if (type == DATATYPE_FLOAT32) {
 		*(float*)result = 0;
 		for (i = 0; i < num_elements; i++) {
 			*(float*)result += ((float*)array)[i];
 		}
 		*(float*)result /= num_elements;
 	}
-	else if (type == INT32) {
+	else if (type == DATATYPE_INT32) {
 		*(int32_t*)result = 0;
 		for (i = 0; i < num_elements; i++) {
 			*(int32_t*)result += ((int32_t*)array)[i];
 		}
 		*(int32_t*)result /= num_elements;
 	}
-	else if (type == INT64) {
+	else if (type == DATATYPE_INT64) {
 		*(int64_t*)result = 0;
 		for (i = 0; i < num_elements; i++) {
 			*(int64_t*)result += ((int64_t*)array)[i];
@@ -481,11 +481,11 @@ int pad_function(char* mode, struct tensor* data, struct tensor* pads, struct te
 		}
 		while (true)
 		{
-			if (data->type == FLOAT32 || data->type == INT32) {
+			if (data->type == DATATYPE_FLOAT32 || data->type == DATATYPE_INT32) {
 				if (constant_value != NULL)*(float*)get_data_tensor_iter(output_iter) = *(float*)constant_value->data;
 				else *(float*)get_data_tensor_iter(output_iter) = 0;
 			}
-			else if (data->type == INT64) {
+			else if (data->type == DATATYPE_INT64) {
 				if (constant_value != NULL)*(int64_t*)get_data_tensor_iter(output_iter) = *(int64_t*)constant_value->data;
 				else *(int64_t*)get_data_tensor_iter(output_iter) = 0;
 			}
@@ -509,10 +509,10 @@ int pad_function(char* mode, struct tensor* data, struct tensor* pads, struct te
 				}
 			}
 			if (!is_pad) {
-				if (data->type == FLOAT32 || data->type == INT32) {
+				if (data->type == DATATYPE_FLOAT32 || data->type == DATATYPE_INT32) {
 					*(float*)get_data_tensor_iter(output_iter) = *(float*)get_data_tensor_iter(data_iter);
 				}
-				else if (data->type == INT64) {
+				else if (data->type == DATATYPE_INT64) {
 					*(int64_t*)get_data_tensor_iter(output_iter) = *(int64_t*)get_data_tensor_iter(data_iter);
 				}
 				else {
@@ -569,10 +569,10 @@ int pad_function_simple(struct tensor* data, struct tensor* output, int64_t* pad
 				}
 			}
 			if (is_pad) {
-				if (data->type == FLOAT32 || data->type == INT32) {
+				if (data->type == DATATYPE_FLOAT32 || data->type == DATATYPE_INT32) {
 					*(float*)get_data_tensor_iter(output_iter) = *(float*)constant_value;
 				}
-				else if (data->type == INT64) {
+				else if (data->type == DATATYPE_INT64) {
 					*(int64_t*)get_data_tensor_iter(output_iter) = *(int64_t*)constant_value;
 				}
 				else {
@@ -581,10 +581,10 @@ int pad_function_simple(struct tensor* data, struct tensor* output, int64_t* pad
 			}
 			else {
 
-				if (data->type == FLOAT32 || data->type == INT32) {
+				if (data->type == DATATYPE_FLOAT32 || data->type == DATATYPE_INT32) {
 					*(float*)get_data_tensor_iter(output_iter) = *(float*)get_data_tensor_iter(data_iter);
 				}
-				else if (data->type == INT64) {
+				else if (data->type == DATATYPE_INT64) {
 					*(int64_t*)get_data_tensor_iter(output_iter) = *(int64_t*)get_data_tensor_iter(data_iter);
 				}
 				else {
@@ -669,7 +669,7 @@ int gemm_function(struct tensor* a, struct tensor* b, struct tensor* c, struct t
 		return OPS_ALLOCATION_FAIL;
 	}
 	while (true) {
-		if (a->type == FLOAT32) {
+		if (a->type == DATATYPE_FLOAT32) {
 			*(float*)get_data_tensor_iter(iter) *= alpha;
 		}
 		if (!is_not_done_tensor_iter(iter)) {
@@ -687,7 +687,7 @@ int gemm_function(struct tensor* a, struct tensor* b, struct tensor* c, struct t
 			return OPS_ALLOCATION_FAIL;
 		}
 		while (true) {
-			if (c->type == FLOAT32) {
+			if (c->type == DATATYPE_FLOAT32) {
 				*(float*)get_data_tensor_iter(iter) *= beta;
 			}
 			if (!is_not_done_tensor_iter(iter)) {
@@ -837,7 +837,7 @@ int fgemm(int transpose_A, int transpose_b, int64_t m, int64_t n, int64_t k, flo
 		B = b;
 		transposef_2d(B, ldb, n);
 	}
-	matmul_array(A, B, temp, m, k, n, FLOAT32);
+	matmul_array(A, B, temp, m, k, n, DATATYPE_FLOAT32);
 	mulf_array(temp, &alpha, temp, m * k, 1, m * k);
 	mulf_array(C, &beta, C, m * k, 1, m * k);
 	for (i = 0; i < m; i++) {

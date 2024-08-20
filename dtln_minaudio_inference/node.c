@@ -1024,7 +1024,7 @@ int16_t inference_pad_node(struct node* n) {
 		for (i = 0; i < data->dimension_size; i++) {
 			temp_data[i] = i;
 		}
-		axes = create_tensor(temp_data, data->dimension_size, temp_dim, 1, INT64, false);
+		axes = create_tensor(temp_data, data->dimension_size, temp_dim, 1, DATATYPE_INT64, false);
 		if (axes == NULL) {
 			error = OPS_ALLOCATION_FAIL;
 			goto cleanup;

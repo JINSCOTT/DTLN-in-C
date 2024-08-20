@@ -9,7 +9,7 @@
 #include "tensor.h"
 #include "shape_calc.h"
 #include "utility.h"
-#include "stdarg.h";
+#include "stdarg.h"
 /// <summary>
 /// Node Class
 /// </summary>
@@ -34,14 +34,14 @@ struct node* create_sigmoid_node(struct tensor* X, struct tensor* Y);
 struct node* create_sqrt_node(struct tensor* X, struct tensor* Y);
 struct node* create_squeeze_node(struct tensor* data, struct tensor* axes, struct tensor* squeezed);
 struct node* create_unsqueeze_node(struct tensor* data, struct tensor* axes, struct tensor* expanded);
-struct node* create_transpose_node(struct int64_t* perm, struct tensor* data, struct tensor* transposed);
+struct node* create_transpose_node(int64_t* perm, struct tensor* data, struct tensor* transposed);
 struct node* create_matmul_node(struct tensor* a, struct tensor* b, struct tensor* c);
 // starts, ends, axes, steps length has to conform to data dimension length
 struct node* create_slice_node(struct tensor* data, struct tensor* starts, struct tensor* ends, struct tensor* axes, struct tensor* steps, struct tensor* output);
 struct node* create_gemm_node(float* alpha, float* beta, int64_t* transA, int64_t* transB, struct tensor* A, struct tensor* B, struct tensor* C, struct tensor* Y);
 struct node* create_concat_node(int64_t* axis, struct tensor* concat_result, int64_t num_input, ...);
 struct node* create_split_node(int64_t* axis, int64_t* num_outputs, struct tensor* input, int64_t* split, ...);
-struct node* create_reshape_node(struct tensor* data, struct tensor* shape, struct tensor* reshaped);
+struct node* create_reshape_node(int64_t* allowzero, struct tensor* data, struct tensor* shape, struct tensor* reshaped);
 struct node* create_pad_node(char* mode, struct tensor* data, struct tensor* pads, struct tensor* constant_value, struct tensor* axes, struct tensor* output);
 struct node* create_conv_node(char* auto_pad, int64_t* dilations, int64_t* group, int64_t* kernel_shape, int64_t* pads, int64_t* strides, struct tensor* x, struct tensor* w, struct tensor* b, struct tensor* y);
 struct node* create_lstm_node(float* activation_alpha, float* activation_beta, struct list* activations, float* clip, char* direction, int64_t* hidden_size, int64_t* input_forget, int64_t* layout,
