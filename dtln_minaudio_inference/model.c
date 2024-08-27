@@ -15,7 +15,7 @@ struct model* create_model() {
 
 //  copied into, free to edlete
 int16_t set_model_tensor_data(struct model* m, int64_t index, void* data, int64_t datasize){
-	struct tensor* rTensor = (struct tensor*)get_data_list(&m->tensor, index);
+	struct tensor* rTensor = (struct tensor*)get_list(&m->tensor, index);
 	if (rTensor == NULL) return 0;
 	memcpy(rTensor->data, data, datasize);
 	return 1;
@@ -24,7 +24,7 @@ int16_t set_model_tensor_data(struct model* m, int64_t index, void* data, int64_
 
 // Do not free data got
 int16_t get_model_tensor_data(struct model* m, int64_t index, void** data) {
-	struct tensor* rTensor = (struct tensor*)get_data_list(&m->tensor, index);
+	struct tensor* rTensor = (struct tensor*)get_list(&m->tensor, index);
 	if (rTensor == NULL) return 0;
 	*data = rTensor->data;
 	return 1;
@@ -36,7 +36,7 @@ int inference_model(struct model* m) {
 	struct node* cur_node = NULL;
 	num_nodes = m->node.size;
 	for (i = 0; i < num_nodes; i++) {
-		cur_node = (struct Node*)get_data_list(&m->node, i);
+		cur_node = (struct Node*)get_list(&m->node, i);
 		if (cur_node == NULL) {
 			printf("Encountered NULL node\n");
 			return 0;

@@ -1,11 +1,12 @@
 #include "tensor.h"
 
 
-struct tensor* create_tensor(const void* data, int num_elements, int64_t* dimension, int64_t num_dimension, short DataType, short is_static) {
+struct tensor* create_tensor(const void* data, int64_t num_elements, int64_t* dimension, int64_t num_dimension, short DataType, short is_static) {
 	struct tensor* newTensor = (struct tensor*)calloc(1, sizeof(struct tensor));
 	int64_t* Stride = NULL, i = 0;
 	if (newTensor != NULL) {
 		newTensor->is_size_unknown = false;
+		// Set datatype
 		if (DataType == DATATYPE_FLOAT32 || DataType == DATATYPE_INT32) {
 			newTensor->item_size = 4;
 		}
@@ -15,17 +16,12 @@ struct tensor* create_tensor(const void* data, int num_elements, int64_t* dimens
 		else {
 			return NULL;
 		}
-
+		// Assign input
 		if (data != 0) {
 			newTensor->data = data;
-
-
 		}
 		else {
-			if (is_static) {
-				printf("\n\nno tensor data\n\n");
-				system("pause");
-			}
+
 #ifdef ONE_MKL
 			newTensor->data = mkl_malloc(num_elements * newTensor->item_size);
 #else
@@ -34,14 +30,8 @@ struct tensor* create_tensor(const void* data, int num_elements, int64_t* dimens
 
 		}
 		newTensor->data_size = num_elements;
-		if (is_static) {
-			newTensor->dimension = dimension;
-		}
-		else {
-			newTensor->dimension = malloc(num_dimension * sizeof(int64_t));
-			if (newTensor->dimension == NULL) return NULL;
-			memcpy(newTensor->dimension, dimension, num_dimension * sizeof(int64_t));
-		}
+		if (dimension == NULL) return NULL;
+		newTensor->dimension = dimension;
 		newTensor->dimension_size = num_dimension;
 		newTensor->type = DataType;
 		newTensor->is_static = is_static;

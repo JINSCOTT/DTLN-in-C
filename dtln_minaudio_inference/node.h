@@ -14,7 +14,7 @@
 /// Node Class
 /// </summary>
 struct node {
-	int16_t type;
+	int type;
 	struct list attribute;
 	struct list input;
 	struct list output;
@@ -219,27 +219,27 @@ struct node* create_constant_node(struct tensor* value, float* value_float, floa
 //// nodes inferemce
 int inference_node(struct node* node);
 
-int16_t inference_add_node(struct node* n);
-int16_t inference_sub_node(struct node* n);
-int16_t inference_mul_node(struct node* n);
-int16_t inference_div_node(struct node* n);
-int16_t inference_tanh_node(struct node* n);
-int16_t inference_sigmoid_node(struct node* n);
-int16_t inference_sqrt_node(struct node* n);
-int16_t inference_squeeze_node(struct node* n);
-int16_t inference_unsqueeze_node(struct node* n);
-int16_t inference_transpose_node(struct node* n);
-int16_t inference_slice_node(struct node* n);
-int16_t inference_matmul_node(struct node* n);
-int16_t inference_gemm_node(struct node* n);
-int16_t inference_concat_node(struct node* n);
-int64_t inference_split_node(struct node* n);
-int16_t inference_reshape_node(struct node* n);
-int16_t inference_pad_node(struct node* n);
-int16_t inference_conv_node(struct node* n);
-int16_t inference_lstm_node(struct node* n);
-int16_t inference_reducemean_node(struct node* n);
-int16_t inference_constant_node(struct node* n);
+int inference_add_node(struct node* n);
+int inference_sub_node(struct node* n);
+int inference_mul_node(struct node* n);
+int inference_div_node(struct node* n);
+int inference_tanh_node(struct node* n);
+int inference_sigmoid_node(struct node* n);
+int inference_sqrt_node(struct node* n);
+int inference_squeeze_node(struct node* n);
+int inference_unsqueeze_node(struct node* n);
+int inference_transpose_node(struct node* n);
+int inference_slice_node(struct node* n);
+int inference_matmul_node(struct node* n);
+int inference_gemm_node(struct node* n);
+int inference_concat_node(struct node* n);
+int inference_split_node(struct node* n);
+int inference_reshape_node(struct node* n);
+int inference_pad_node(struct node* n);
+int inference_conv_node(struct node* n);
+int inference_lstm_node(struct node* n);
+int inference_reducemean_node(struct node* n);
+int inference_constant_node(struct node* n);
 //
 
 

@@ -35,7 +35,7 @@ struct tensor {
 //Tensor functions
 
 //Creator tensor
-struct tensor* create_tensor(const void* data, int num_elements, int64_t* dimension, int64_t num_dimension, short DataType, short is_static);
+struct tensor* create_tensor(const void* data, int64_t num_elements, int64_t* dimension, int64_t num_dimension, short DataType, short is_static);
 
 struct tensor* create_empty_tensor();
 // Create a direct copy, will not be static

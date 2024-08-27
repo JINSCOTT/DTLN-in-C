@@ -1,12 +1,23 @@
 #ifndef DEFINE_H
 #define DEFINE_H
 
-#define DEBUG
+//#define DEBUG
 //#define OMP
 //#define ONE_MKL
+
+
+
+#ifndef NULL
 #define NULL 0
+#endif // !NULL
+#ifndef true
 #define true 1
+#endif // !true
+
+#ifndef false
 #define false 0
+#endif // !false
+
 
 enum OPS_FUNCTION_RETURN {
 	OPS_UNDEFINED,

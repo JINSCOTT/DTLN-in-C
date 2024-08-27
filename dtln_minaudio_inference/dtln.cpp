@@ -15,6 +15,8 @@ DTLN::DTLN()
 	{
 		printf("Error: %s\n", DftiErrorMessage(status));
 	}
+
+
 	//home brew
 
 	m2 = (struct model*)calloc(1, sizeof(struct model));
@@ -56,18 +58,18 @@ bool DTLN::inference(std::vector<float>& input, std::vector<float>& output)
 			return 0;
 		}
 	}
-	if (model_2 == NULL) {
+	/*if (model_2 == NULL) {
 		try {
 			model_2 = new model2(&Env);
 		}
 		catch (std::exception& e) {
 			return 0;
 		}
-	}
+	}*/
 	// check IO size
 	if (input.size() < BLOCK_SHIFT || output.size() < BLOCK_LENGTH)
 	{
-		return false;
+		return 0;
 	}
 	std::rotate(in_buffer.begin(), in_buffer.begin() + BLOCK_SHIFT, in_buffer.end());                   // shift
 	std::memcpy(in_buffer.data() + BLOCK_LENGTH - BLOCK_SHIFT, input.data(), BLOCK_SHIFT * sizeof(float)); // copy to back
@@ -102,6 +104,7 @@ bool DTLN::inference(std::vector<float>& input, std::vector<float>& output)
 	if (status && !DftiErrorClass(status, DFTI_NO_ERROR))
 	{
 		printf("Error: %s\n", DftiErrorMessage(status));
+		return 0;
 	}
 
 

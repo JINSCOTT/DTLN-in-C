@@ -432,6 +432,7 @@ int matmul_array(void* A, void* B, void* C, int64_t n, int64_t m, int64_t p, int
 	else {
 		return 0;
 	}
+	return 1;
 }
 
 int mean_array(void* array, void* result, int64_t num_elements, int type) {
@@ -1064,10 +1065,10 @@ int lstm_function(float* activation_alpha, float* activation_beta, struct list* 
 				goto_tensor_iter(b_iter, b_coordinate);
 				addf_array(it, get_data_tensor_iter(b_iter), it, hidden_size, hidden_size, hidden_size);
 				if (activation_alpha != NULL) {
-					error = activationf_array(it, it, get_data_list(activations, j * 3), hidden_size, activation_alpha[j * 3], activation_beta[j * 3]);
+					error = activationf_array(it, it, get_list(activations, j * 3), hidden_size, activation_alpha[j * 3], activation_beta[j * 3]);
 				}
 				else {
-					error = activationf_array(it, it, get_data_list(activations, j * 3), hidden_size, 1.0f, 1.0f);
+					error = activationf_array(it, it, get_list(activations, j * 3), hidden_size, 1.0f, 1.0f);
 				}
 				if (error != OPS_SUCCESS) return error;
 
@@ -1091,10 +1092,10 @@ int lstm_function(float* activation_alpha, float* activation_beta, struct list* 
 				goto_tensor_iter(b_iter, b_coordinate);
 				addf_array(ft, get_data_tensor_iter(b_iter), ft, hidden_size, hidden_size, hidden_size);
 				if (activation_alpha != NULL) {
-					error = activationf_array(it, it, get_data_list(activations, j * 3), hidden_size, activation_alpha[j * 3], activation_beta[j * 3]);
+					error = activationf_array(it, it, get_list(activations, j * 3), hidden_size, activation_alpha[j * 3], activation_beta[j * 3]);
 				}
 				else {
-					error = activationf_array(it, it, get_data_list(activations, j * 3), hidden_size, 1.0f, 1.0f);
+					error = activationf_array(it, it, get_list(activations, j * 3), hidden_size, 1.0f, 1.0f);
 				}
 				if (error != OPS_SUCCESS) return error;
 
@@ -1113,10 +1114,10 @@ int lstm_function(float* activation_alpha, float* activation_beta, struct list* 
 				goto_tensor_iter(b_iter, b_coordinate);
 				addf_array(ct, get_data_tensor_iter(b_iter), ct, hidden_size, hidden_size, hidden_size);
 				if (activation_alpha != NULL) {
-					error = activationf_array(it, it, get_data_list(activations, j * 3 + 1), hidden_size, activation_alpha[j * 3 + 1], activation_beta[j * 3 + 1]);
+					error = activationf_array(it, it, get_list(activations, j * 3 + 1), hidden_size, activation_alpha[j * 3 + 1], activation_beta[j * 3 + 1]);
 				}
 				else {
-					error = activationf_array(it, it, get_data_list(activations, j * 3 + 1), hidden_size, 1.0f, 1.0f);
+					error = activationf_array(it, it, get_list(activations, j * 3 + 1), hidden_size, 1.0f, 1.0f);
 				}
 				if (error != OPS_SUCCESS) return error;
 				//Ct = ft(.) Ct - 1 + it(.) ct
@@ -1142,18 +1143,18 @@ int lstm_function(float* activation_alpha, float* activation_beta, struct list* 
 				goto_tensor_iter(b_iter, b_coordinate);
 				addf_array(get_data_tensor_iter(y_iter), get_data_tensor_iter(b_iter), get_data_tensor_iter(y_iter), hidden_size, hidden_size, hidden_size);
 				if (activation_alpha != NULL) {
-					error = activationf_array(it, it, get_data_list(activations, j * 3), hidden_size, activation_alpha[j * 3], activation_beta[j * 3]);
+					error = activationf_array(it, it, get_list(activations, j * 3), hidden_size, activation_alpha[j * 3], activation_beta[j * 3]);
 				}
 				else {
-					error = activationf_array(it, it, get_data_list(activations, j * 3), hidden_size, 1.0f, 1.0f);
+					error = activationf_array(it, it, get_list(activations, j * 3), hidden_size, 1.0f, 1.0f);
 				}
 				if (error != OPS_SUCCESS) return error;
 				//Ht = ot(.) h(Ct)
 				if (activation_alpha != NULL) {
-					error = activationf_array(it, it, get_data_list(activations, j * 3 + 2), hidden_size, activation_alpha[j * 3 + 2], activation_beta[j * 3 + 2]);
+					error = activationf_array(it, it, get_list(activations, j * 3 + 2), hidden_size, activation_alpha[j * 3 + 2], activation_beta[j * 3 + 2]);
 				}
 				else {
-					error = activationf_array(it, it, get_data_list(activations, j * 3 + 2), hidden_size, 1.0f, 1.0f);
+					error = activationf_array(it, it, get_list(activations, j * 3 + 2), hidden_size, 1.0f, 1.0f);
 				}
 				if (error != OPS_SUCCESS) return error;
 				mulf_array(get_data_tensor_iter(yh_iter), get_data_tensor_iter(y_iter), get_data_tensor_iter(yh_iter), hidden_size, hidden_size, hidden_size);
@@ -1189,12 +1190,12 @@ int concat_function(int64_t* axis, struct list* inputs, struct tensor* concat_re
 	struct tensor_iterator *input_iter = NULL;
 	struct tensor_iterator* result_iter = NULL;
 	if (axis == NULL || inputs == NULL || concat_result == NULL) return OPS_INPUT_IS_NULL;
-	a = (struct tensor*)get_data_list(inputs, 0);
+	a = (struct tensor*)get_list(inputs, 0);
 	// if negative axis
 	if (*axis < 0) *axis += a->dimension_size;
 	// Check dimension match
 	for (i = 1; i < inputs->size; i++) {
-		b = (struct tensor*)get_data_list(inputs, i);
+		b = (struct tensor*)get_list(inputs, i);
 		if (a->dimension_size != b->dimension_size) {
 			return OPS_DIMENSION_MISMATCH;
 		}
@@ -1218,7 +1219,7 @@ int concat_function(int64_t* axis, struct list* inputs, struct tensor* concat_re
 		goto cleanup;
 	}
 	for (i = 0; i < inputs->size; i++) {
-		input_iter = create_tensor_iterator(get_data_list(inputs,i));
+		input_iter = create_tensor_iterator(get_list(inputs,i));
 		if (input_iter == NULL) {
 			error = OPS_ALLOCATION_FAIL;
 			goto cleanup;
@@ -1260,7 +1261,7 @@ int split_function(int64_t axis, int64_t num_outputs, struct tensor* input, int6
 			else interval *= input->dimension[j];
 		}
 		for (i = 0; i < num_outputs; i++) {
-			temp = (struct tensor*)get_data_list(outputs, i);
+			temp = (struct tensor*)get_list(outputs, i);
 			if (input->data_size - axisoffset < interval) {
 				memcpy((char*)temp->data, (char*)input->data + axisoffset * input->item_size, (input->data_size - axisoffset) * input->item_size);
 			}
@@ -1279,7 +1280,7 @@ int split_function(int64_t axis, int64_t num_outputs, struct tensor* input, int6
 			}
 		}
 		for (i = 0; i < num_outputs; i++) {
-			temp = (struct tensor*)get_data_list(outputs, i);
+			temp = (struct tensor*)get_list(outputs, i);
 			memcpy((char*)temp->data, (char*)input->data + axisoffset * input->item_size, split[i] * interval * input->item_size);
 			axisoffset += split[i] * interval;
 		}
@@ -1309,10 +1310,10 @@ int reducemean_function(int64_t keepdims, int64_t noop_with_empty_axes, struct t
 	}
 	else {
 		for (i = 0; i < axes->size; i++) {
-			if (*(int64_t*)get_data_list(axes, i) < 0) {
-				*(int64_t*)get_data_list(axes, i) += data->dimension_size;
+			if (*(int64_t*)get_list(axes, i) < 0) {
+				*(int64_t*)get_list(axes, i) += data->dimension_size;
 			}
-			reduce_offset *= data->dimension[*(int64_t*)get_data_list(axes, i)];
+			reduce_offset *= data->dimension[*(int64_t*)get_list(axes, i)];
 		}
 	}
 	data_iter = create_tensor_iterator(data);

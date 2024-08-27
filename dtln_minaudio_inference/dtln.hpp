@@ -4,10 +4,6 @@
 #define BLOCK_FFT 257
 
 #include <iostream>
-extern "C"
-{
-    #include "model2.h"
-}
 #include <memory>
 #include <vector>
 #include <algorithm>
@@ -18,7 +14,10 @@ extern "C"
 #include "mkl_dfti.h"
 #include "onnxruntime.hpp"
 
-
+extern "C"
+{
+    #include "model2.h"
+}
 
 
 class DTLN
@@ -46,13 +45,8 @@ private:
     DFTI_DESCRIPTOR_HANDLE handle = NULL;
     MKL_LONG status;
     std::vector<std::complex<float>> fd = std::vector<std::complex<float>>(BLOCK_FFT, std::complex<float>(0.0f, 0.0f));
-    //fftwf_plan rfft = fftwf_plan_dft_r2c_1d(BLOCK_LENGTH, in_buffer.data(), reinterpret_cast<fftwf_complex*>(&fd[0]), FFTW_ESTIMATE);
-    //fftwf_plan irfft = fftwf_plan_dft_c2r_1d(BLOCK_LENGTH, reinterpret_cast<fftwf_complex*>(&fd[0]), outblock.data(), FFTW_ESTIMATE);
 public:
     DTLN();
     // inference with input vector with size "block_shift" and output vector "block_len"
     bool inference(std::vector<float>& input, std::vector<float>& output);
-
-
-
 };
