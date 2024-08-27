@@ -31,7 +31,8 @@ int16_t get_model_tensor_data(struct model* m, int64_t index, void** data) {
 }
 
 int inference_model(struct model* m) {
-	int num_nodes = 0, error = 0, i = 0;
+	int  error = 0;
+	int64_t num_nodes = 0, i = 0;
 	struct node* cur_node = NULL;
 	num_nodes = m->node.size;
 	for (i = 0; i < num_nodes; i++) {
@@ -45,6 +46,7 @@ int inference_model(struct model* m) {
 			printf("Node execution failed\n");
 			return 0;
 		}
+		//system("pause");
 	}
 	return 1;
 }

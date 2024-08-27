@@ -90,9 +90,7 @@ struct  dynamic_array* create_array_from_array(void* data, int64_t num_items, in
 	}
 	arr->capacity = num_items;
 	memcpy_s(arr->data, num_items * item_size, data, num_items * item_size);
-
 	return arr;
-
 }
 int popfront_array(struct dynamic_array* arr) {
 	if (arr == NULL) return 0;
@@ -160,10 +158,11 @@ char* back_array(struct dynamic_array* arr) {
 	if (arr->size == 0) return 0;
 	else return arr->data + (arr->size - 1) * arr->item_size;
 }
-void release_array(struct dynamic_array* arr) {
+void release_array(struct dynamic_array** arr) {
 	if (arr != NULL) {
-		free(arr->data);
-		free(arr);
+		free((*arr)->data);
+		free(*arr);
+		arr = NULL;
 	}
 }
 

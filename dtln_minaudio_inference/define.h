@@ -18,21 +18,20 @@ enum OPS_FUNCTION_RETURN {
 	OPS_TYPE_UNIMPLEMENTED,
 	OPS_TYPE_NOT_SUPPORTED,
 	OPS_INVALID_ARGUMENT,
-	OPS_NOT_BROADCAST,
 	OPS_NO_OUTPUT_SHAPE
 };
 
 
 enum NODE_TYPE {
 	UNDEFINED,
-	Transpose,		// 1
-	Slice,			// 1
-	Squeeze,		// 1
+	Transpose,		// 1. tested
+	Slice,			// 1. tested
+	Squeeze,		// 1. tested
 	LSTM,			// 1
-	Concat,			// 1
+	Concat,			// 1. tested
 	MatMul,			// 1
 	Unsqueeze,		// 1
-	Conv,			// 1
+	Conv,			// 1. tested
 	ReduceMean,		// 1
 	Sub,			// 1
 	Mul,			// 1
@@ -40,7 +39,7 @@ enum NODE_TYPE {
 	Sqrt,			// 1
 	Div,			// 1
 	Split,			// 1
-	Tanh,			// 1
+	Tanh,			// 1. tested
 	Sigmoid,		// 1
 	Pad,			// 1
 	Gemm,			// 1

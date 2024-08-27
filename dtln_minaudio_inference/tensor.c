@@ -1,11 +1,11 @@
 #include "tensor.h"
 
 
-struct tensor* create_tensor(void* data, int num_elements, int64_t* dimension, int64_t num_dimension, short DataType, short is_static) {
+struct tensor* create_tensor(const void* data, int num_elements, int64_t* dimension, int64_t num_dimension, short DataType, short is_static) {
 	struct tensor* newTensor = (struct tensor*)calloc(1, sizeof(struct tensor));
 	int64_t* Stride = NULL, i = 0;
 	if (newTensor != NULL) {
-
+		newTensor->is_size_unknown = false;
 		if (DataType == DATATYPE_FLOAT32 || DataType == DATATYPE_INT32) {
 			newTensor->item_size = 4;
 		}
@@ -16,14 +16,20 @@ struct tensor* create_tensor(void* data, int num_elements, int64_t* dimension, i
 			return NULL;
 		}
 
-		if (data != NULL) {
+		if (data != 0) {
 			newTensor->data = data;
+
+
 		}
 		else {
+			if (is_static) {
+				printf("\n\nno tensor data\n\n");
+				system("pause");
+			}
 #ifdef ONE_MKL
 			newTensor->data = mkl_malloc(num_elements * newTensor->item_size);
 #else
-			newTensor->data = calloc(num_elements , newTensor->item_size);
+			newTensor->data = calloc(num_elements, newTensor->item_size);
 #endif
 
 		}
@@ -32,7 +38,7 @@ struct tensor* create_tensor(void* data, int num_elements, int64_t* dimension, i
 		newTensor->dimension_size = num_dimension;
 		newTensor->type = DataType;
 		newTensor->is_static = is_static;
-		
+
 		// Calculate stride
 		Stride = (int64_t*)malloc(num_dimension * sizeof(int64_t));
 		if (Stride == NULL) return 0;
@@ -41,9 +47,11 @@ struct tensor* create_tensor(void* data, int num_elements, int64_t* dimension, i
 			Stride[i] = Stride[i + 1] * dimension[i + 1];
 		}
 		newTensor->stride = Stride;
+
 	}
 	else {
 		perror("Create tensor fail: ");
+		system("pause");
 		return NULL;
 	}
 	return newTensor;
@@ -74,7 +82,7 @@ struct tensor* create_tensor_copy(struct tensor* t) {
 		return NULL;
 	}
 
-	memcpy_s(newTensor->data, t->data_size * t->item_size, t->data, t->data_size * t->item_size);
+	memcpy(newTensor->data, t->data, t->data_size * t->item_size);
 
 	newTensor->data_size = t->data_size;
 	newTensor->type = t->type;
@@ -87,6 +95,8 @@ struct tensor* create_tensor_copy(struct tensor* t) {
 	newTensor->stride = (int64_t*)malloc(t->dimension_size * sizeof(int64_t));
 	memcpy_s(newTensor->stride, t->dimension_size * sizeof(int64_t), t->stride, t->dimension_size * sizeof(int64_t));
 	newTensor->is_static = 0;
+	if (t->is_size_unknown == true)newTensor->is_size_unknown = true;
+	if (t->is_size_unknown == false)newTensor->is_size_unknown = false;
 	return newTensor;
 }
 
@@ -130,8 +140,8 @@ int resize_tensor(struct tensor* t, int64_t* new_dimension, int64_t new_dimensio
 	else {
 		t->stride = (int64_t*)realloc(t->stride, t->dimension_size * sizeof(int64_t));
 	}
-	
-	
+
+
 	if (t->stride == NULL) return 0;
 	t->stride[t->dimension_size - 1] = t->item_size;
 
@@ -141,23 +151,25 @@ int resize_tensor(struct tensor* t, int64_t* new_dimension, int64_t new_dimensio
 	t->is_size_unknown = false;
 	return 1;
 }
-int overwrite_tensor(struct tensor* to, struct tensor* from ) {
+int overwrite_tensor(struct tensor* to, struct tensor* from) {
 	if (!is_shape_compatible_tensor(from, to)) return 0;
-	memcpy(to->data, to->data_size * to->item_size, from->data, from->data_size * from->item_size);
+	memcpy(to->data, from->data, from->data_size * from->item_size);
 }
 
-void release_tensor(struct tensor* t) {
-	if (t == NULL)return;
-	if (!t->is_static) {
+void release_tensor(struct tensor** t) {
+	if (*t) {
+		if (!(*t)->is_static) {
 #ifdef ONE_MKL
-		mkl_free(t->data);
+			mkl_free((*t)->data);
 #else 
-		free(t->data);
+			free((*t)->data);
 #endif // ONE_MKL
-		free(t->dimension);
-}
-	free(t->stride);
-	free(t);
+			free((*t)->dimension);
+		}
+		free((*t)->stride);
+		free((*t));
+		*t = NULL;
+	}
 }
 
 int is_shape_compatible_tensor(struct tensor* A, struct tensor* B) {
@@ -220,25 +232,25 @@ void print_tensor(struct tensor* t) {
 	else {
 		printf("dimension: ");
 		for (int i = 0; i < t->dimension_size; i++) {
-			printf("%"PRId64" ", t->dimension[i]);
+			printf("%"PRId64", ", t->dimension[i]);
 		}
-		printf("\ndata: ");
+		printf("\ndata:\n ");
 		if (t->type == DATATYPE_FLOAT32) {
 			float* d = t->data;
 			for (int64_t i = 0; i < t->data_size; i++) {
-				printf("%f ", d[i]);
+				printf("%f, ", d[i]);
 			}
 		}
 		else if (t->type == DATATYPE_INT32) {
 			int32_t* d = t->data;
 			for (int64_t i = 0; i < t->data_size; i++) {
-				printf("%d ", d[i]);
+				printf("%d, ", d[i]);
 			}
 		}
 		else if (t->type == DATATYPE_INT64) {
 			int64_t* d = t->data;
 			for (int64_t i = 0; i < t->data_size; i++) {
-				printf("%lld ", d[i]);
+				printf("%lld, ", d[i]);
 			}
 		}
 		else {
@@ -246,12 +258,36 @@ void print_tensor(struct tensor* t) {
 			return;
 		}
 
+		printf("\n\nStride: ");
+		for (int i = 0; i < t->dimension_size; i++) {
+			printf("%"PRId64" ", t->stride[i]);
+		}
+	}
+
+	printf("\nPRINT END\n");
+
+
+}
+
+void print_tensor_dim(struct tensor* t) {
+	if (t == NULL) {
+		printf("t is null\n");
+		return;
+	}
+	if (t->is_size_unknown) {
+		printf("Unknown size tensor\n");
+	}
+	else {
+		printf("dimension: ");
+		for (int i = 0; i < t->dimension_size; i++) {
+			printf("%"PRId64" ", t->dimension[i]);
+		}
 		printf("\nStride: ");
 		for (int i = 0; i < t->dimension_size; i++) {
 			printf("%"PRId64" ", t->stride[i]);
 		}
 	}
-	
+
 	printf("\nPRINT END\n");
 
 
@@ -422,11 +458,12 @@ void print_tensor_iter(struct tensor_iterator* it) {
 	printf("\n");
 }
 
-void release_tensor_iterator(struct tensor_iterator* it) {
-
-	if (it == NULL) return;
-	free(it->backstride);
-	free(it->coordinate);
-	free(it->factor);
-	free(it);
+void release_tensor_iterator(struct tensor_iterator** it) {
+	if (*it) {
+		free((*it)->backstride);
+		free((*it)->coordinate);
+		free((*it)->factor);
+		free(*it);
+		*it = NULL;
+	}
 }

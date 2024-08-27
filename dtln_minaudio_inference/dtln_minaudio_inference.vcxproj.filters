@@ -48,6 +48,9 @@
     <ClCompile Include="onnxruntime.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="model2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="define.h">
@@ -81,9 +84,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="utility.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="weight2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="onnxruntime.hpp">

@@ -2,7 +2,7 @@
 
 struct node* create_node() {
 	// or use calloc?
-	struct node* NewNode = (struct node*)malloc(sizeof(struct node));
+	struct node* NewNode = (struct node*)calloc(1, sizeof(struct node));
 	if (NewNode == NULL) return NULL;
 	NewNode->type = UNDEFINED;
 	NewNode->attribute.size = 0;
@@ -16,10 +16,9 @@ struct node* create_add_node(struct tensor* A, struct tensor* B, struct tensor* 
 	struct node* new_node = create_node();
 	if (new_node == NULL) return NULL;
 	new_node->type = Add;
-
-	push_back_list(&new_node->input, A);
-	push_back_list(&new_node->input, B);
-	push_back_list(&new_node->output, C);
+	push_back_list(&new_node->input, (void*)A);
+	push_back_list(&new_node->input, (void*)B);
+	push_back_list(&new_node->output, (void*)C);
 	return new_node;
 }
 
@@ -28,7 +27,7 @@ struct node* create_sub_node(struct tensor* A, struct tensor* B, struct tensor* 
 	struct node* new_node = create_node();
 	if (new_node == NULL) return NULL;
 	new_node->type = Sub;
-	push_back_list(&new_node->input, A);
+	push_back_list(&new_node->input, (void*)A);
 	push_back_list(&new_node->input, B);
 	push_back_list(&new_node->output, C);
 	return new_node;
@@ -56,15 +55,16 @@ struct node* create_div_node(struct tensor* A, struct tensor* B, struct tensor* 
 	return new_node;
 }
 
-struct node* create_tanh_node(struct tensor* X, struct tensor* Y) {
+struct node* create_tanh_node(struct tensor* input, struct tensor* output) {
 	printf("tanh node create\n");
 	struct node* new_node = create_node();
 	if (new_node == NULL) return NULL;
 	new_node->type = Tanh;
-	push_back_list(&new_node->input, X);
-	push_back_list(&new_node->output, Y);
+	push_back_list(&new_node->input, input);
+	push_back_list(&new_node->output, output);
 	return new_node;
 }
+
 struct node* create_sigmoid_node(struct tensor* X, struct tensor* Y) {
 	printf("sigmoid node create\n");
 	struct node* new_node = create_node();
@@ -74,6 +74,7 @@ struct node* create_sigmoid_node(struct tensor* X, struct tensor* Y) {
 	push_back_list(&new_node->output, Y);
 	return new_node;
 }
+
 struct node* create_sqrt_node(struct tensor* X, struct tensor* Y) {
 	printf("sigmoid node create\n");
 	struct node* new_node = create_node();
@@ -83,7 +84,6 @@ struct node* create_sqrt_node(struct tensor* X, struct tensor* Y) {
 	push_back_list(&new_node->output, Y);
 	return new_node;
 }
-
 
 struct node* create_squeeze_node(struct tensor* data, struct tensor* axes, struct tensor* squeezed) {
 	printf("Squeeze node create\n");
@@ -97,7 +97,6 @@ struct node* create_squeeze_node(struct tensor* data, struct tensor* axes, struc
 }
 
 struct node* create_unsqueeze_node(struct tensor* data, struct tensor* axes, struct tensor* expanded) {
-
 	printf("Unsqueeze node create\n");
 	struct node* new_node = create_node();
 	if (new_node == NULL) return NULL;
@@ -108,20 +107,19 @@ struct node* create_unsqueeze_node(struct tensor* data, struct tensor* axes, str
 	return new_node;
 
 }
-struct node* create_transpose_node(struct int64_t* perm, struct tensor* data, struct tensor* transposed) {
-
-	printf("transpose node create\n");
+struct node* create_transpose_node(int64_t* perm, struct tensor* data, struct tensor* transposed) {
+	printf("Transpose node create\n");
 	struct node* new_node = create_node();
 	if (new_node == NULL) return NULL;
 	new_node->type = Transpose;
-	push_back_list(&new_node->input, perm);
+	push_back_list(&new_node->attribute, perm);
 	push_back_list(&new_node->input, data);
 	push_back_list(&new_node->output, transposed);
 	return new_node;
 }
 
 struct node* create_matmul_node(struct tensor* a, struct tensor* b, struct tensor* c) {
-	printf("matmul node create\n");
+	printf("Matmul node create\n");
 	struct node* new_node = create_node();
 	if (new_node == NULL) return NULL;
 	new_node->type = MatMul;
@@ -129,9 +127,6 @@ struct node* create_matmul_node(struct tensor* a, struct tensor* b, struct tenso
 	push_back_list(&new_node->input, b);
 	push_back_list(&new_node->output, c);
 	return new_node;
-
-
-
 }
 
 struct node* create_slice_node(struct tensor* data, struct tensor* starts, struct tensor* ends, struct tensor* axes, struct tensor* steps, struct tensor* output) {
@@ -153,10 +148,10 @@ struct node* create_gemm_node(float* alpha, float* beta, int64_t* transA, int64_
 	struct node* new_node = create_node();
 	if (new_node == NULL) return NULL;
 	new_node->type = Gemm;
-	push_back_list(&new_node->input, alpha);
-	push_back_list(&new_node->input, beta);
-	push_back_list(&new_node->input, transA);
-	push_back_list(&new_node->input, transB);
+	push_back_list(&new_node->attribute, alpha);
+	push_back_list(&new_node->attribute, beta);
+	push_back_list(&new_node->attribute, transA);
+	push_back_list(&new_node->attribute, transB);
 	push_back_list(&new_node->input, A);
 	push_back_list(&new_node->input, B);
 	push_back_list(&new_node->input, C);
@@ -174,8 +169,8 @@ struct node* create_concat_node(int64_t* axis, struct tensor* concat_result, int
 	new_node->type = Concat;
 	input_list = calloc(1, sizeof(struct list));
 	if (input_list == NULL) return NULL;
-	
-	push_back_list(&new_node->input, axis);
+
+	push_back_list(&new_node->attribute, axis);
 	// Push inputs
 	va_start(ptr, num_input);
 	for (i = 0; i < num_input; i++) {
@@ -207,8 +202,6 @@ struct node* create_split_node(int64_t* axis, int64_t* num_outputs, struct tenso
 	va_start(ptr, split);
 	for (i = 0; i < *num_outputs; i++) {
 		struct tensor* temp = va_arg(ptr, int64_t*);
-		printf("temp\n");
-		print_tensor(temp);
 		push_back_list(output_list, temp);
 	}
 	va_end(ptr);
@@ -220,7 +213,7 @@ struct node* create_reshape_node(int64_t* allowzero, struct tensor* data, struct
 	printf("reshape node create\n");
 	struct node* new_node = create_node();
 	new_node->type = Reshape;
-	push_back_list(&new_node->input, allowzero);
+	push_back_list(&new_node->attribute, allowzero);
 	push_back_list(&new_node->input, data);
 	push_back_list(&new_node->input, shape);
 	push_back_list(&new_node->output, reshaped);
@@ -336,9 +329,6 @@ void print_ops_error(int i) {
 	else if (i == OPS_INVALID_ARGUMENT) {
 		printf("OPS result invalid arguments\n");
 	}
-	else if (i == OPS_NOT_BROADCAST) {
-		printf("OPS result broadcast\n");
-	}
 	else if (i == OPS_NO_OUTPUT_SHAPE) {
 		printf("OPS result no output shape\n");
 	}
@@ -352,157 +342,158 @@ int inference_node(struct node* node) {
 	switch (node->type)
 	{
 	case UNDEFINED: {
-		printf("Undefined\n");
+		printf("Undefined node\n");
+		system("pause");
 		// undefined node. Fail.
 		return 0;
 	}
 	case Add: {
-		printf("add\n");
+		//printf("Inference add\n");
 		result = inference_add_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 
 	case Mul: {
-		printf("Mul\n");
+		//printf("Inference mul\n");
 		result = inference_mul_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Div: {
-		printf("Div\n");
+		//printf("inference div\n");
 		result = inference_div_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 
 	case Sub: {
-		printf("Sub\n");
+		//printf("inference sub\n");
 		result = inference_sub_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 
 	case Sigmoid: {
-		printf("Sigmoid\n");
+		//printf("inference sigmoid\n");
 		result = inference_sigmoid_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Tanh: {
-		printf("Tanh\n");
+		//printf("inference tanh\n");
 		result = inference_tanh_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Sqrt: {
-		printf("Sqrt\n");
+		//printf("inference sqrt\n");
 		result = inference_sqrt_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Squeeze: {
-		printf("Squeeze\n");
+		//printf("inference squeeze\n");
 		result = inference_squeeze_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Unsqueeze: {
-		printf("Unsqueeze\n");
+		//printf("inference unsqueeze\n");
 		result = inference_unsqueeze_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Transpose: {
-		printf("Transpose\n");
+		//printf("inference transpose\n");
 		result = inference_transpose_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Slice: {
-		printf("slice\n");
+		//printf("Inference slice\n");
 		result = inference_slice_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case MatMul: {
-		printf("Matmul\n");
+		//printf("inference matmul\n");
 		result = inference_matmul_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Gemm: {
-		printf("gemm\n");
+		//printf("inference gemm\n");
 		result = inference_gemm_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Reshape: {
-		printf("reshape\n");
+		//printf("inference reshape\n");
 		result = inference_reshape_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Concat: {
-		printf("concat\n");
+		//printf("inference concat\n");
 		result = inference_concat_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Split: {
-		printf("Split\n");
+		//printf("inference split\n");
 		result = inference_split_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Pad: {
-		printf("pad\n");
+		//printf("inference pad\n");
 		result = inference_pad_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Constant: {
-		printf("Constant\n");
+		//printf("inference consant\n");
 		result = inference_constant_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
-	case Conv:{
-		printf("IS Conv\n");
+	case Conv: {
+		//printf("inference conv\n");
 		result = inference_conv_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case ReduceMean: {
-		printf("Reducemean\n");
+		//printf("inference reducemean\n");
 		result = inference_reducemean_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case LSTM: {
-		printf("LSTM\n");
+		//printf("inference lstm\n");
 		result = inference_lstm_node(node);
-		print_ops_error(result);
+		//print_ops_error(result);
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
@@ -516,7 +507,7 @@ int inference_node(struct node* node) {
 
 
 int16_t inference_add_node(struct node* n) {
-	printf("Add inference\n");
+	//printf("Add inference\n");
 	int error = 0;
 	struct tensor* A = NULL, * B = NULL, * C = NULL;
 	A = (struct tensor*)get_data_list(&n->input, 0);
@@ -528,13 +519,20 @@ int16_t inference_add_node(struct node* n) {
 	}
 	// Calculate C shape is it doesn't have a shape
 	if (C->is_size_unknown == true) {
-		printf("calculate shape\n");
 		error = set_broadcast_shape(A, B, C);
 		if (error != OPS_SUCCESS) return error;
 	}
 
 	//calculate_result
 	error = broadcast_function(A, B, C, Add);
+	/*printf("Add node result\n");
+	printf("print tensor A:\n");
+	print_tensor(A);
+	printf("print tensor B:\n");
+	print_tensor(B);
+	printf("print tensor C:\n");
+	print_tensor(C);
+	printf("\n\n\n");*/
 	return error;
 }
 
@@ -554,6 +552,14 @@ int16_t inference_sub_node(struct node* n) {
 		if (error != OPS_SUCCESS) return error;
 	}
 	error = broadcast_function(A, B, C, Sub);
+	/*printf("Sub node result\n");
+	printf("print tensor A:\n");
+	print_tensor(A);
+	printf("print tensor B:\n");
+	print_tensor(B);
+	printf("print tensor C:\n");
+	print_tensor(C);
+	printf("\n\n\n");*/
 	return error;
 }
 
@@ -573,6 +579,14 @@ int16_t inference_mul_node(struct node* n) {
 		if (error != OPS_SUCCESS) return error;
 	}
 	error = broadcast_function(A, B, C, Mul);
+	/*printf("MUL node result\n");
+	printf("print tensor A:\n");
+	print_tensor(A);
+	printf("print tensor B:\n");
+	print_tensor(B);
+	printf("print tensor C:\n");
+	print_tensor(C);
+	printf("\n\n\n");*/
 	return error;
 }
 
@@ -593,6 +607,14 @@ int16_t inference_div_node(struct node* n) {
 		if (error != OPS_SUCCESS) return error;
 	}
 	error = broadcast_function(A, B, C, Div);
+	/*printf("Div node result\n");
+	printf("print tensor A:\n");
+	print_tensor(A);
+	printf("print tensor B:\n");
+	print_tensor(B);
+	printf("print tensor C:\n");
+	print_tensor(C);
+	printf("\n\n\n");*/
 	return error;
 }
 
@@ -615,6 +637,12 @@ int16_t inference_tanh_node(struct node* n) {
 		Y->is_size_unknown = 0;
 	}
 	error = tanh_function(X, Y);
+	/*printf("tanh node result\n");
+	printf("print tensor X:\n");
+	print_tensor(X);
+	printf("print tensor Y:\n");
+	print_tensor(Y);
+	printf("\n\n\n");*/
 	return error;
 }
 int16_t inference_sigmoid_node(struct node* n) {
@@ -636,6 +664,12 @@ int16_t inference_sigmoid_node(struct node* n) {
 		Y->is_size_unknown = 0;
 	}
 	error = sigmoid_function(X, Y);
+	/*printf("sigmoid node result\n");
+	printf("print tensor X:\n");
+	print_tensor(X);
+	printf("print tensor Y:\n");
+	print_tensor(Y);
+	printf("\n\n\n");*/
 	return error;
 }
 int16_t inference_sqrt_node(struct node* n) {
@@ -657,20 +691,25 @@ int16_t inference_sqrt_node(struct node* n) {
 		Y->is_size_unknown = 0;
 	}
 	error = sqrt_function(X, Y);
+	//printf("sqrt node result\n");
+	//printf("print tensor X:\n");
+	//print_tensor(X);
+	//printf("print tensor Y:\n");
+	//print_tensor(Y);
+	//printf("\n\n\n");
 	return error;
 }
 
 
 int16_t inference_squeeze_node(struct node* n) {
 	int error = OPS_SUCCESS;
-	struct tensor* data = NULL, * squeezed = NULL;
-	struct tensor* axes = NULL;
+	struct tensor* data = NULL, * squeezed = NULL, * axes = NULL;
 	int64_t* new_axes = NULL, new_axes_size = 0;
 	data = (struct tensor*)get_data_list(&n->input, 0);
 	axes = (struct tensor*)get_data_list(&n->input, 1);
 	squeezed = (struct tensor*)get_data_list(&n->output, 0);
 
-	if (data == NULL || squeezed == NULL)
+	if (data == NULL || axes == NULL || squeezed == NULL)
 	{
 		return OPS_INPUT_IS_NULL;
 	}
@@ -679,15 +718,18 @@ int16_t inference_squeeze_node(struct node* n) {
 		error = set_squeeze_shape(data, axes, squeezed);
 	}
 	memcpy_s(squeezed->data, squeezed->data_size * squeezed->item_size, data->data, data->data_size * data->item_size);
-
+	/*printf("squeeze node result\n");
+	printf("print tensor data:\n");
+	print_tensor(data);
+	printf("print tensor squeezed:\n");
+	print_tensor(squeezed);
+	printf("\n\n\n");*/
 	return error;
 }
 
 int16_t inference_unsqueeze_node(struct node* n) {
 	int error = OPS_SUCCESS;
-	struct tensor* data = NULL, * expanded = NULL;
-	struct list* axes = NULL;
-	int64_t* new_axes = NULL, new_axes_size = 0;
+	struct tensor* data = NULL, * expanded = NULL, * axes = NULL;
 	data = (struct tensor*)get_data_list(&n->input, 0);
 	axes = (struct tensor*)get_data_list(&n->input, 1);
 	expanded = (struct tensor*)get_data_list(&n->output, 0);
@@ -696,22 +738,31 @@ int16_t inference_unsqueeze_node(struct node* n) {
 	{
 		return OPS_INPUT_IS_NULL;
 	}
+	/*printf("data:\n");
+	print_tensor(data);*/
 	// Calculate Y shape
 	if (expanded->is_size_unknown) {
 		error = set_unsqueeze_shape(data, axes, expanded);
 	}
-	memcpy_s(expanded->data, expanded->data_size * expanded->item_size, data->data, data->data_size * data->item_size);
 
+	//print_tensor(axes);
+	memcpy_s(expanded->data, expanded->data_size * expanded->item_size, data->data, data->data_size * data->item_size);
+	//printf("unsqueeze node result\n");
+	//printf("print tensor data:\n");
+	//print_tensor(data);
+	//printf("print tensor squeezed:\n");
+	//print_tensor(expanded);
+	//printf("\n\n\n");
 	return error;
 }
 
 int16_t inference_transpose_node(struct node* n) {
-	printf("inference transpose\n");
+	//printf("inference transpose\n");
 	int error = 0;
 	int64_t* perm = NULL, i = 0;;
 	struct tensor* data = NULL, * transposed = NULL;
-	perm = (int64_t*)get_data_list(&n->input, 0);
-	data = (struct tensor*)get_data_list(&n->input, 1);
+	perm = (int64_t*)get_data_list(&n->attribute, 0);
+	data = (struct tensor*)get_data_list(&n->input, 0);
 	transposed = (struct tensor*)get_data_list(&n->output, 0);
 
 	if (data == NULL || transposed == NULL) {
@@ -726,17 +777,22 @@ int16_t inference_transpose_node(struct node* n) {
 	}
 	if (transposed->is_size_unknown) {
 		error = set_transpose_shape(data, perm, transposed);
-		transposed->is_size_unknown = false;
 		if (error != OPS_SUCCESS) {
-			error =  OPS_ALLOCATION_FAIL;
+			error = OPS_ALLOCATION_FAIL;
 			goto cleanup;
 		}
 	}
 	error = transpose_function(data, transposed, perm);
+	//printf("transpose node result\n");
+	//printf("permutation: ");
+	//print_int64_t(perm, data->dimension_size);
+	//printf("\nprint tensor data:\n");
+	//print_tensor(data);
+	//printf("print tensor squeezed:\n");
+	//print_tensor(transposed);
+	//printf("\n\n\n");
 cleanup:
-	if ((struct list*)get_data_list(&n->input, 0) == NULL) {
-		safe_free(perm);
-	}
+
 	return error;
 }
 
@@ -754,23 +810,28 @@ int16_t inference_matmul_node(struct node* n) {
 
 	if (c->is_size_unknown) {
 		error = set_matmul_shape(a, b, c);
-
 		if (error != OPS_SUCCESS) {
 			return OPS_DIMENSION_MISMATCH;
 		}
-		c->is_size_unknown = false;
 	}
 	error = matmul_function(a, b, c);
-
+	/*printf("matmul node result\n");
+	printf("\nprint tensor A:\n");
+	print_tensor(a);
+	printf("\nprint tensor B:\n");
+	print_tensor(b);
+	printf("\nprint tensor C:\n");
+	print_tensor(c);
+	printf("\n\n\n");*/
 	return error;
 }
 
 
 int16_t inference_slice_node(struct node* n) {
-	printf("slice node inference\n");
+	//printf("slice node inference\n");
 	int error = 0;
 	int64_t i = 0, push_value = 0, * axes_arr = NULL, * steps_arr = NULL, * starts_arr = NULL, * ends_arr = NULL; ;
-	struct tensor* data = NULL, * output = NULL ,* starts = NULL, *ends = NULL, *axes = NULL, *steps = NULL;;
+	struct tensor* data = NULL, * output = NULL, * starts = NULL, * ends = NULL, * axes = NULL, * steps = NULL;;
 
 
 	data = (struct tensor*)get_data_list(&n->input, 0);
@@ -783,7 +844,7 @@ int16_t inference_slice_node(struct node* n) {
 	if (axes == NULL) {
 		axes_arr = malloc(data->dimension_size * sizeof(int64_t));
 		if (axes_arr == NULL) {
-			error =  OPS_ALLOCATION_FAIL;
+			error = OPS_ALLOCATION_FAIL;
 			goto cleanup;
 		}
 		for (i = 0; i < data->dimension_size; i++) {
@@ -815,28 +876,32 @@ int16_t inference_slice_node(struct node* n) {
 		output->is_size_unknown = false;
 	}
 	error = slice_function(data, output, starts->data, ends->data, axes_arr, steps_arr);
-
-cleanup: 
-	if (axes == NULL)safe_free(axes_arr);
-	if (steps == NULL) safe_free(steps_arr);
-
-
+	if (error = OPS_SUCCESS) print_tensor(output);
+cleanup:
+	if (axes == NULL)safe_free(&axes_arr);
+	if (steps == NULL) safe_free(&steps_arr);
+	//printf("Slice node result\n");
+	//printf("\nprint tensor data:\n");
+	//print_tensor(data);
+	//printf("\nprint tensor output:\n");
+	//print_tensor(output);
+	//printf("\n\n\n");
 	return error;
 }
 
 int16_t inference_gemm_node(struct node* n) {
-	printf("gemm inference\n");
+	//printf("gemm inference\n");
 	int error = 0;
 	int64_t* transA = NULL, * transB = NULL, insert_int64 = 0;
 	float* alpha = NULL, * beta = NULL, insert_float = 0.f;
 	struct tensor* A = NULL, * B = NULL, * C = NULL, * Y = NULL;
-	alpha = (float*)get_data_list(&n->input, 0);
-	beta = (float*)get_data_list(&n->input, 1);
-	transA = (int64_t*)get_data_list(&n->input, 2);
-	transB = (int64_t*)get_data_list(&n->input, 3);
-	A = (struct tensor*)get_data_list(&n->input, 4);
-	B = (struct tensor*)get_data_list(&n->input, 5);
-	C = (struct tensor*)get_data_list(&n->input, 6);
+	alpha = (float*)get_data_list(&n->attribute, 0);
+	beta = (float*)get_data_list(&n->attribute, 1);
+	transA = (int64_t*)get_data_list(&n->attribute, 2);
+	transB = (int64_t*)get_data_list(&n->attribute, 3);
+	A = (struct tensor*)get_data_list(&n->input, 0);
+	B = (struct tensor*)get_data_list(&n->input, 1);
+	C = (struct tensor*)get_data_list(&n->input, 2);
 	Y = (struct tensor*)get_data_list(&n->output, 0);
 	if (alpha == NULL) {
 		alpha = malloc(sizeof(float));
@@ -846,7 +911,7 @@ int16_t inference_gemm_node(struct node* n) {
 		}
 		insert_float = 1.0f;
 		memcpy_s(alpha, sizeof(float), &insert_float, sizeof(float));
-		replace_data_list(&n->input, alpha, 0);
+		replace_data_list(&n->attribute, alpha, 0);
 	}
 	if (beta == NULL) {
 		beta = malloc(sizeof(float));
@@ -856,7 +921,7 @@ int16_t inference_gemm_node(struct node* n) {
 		}
 		insert_float = 1.0f;
 		memcpy_s(beta, sizeof(float), &insert_float, sizeof(float));
-		replace_data_list(&n->input, beta, 1);
+		replace_data_list(&n->attribute, beta, 1);
 	}
 	if (transA == NULL) {
 		transA = malloc(sizeof(int64_t));
@@ -866,7 +931,7 @@ int16_t inference_gemm_node(struct node* n) {
 		}
 		insert_int64 = 0;
 		memcpy_s(transA, sizeof(int64_t), &insert_int64, sizeof(int64_t));
-		replace_data_list(&n->input, transA, 2);
+		replace_data_list(&n->attribute, transA, 2);
 	}
 	if (transB == NULL) {
 		transB = malloc(sizeof(int64_t));
@@ -876,7 +941,7 @@ int16_t inference_gemm_node(struct node* n) {
 		}
 		insert_int64 = 0;
 		memcpy_s(transB, sizeof(int64_t), &insert_int64, sizeof(int64_t));
-		replace_data_list(&n->input, transB, 3);
+		replace_data_list(&n->attribute, transB, 3);
 	}
 	if (Y->is_size_unknown) {
 		error = set_gemm_shape(A, B, transA, transB, Y);
@@ -884,15 +949,28 @@ int16_t inference_gemm_node(struct node* n) {
 			error = OPS_DIMENSION_MISMATCH;
 			goto cleanup;
 		}
-		Y->is_size_unknown = false;
 	}
-	error = gemm_function(A, B, C, Y, *alpha, *beta, *transA, *transB);
-cleanup:
-	if (get_data_list(&n->input, 0) == 0)safe_free(alpha);
-	if (get_data_list(&n->input, 1) == 0)safe_free(beta);
-	if (get_data_list(&n->input, 2) == 0)safe_free(transA);
-	if (get_data_list(&n->input, 3) == 0)safe_free(transB);
 
+	error = gemm_function(A, B, C, Y, *alpha, *beta, *transA, *transB);
+
+	/*printf("gemm node result\n");
+	printf("\nprint tensor A:\n");
+	print_tensor(A);
+	printf("\nprint tensor B:\n");
+	print_tensor(B);
+	printf("\nprint tensor C:\n");
+	print_tensor(C);
+	printf("\nprint tensor Y:\n");
+	print_tensor(Y);
+	printf("\n\n\n");*/
+
+
+cleanup:
+
+	if (get_data_list(&n->attribute, 0) == 0)safe_free(&alpha);
+	if (get_data_list(&n->attribute, 1) == 0)safe_free(&beta);
+	if (get_data_list(&n->attribute, 2) == 0)safe_free(&transA);
+	if (get_data_list(&n->attribute, 3) == 0)safe_free(&transB);
 
 	return error;
 }
@@ -900,29 +978,33 @@ cleanup:
 
 
 int16_t inference_concat_node(struct node* n) {
-	printf("concat inference\n");
+	//printf("concat inference\n");
 	int error = 0;
 	int64_t* axis = NULL;
 	struct  list* inputs = NULL;
 	struct tensor* concat_result = NULL;
-	axis = (int64_t*)get_data_list(&n->input, 0);
-	if (axis == NULL) {
-		printf("axiss NULL\n");
-	}
-	inputs = (struct list*)get_data_list(&n->input, 1);
+	axis = (int64_t*)get_data_list(&n->attribute, 0);
+	inputs = (struct list*)get_data_list(&n->input, 0);
 	concat_result = (struct tensor*)get_data_list(&n->output, 0);
 	if (concat_result->is_size_unknown) {
 		error = set_concat_shape(axis, inputs, concat_result);
-		printf("errorcoder %d\n", error);
 		if (error != OPS_SUCCESS) {
 			error = OPS_DIMENSION_MISMATCH;
 			goto finally;
 		}
 		concat_result->is_size_unknown = false;
 	}
-	printf("do concat\n");
-	error = concat_function(*axis, inputs, concat_result);
-	finally:
+	error = concat_function(axis, inputs, concat_result);
+finally:
+	//printf("Concat node result\n");
+	//printf("\nprint inputs:\n");
+	//for (int i = 0; i < inputs->size; i++) {
+	//	printf("\nprint input tensor %d:\n",i);
+	//	print_tensor(get_data_list(inputs, i ));
+	//}
+	//printf("\nprint tensor cocnat result\n");
+	//print_tensor(concat_result);
+	//printf("\n\n\n");
 	return error;
 }
 
@@ -934,7 +1016,7 @@ int64_t inference_split_node(struct node* n) {
 	axis = (int64_t*)get_data_list(&n->attribute, 0);
 	num_outputs = (int64_t*)get_data_list(&n->attribute, 1);
 	input = (struct tensor*)get_data_list(&n->input, 0);
-	split = (struct tensor*)get_data_list(&n->input, 1);
+	split = (int64_t*)get_data_list(&n->input, 1);
 	outputs = (struct list*)get_data_list(&n->output, 0);
 
 	if (axis == NULL) {
@@ -948,7 +1030,6 @@ int64_t inference_split_node(struct node* n) {
 		replace_data_list(&n->attribute, axis, 0);
 	}
 	if (((struct tensor*)outputs->first->data)->is_size_unknown) {
-		printf("calculate output_shape");
 		error = set_split_shape(*axis, *num_outputs, input, split, outputs);
 		if (error != OPS_SUCCESS) {
 			error = OPS_DIMENSION_MISMATCH;
@@ -958,7 +1039,19 @@ int64_t inference_split_node(struct node* n) {
 	error = split_function(*axis, *num_outputs, input, split, outputs);
 
 cleanup:
-	if (get_data_list(&n->attribute, 0) == NULL) safe_free(axis);
+	if (get_data_list(&n->attribute, 0) == NULL) safe_free(&axis);
+
+	/*printf("Concat node result\n");
+	printf("\nprint tensor input\n");
+	print_tensor(input);
+	printf("\nprint inputs:\n");
+	for (int i = 0; i < outputs->size; i++) {
+		printf("\nprint output tensor %d:\n", i);
+		print_tensor(get_data_list(outputs, i));
+	}
+	printf("\n\n\n");*/
+
+
 	return error;
 }
 
@@ -966,10 +1059,9 @@ int16_t inference_reshape_node(struct node* n) {
 	int error = 0;
 	int64_t* allowzero = NULL;
 	struct tensor* input = NULL, * reshaped = NULL, * shape = NULL;
-
-	allowzero = (int64_t*)get_data_list(&n->input, 0);
-	input = (struct tensor*)get_data_list(&n->input, 1);
-	shape = (struct tensor*)get_data_list(&n->input, 2);
+	allowzero = (int64_t*)get_data_list(&n->attribute, 0);
+	input = (struct tensor*)get_data_list(&n->input, 0);
+	shape = (struct tensor*)get_data_list(&n->input, 1);
 	reshaped = (struct tensor*)get_data_list(&n->output, 0);
 	if (reshaped->is_size_unknown) {
 		error = set_reshaped_shape(input, shape, reshaped);
@@ -981,6 +1073,14 @@ int16_t inference_reshape_node(struct node* n) {
 	memcpy(reshaped->data, input->data, reshaped->data_size * reshaped->item_size);
 	error = OPS_SUCCESS;
 cleanup:
+	/*printf("gemm node result\n");
+	printf("new shape: ");
+	print_int64_t(shape, reshaped->dimension_size);
+	printf("\nprint tensor input:\n");
+	print_tensor(input);
+	printf("\nprint tensor reshaped:\n");
+	print_tensor(reshaped);
+	printf("\n\n\n");*/
 	return error;
 }
 
@@ -988,8 +1088,8 @@ int16_t inference_pad_node(struct node* n) {
 	int error = 0;
 	struct tensor* data = NULL, * output = NULL, * value = NULL, * axes = NULL, * pads = NULL;
 
-	char* mode = NULL, default_mode[] = "constant" ;
-	int64_t i = 0, * temp_dim = NULL,* temp_data = NULL;
+	char* mode = NULL, default_mode[] = "constant";
+	int64_t i = 0, * temp_dim = NULL, * temp_data = NULL;
 
 
 	mode = (char*)get_data_list(&n->attribute, 0);
@@ -1042,23 +1142,23 @@ int16_t inference_pad_node(struct node* n) {
 	}
 	error = pad_function(mode, data, pads, value, axes, output);
 cleanup:
-	if (get_data_list(&n->attribute, 0) == NULL) safe_free(mode);
-	safe_free(temp_dim);
-	safe_free(temp_data);
+	if (get_data_list(&n->attribute, 0) == NULL) safe_free(&mode);
+	safe_free(&temp_dim);
+	safe_free(&temp_data);
+
+
+	//printf("gemm node result\n");
+	//printf("\nprint tensor data:\n");
+	//print_tensor(data);
+	//printf("\nprint tensor output:\n");
+	//print_tensor(output);
+	//printf("\n\n\n");
+
 	return error;
 }
-//push_back_list(&new_node->attribute, auto_pad);
-//push_back_list(&new_node->attribute, dilations);
-//push_back_list(&new_node->attribute, group);
-//push_back_list(&new_node->attribute, kernel_shape);
-//push_back_list(&new_node->attribute, pads);
-//push_back_list(&new_node->attribute, strides);
-//push_back_list(&new_node->input, x);
-//push_back_list(&new_node->input, w);
-//push_back_list(&new_node->input, b);
-//push_back_list(&new_node->output, y);
+
 int16_t inference_conv_node(struct node* n) {
-	printf("inference conv\n");
+	//printf("inference conv\n");
 	int error = 0;
 	char* autopad = NULL, default_autopad[] = "NOTSET";
 	int64_t* dilations = NULL, * group = NULL, * kernel_shape = NULL, * pads = NULL, * strides = NULL, i = 0, total_pad = 0;
@@ -1075,7 +1175,6 @@ int16_t inference_conv_node(struct node* n) {
 	y = (struct tensor*)get_data_list(&n->output, 0);
 	if (x == NULL || w == NULL || y == NULL) return OPS_INPUT_IS_NULL;
 	// Set defualts
-	printf("set conv default\n");
 	if (autopad == NULL) {
 		autopad = malloc(sizeof(default_autopad));
 		if (autopad == NULL) {
@@ -1121,7 +1220,6 @@ int16_t inference_conv_node(struct node* n) {
 		replace_data_list(&n->attribute, strides, 5);
 	}
 	if (pads == NULL) {
-		printf("NULL PAD %s\n", autopad);
 		pads = malloc(2 * (w->dimension_size - 2) * sizeof(int64_t));
 		if (pads == NULL) {
 			error = OPS_ALLOCATION_FAIL;
@@ -1150,13 +1248,19 @@ int16_t inference_conv_node(struct node* n) {
 			}
 
 		}
+		else if (autopad == NULL || strcmp(autopad, "NOT_SET")) {	// re
+			for (i = 0; i < 2 * (w->dimension_size - 2); i++)
+			{
+				pads[i] = 0;
+			}
+
+		}
 		else {
 			error = OPS_INVALID_ARGUMENT;
 			goto cleanup;
 		}
 		replace_data_list(&n->attribute, pads, 4);
 	}
-	printf("calculate CONV dims\n");
 	// Calculate size
 	if (y->is_size_unknown) {
 		error = set_conv_shape(x, w, y, pads, strides);
@@ -1165,19 +1269,16 @@ int16_t inference_conv_node(struct node* n) {
 		}
 		y->is_size_unknown = 0;
 	}
-	printf("eXECUTE CONV\n");
 	error = conv_function(x, w, b, y, dilations, *group, kernel_shape, pads, strides);
 cleanup:
-	if (get_data_list(&n->attribute, 0) == NULL) safe_free(autopad);
-	if (get_data_list(&n->attribute, 1) == NULL) safe_free(dilations);
-	if (get_data_list(&n->attribute, 2) == NULL) safe_free(group);
-	if (get_data_list(&n->attribute, 3) == NULL) safe_free(kernel_shape);
-	if (get_data_list(&n->attribute, 4) == NULL) safe_free(pads);
-	if (get_data_list(&n->attribute, 5) == NULL) safe_free(strides);
+	if (get_data_list(&n->attribute, 0) == NULL) safe_free(&autopad);
+	if (get_data_list(&n->attribute, 1) == NULL) safe_free(&dilations);
+	if (get_data_list(&n->attribute, 2) == NULL) safe_free(&group);
+	if (get_data_list(&n->attribute, 3) == NULL) safe_free(&kernel_shape);
+	if (get_data_list(&n->attribute, 4) == NULL) safe_free(&pads);
+	if (get_data_list(&n->attribute, 5) == NULL) safe_free(&strides);
 	return error;
 }
-
-
 
 int16_t inference_lstm_node(struct node* n) {
 	int error = 0;
@@ -1217,19 +1318,11 @@ int16_t inference_lstm_node(struct node* n) {
 	if (strcmp(direction, "bidirectional") == 0) {
 		num_direction = 2;
 	}
-	// currently not implemented
-	//if (input_forget == NULL) {
-	//	
-	//}
-	// currently not implemented
-	//if (layout==NULL == NULL) {
-	//	
-	//}
 	if (initial_h == NULL) {
 		temp_dim = create_array(sizeof(int64_t));
 		if (temp_dim == NULL) goto cleanup;
 		pushback_array(temp_dim, &num_direction);
-		pushback_array(temp_dim, x->dimension[1]);
+		pushback_array(temp_dim, &x->dimension[1]);
 		pushback_array(temp_dim, hidden_size);
 		j = 1;
 		for (i = 0; i < temp_dim->size; i++) {
@@ -1238,7 +1331,7 @@ int16_t inference_lstm_node(struct node* n) {
 		initial_h = create_tensor(NULL, j, temp_dim->data, temp_dim->size, x->type, false);
 		if (initial_h == NULL) goto cleanup;
 		replace_data_list(&n->input, initial_h, 5);
-		release_array(temp_dim);
+		release_array(&temp_dim);
 	}
 	if (initial_c == NULL) {
 		temp_dim = create_array(sizeof(int64_t));
@@ -1254,7 +1347,7 @@ int16_t inference_lstm_node(struct node* n) {
 		initial_c = create_tensor(NULL, j, temp_dim->data, temp_dim->size, x->type, false);
 		if (initial_c == NULL) goto cleanup;
 		replace_data_list(&n->input, initial_c, 6);
-		release_array(temp_dim);
+		release_array(&temp_dim);
 	}
 	if (p == NULL) {
 		temp_dim = create_array(sizeof(int64_t));
@@ -1296,14 +1389,14 @@ int16_t inference_lstm_node(struct node* n) {
 		, x, w, r, b, sequence_length, initial_h, initial_c, p, y, y_h, y_c);
 
 cleanup:
-	if (get_data_list(&n->attribute, 4) == NULL) safe_free(direction);
-	if (get_data_list(&n->input, 5) == NULL) safe_free(initial_h);
-	if (get_data_list(&n->input, 6) == NULL) safe_free(initial_c);
-	if (get_data_list(&n->input, 7) == NULL) safe_free(p);
-	if (get_data_list(&n->output, 0) == NULL) safe_free(y);
-	if (get_data_list(&n->output, 1) == NULL) safe_free(y_h);
-	if (get_data_list(&n->output, 2) == NULL) safe_free(y_c);
-	release_array(temp_dim);
+	if (get_data_list(&n->attribute, 4) == NULL) safe_free(&direction);
+	if (get_data_list(&n->input, 5) == NULL) safe_free(&initial_h);
+	if (get_data_list(&n->input, 6) == NULL) safe_free(&initial_c);
+	if (get_data_list(&n->input, 7) == NULL) safe_free(&p);
+	if (get_data_list(&n->output, 0) == NULL) safe_free(&y);
+	if (get_data_list(&n->output, 1) == NULL) safe_free(&y_h);
+	if (get_data_list(&n->output, 2) == NULL) safe_free(&y_c);
+	release_array(&temp_dim);
 }
 
 int16_t inference_reducemean_node(struct node* n) {
@@ -1332,15 +1425,21 @@ int16_t inference_reducemean_node(struct node* n) {
 		replace_data_list(&n->attribute, temp, 1);
 	}
 	if (reduced->is_size_unknown) {
-		error = set_reducemean_shape(axes, *noop_with_empty_axes, *keepdims, data, reduced);
+		error = set_reducemean_shape(axes, noop_with_empty_axes, *keepdims, data, reduced);
 		if (error != OPS_SUCCESS)goto cleanup;
 	}
-	printf("executed reduce mean\n");
 	error = reducemean_function(*keepdims, *noop_with_empty_axes, data, axes, reduced);
 cleanup:
-	if (get_data_list(&n->attribute, 0) == NULL) safe_free(keepdims);
-	if (get_data_list(&n->attribute, 1) == NULL) safe_free(noop_with_empty_axes);
-	safe_free(temp);
+	//printf("reduce_mean result\n");
+	//printf("\nprint tensor data:\n");
+	//print_tensor(data);
+	//printf("\nprint tensor reduced:\n");
+	//print_tensor(reduced);
+	//printf("\n\n\n");
+	//system("pause");
+	if (get_data_list(&n->attribute, 0) == NULL) safe_free(&keepdims);
+	if (get_data_list(&n->attribute, 1) == NULL) safe_free(&noop_with_empty_axes);
+	safe_free(&temp);
 	return error;
 }
 

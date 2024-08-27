@@ -35,7 +35,7 @@ struct tensor {
 //Tensor functions
 
 //Creator tensor
-struct tensor* create_tensor(void* data, int num_elements, int64_t* dimension, int64_t num_dimension, short DataType, short is_static);
+struct tensor* create_tensor(const void* data, int num_elements, int64_t* dimension, int64_t num_dimension, short DataType, short is_static);
 
 struct tensor* create_empty_tensor();
 // Create a direct copy, will not be static
@@ -45,7 +45,7 @@ int resize_tensor(struct tensor* t, int64_t* new_dimension, int64_t new_dimensio
 // change content if their dimension and datasize match 
 int overwrite_tensor(struct tensor* to, struct tensor* from);
 //release data
-void release_tensor(struct tensor* t);
+void release_tensor(struct tensor** t);
 //check if both tensor has the same shape and type
 int is_shape_compatible_tensor(struct tensor* A, struct tensor* B);
 //debug function
@@ -105,9 +105,9 @@ int16_t is_not_done_tensor_iter(struct tensor_iterator* it);
 // Get current data from iterator
 void* get_data_tensor_iter(struct tensor_iterator* it);
 
-
+void print_tensor_dim(struct tensor* t);
 //debug function
 void print_tensor_iter(struct tensor_iterator* it);
 //release data
-void release_tensor_iterator(struct tensor_iterator* it);
+void release_tensor_iterator(struct tensor_iterator** it);
 #endif	 // TENSOR_H

@@ -2,13 +2,15 @@
 int set_broadcast_shape(struct tensor* A, struct tensor* B, struct tensor* C) {
 	int64_t* dims = NULL, i = 0, j = 0, k = 0, c_dimsize = 0;
 	if (A == NULL || B == NULL || C == NULL) return OPS_INPUT_IS_NULL;
+
 	if (A->dimension_size > B->dimension_size) c_dimsize = A->dimension_size;
 	else c_dimsize = B->dimension_size;
-	dims = malloc(c_dimsize * sizeof(int64_t));
+	dims = calloc(c_dimsize , sizeof(int64_t));
 	if (dims == NULL) return OPS_ALLOCATION_FAIL;
 	i = A->dimension_size - 1;
 	j = B->dimension_size - 1;
 	k = c_dimsize - 1;
+	// assign the larger on from right to left
 	while (i >= 0 || j >= 0 || k >= 0) {
 		if (i >= 0) {
 			dims[k] = A->dimension[i];
@@ -20,10 +22,10 @@ int set_broadcast_shape(struct tensor* A, struct tensor* B, struct tensor* C) {
 		}
 		i--; j--; k--;
 	}
+
 	resize_tensor(C, dims, c_dimsize, A->type);
 	C->is_size_unknown = false;
 	free(dims);
-
 	return OPS_SUCCESS;
 }
 
@@ -31,17 +33,16 @@ int set_squeeze_shape(struct tensor* data, struct tensor* axes, struct tensor* s
 	int error = 0;
 	int64_t  i = 0, * cur = NULL;
 	struct dynamic_array* new_dims = NULL;
-
 	struct tensor_iterator* axes_it = NULL;
+
 	if (data == NULL || squeezed == NULL) {
 		return OPS_INPUT_IS_NULL;
 	}
 	new_dims = create_array(sizeof(int64_t));
 	if (new_dims == NULL) return OPS_ALLOCATION_FAIL;
 
-
-
 	if (axes == NULL) {
+		// remove every dimension with size 1
 		for (i = 0; i < data->dimension_size; i++) {
 			if (data->dimension[i] != 1) {
 				pushback_array(new_dims, &data->dimension[i]);
@@ -59,7 +60,7 @@ int set_squeeze_shape(struct tensor* data, struct tensor* axes, struct tensor* s
 		}
 		while (1) {
 			cur = get_data_tensor_iter(axes_it);
-			if (*cur < 0) {
+			if (*cur < 0) {	// is negative
 				*(int64_t*)get_item_array(new_dims, *cur + data->dimension_size) = -1;
 			}
 			else {
@@ -78,13 +79,12 @@ int set_squeeze_shape(struct tensor* data, struct tensor* axes, struct tensor* s
 			}
 		}
 	}
-
-	error = resize_tensor(squeezed, new_dims->data, new_dims->size, data->type);
+	error = resize_tensor(squeezed, (int64_t*)new_dims->data, new_dims->size, data->type);
 	if (error == 1) error = OPS_SUCCESS;
 
 cleanup:
-	release_array(new_dims);
-	release_tensor_iterator(axes_it);
+	release_array(&new_dims);
+	release_tensor_iterator(&axes_it);
 	return error;
 }
 
@@ -97,18 +97,19 @@ int set_unsqueeze_shape(struct tensor* data, struct tensor* axes, struct tensor*
 	}
 
 	new_dims = create_array(sizeof(int64_t));
-	for (i = 0; i < data->dimension_size + axes->data_size; i++) {
+	if (new_dims == NULL) return OPS_ALLOCATION_FAIL;
+	for (i = 0; i < data->dimension_size + axes->data_size; i++) {	// new dimension size
 		pushback_array(new_dims, &value);
 	}
 	for (i = 0; i < axes->data_size; i++) {
-		if (((int64_t*)axes->data)[i] < 0) {
+		if (((int64_t*)axes->data)[i] < 0) {		// change new added axes to 1
 			*(int64_t*)get_item_array(new_dims, ((int64_t*)axes->data)[i] + new_dims->size) = 1;
 		}
 		else {
 			*(int64_t*)get_item_array(new_dims, ((int64_t*)axes->data)[i]) = 1;
 		}
 	}
-	for (i = 0; i < new_dims->size; i++) {
+	for (i = 0; i < new_dims->size; i++) {			// change original axes to it's own value
 		if (*(int64_t*)get_item_array(new_dims, i) == -1) {
 			*(int64_t*)get_item_array(new_dims, i) = data->dimension[j];
 			j++;
@@ -116,14 +117,13 @@ int set_unsqueeze_shape(struct tensor* data, struct tensor* axes, struct tensor*
 	}
 	if (j != data->dimension_size) return  OPS_INVALID_ARGUMENT;
 
-	error = resize_tensor(expanded, new_dims->data, new_dims->size, data->type);
-	release_array(new_dims);
+	error = resize_tensor(expanded, (int64_t*)new_dims->data, new_dims->size, data->type);
+	release_array(&new_dims);
 
 	if (error != 1) {
 		return OPS_ALLOCATION_FAIL;
 	}
 	return OPS_SUCCESS;
-
 }
 
 int set_transpose_shape(struct tensor* data, int64_t* perm, struct tensor* transposed) {
@@ -138,11 +138,11 @@ int set_transpose_shape(struct tensor* data, int64_t* perm, struct tensor* trans
 		pushback_array(new_dims, &data->dimension[perm[i]]);
 	}
 	if (new_dims->size != data->dimension_size) {
-		release_array(new_dims);
+		release_array(&new_dims);
 		return OPS_INVALID_ARGUMENT;
 	}
-	error = resize_tensor(transposed, new_dims->data, new_dims->size, data->type);
-	release_array(new_dims);
+	error = resize_tensor(transposed, (int64_t*)new_dims->data, new_dims->size, data->type);
+	release_array(&new_dims);
 	if (error != 1) {
 		return OPS_ALLOCATION_FAIL;
 	}
@@ -162,8 +162,8 @@ int set_matmul_shape(struct tensor* a, struct tensor* b, struct tensor* c) {
 	if (a->dimension_size == 1) { // prepend if dim is 1
 		pushfront_array(a_dim, &insert_val);
 	}
-	if (b->dimension_size == 1) { // append if dim is 1
-		push_back_list(b_dim, &insert_val);
+	if (b->dimension_size == 1) { // append if dim is 1 &insert_val);
+		pushback_array(b_dim, &insert_val);
 	}
 
 	if (*(int64_t*)back_array(a_dim) != *(int64_t*)get_item_array(b_dim, b_dim->size - 2)) {
@@ -193,12 +193,12 @@ int set_matmul_shape(struct tensor* a, struct tensor* b, struct tensor* c) {
 	}
 	pushback_array(c_dim, (int64_t*)get_item_array(a_dim, a_dim->size - 2));
 	pushback_array(c_dim, (int64_t*)back_array(b_dim));
-	resize_tensor(c, c_dim->data, c_dim->size, a->type);
+	resize_tensor(c, (int64_t*)c_dim->data, c_dim->size, a->type);
 	error = OPS_SUCCESS;
 cleanup:
-	release_array(a_dim);
-	release_array(b_dim);
-	release_array(c_dim);
+	release_array(&a_dim);
+	release_array(&b_dim);
+	release_array(&c_dim);
 	return error;
 
 }
@@ -226,10 +226,10 @@ int set_slice_shape(struct tensor* data, int64_t* starts, int64_t* ends, int64_t
 		}
 		pushback_array(ouput_dim, &push_back_value);
 	}
-	resize_tensor(output, ouput_dim->data, ouput_dim->size, data->type);
+	resize_tensor(output, (int64_t*)ouput_dim->data, ouput_dim->size, data->type);
 	error = OPS_SUCCESS;
 cleanup:
-	release_array(ouput_dim);
+	release_array(&ouput_dim);
 	return error;
 }
 
@@ -257,12 +257,12 @@ int set_gemm_shape(struct tensor* A, struct tensor* B, int64_t* transA, int64_t*
 	if (*transA == 1) {
 		temp = *(int64_t*)get_item_array(a_dim, 0);
 		*(int64_t*)get_item_array(a_dim, 0) = *(int64_t*)get_item_array(a_dim, 1);
-		*(int64_t*)get_item_array(a_dim, 1) = *(int64_t*)get_item_array(a_dim, 0);
+		*(int64_t*)get_item_array(a_dim, 1) = temp;
 	}
 	if (*transB == 1) {
 		temp = *(int64_t*)get_item_array(b_dim, 0);
 		*(int64_t*)get_item_array(b_dim, 0) = *(int64_t*)get_item_array(b_dim, 1);
-		*(int64_t*)get_item_array(b_dim, 1) = *(int64_t*)get_item_array(b_dim, 0);
+		*(int64_t*)get_item_array(b_dim, 1) = temp;
 	}
 	y_dim = create_array(sizeof(int64_t));
 	if (y_dim == NULL) {
@@ -273,11 +273,12 @@ int set_gemm_shape(struct tensor* A, struct tensor* B, int64_t* transA, int64_t*
 	pushback_array(y_dim, get_item_array(b_dim, 1));
 
 	resize_tensor(Y, y_dim->data, y_dim->size, A->type);
+	print_tensor(Y);
 	error = OPS_SUCCESS;
 cleanup:
-	release_array(a_dim);
-	release_array(b_dim);
-	release_array(y_dim);
+	release_array(&a_dim);
+	release_array(&b_dim);
+	release_array(&y_dim);
 
 	return error;
 }
@@ -287,7 +288,6 @@ int set_concat_shape(int64_t* axis, struct list* inputs, struct tensor* concat_r
 	int64_t rank = 0, i = 0, j = 0;;
 	struct dynamic_array* y_dim = NULL;
 	struct tensor* cur_tensor = NULL;
-	printf("axis %d\n", *axis);
 	if (axis == NULL || inputs == NULL || concat_result == NULL) {
 		return OPS_INPUT_IS_NULL;
 	}
@@ -298,7 +298,6 @@ int set_concat_shape(int64_t* axis, struct list* inputs, struct tensor* concat_r
 
 	for (i = 0; i < inputs->size; i++) {
 		if (((struct tensor*)get_data_list(inputs, i))->dimension_size != rank) {
-			printf("mismatch %d %d\n",rank, ((struct tensor*)get_data_list(inputs, i))->dimension_size);
 			return OPS_DIMENSION_MISMATCH;
 		}
 	}
@@ -326,7 +325,7 @@ int set_concat_shape(int64_t* axis, struct list* inputs, struct tensor* concat_r
 	resize_tensor(concat_result, y_dim->data, y_dim->size, ((struct tensor*)get_data_list(inputs, 0))->type);
 	error = OPS_SUCCESS;
 cleanup:
-	release_array(y_dim);
+	release_array(&y_dim);
 	return error;
 }
 
@@ -363,7 +362,7 @@ int set_split_shape(int64_t axis, int64_t num_outputs, struct tensor* input, int
 	}
 	error = OPS_SUCCESS;
 cleanup:
-	safe_free(y_dim);
+	safe_free(&y_dim);
 	return error;
 }
 
@@ -400,7 +399,7 @@ int set_pad_shape(struct tensor* data, struct tensor* pads, struct tensor* axes,
 
 	error = OPS_SUCCESS;
 cleanup:
-	release_array(output_dim);
+	release_array(&output_dim);
 	return error;
 }
 
@@ -421,8 +420,7 @@ int set_conv_shape(struct tensor* x, struct tensor* w, struct tensor* y, int64_t
 	}
 	resize_tensor(y, y_dim->data, y_dim->size, x->type);
 	error = OPS_SUCCESS;
-cleanup:
-	release_array(y_dim);
+	release_array(&y_dim);
 	return error;
 }
 
@@ -441,13 +439,13 @@ int set_lstm_shape(struct tensor* x, int64_t num_direction, int64_t hidden_size,
 	pushback_array(dims, &num_direction);
 	pushback_array(dims, &x[1]);
 	pushback_array(dims, &hidden_size);
-	resize_tensor(y, dims->data, dims->size, x->type);
+	resize_tensor(y, (int64_t*)dims->data, dims->size, x->type);
 	popfront_array(dims);
-	resize_tensor(y_h, dims->data, dims->size, x->type);
-	resize_tensor(y_c, dims->data, dims->size, x->type);
+	resize_tensor(y_h, (int64_t*)dims->data, dims->size, x->type);
+	resize_tensor(y_c, (int64_t*)dims->data, dims->size, x->type);
 	error = OPS_SUCCESS;
 cleanup:
-	release_array(dims);
+	release_array(&dims);
 	return error;
 
 }
@@ -458,22 +456,13 @@ int set_reducemean_shape(struct tensor* axes, int64_t* noop_with_empty_axes, int
 	struct dynamic_array* reduced_dim = NULL;
 	if (axes == NULL || data == NULL || reduced == NULL) return OPS_INPUT_IS_NULL;
 	if (axes == NULL) {
-		if (noop_with_empty_axes != NULL) {
-			if (*noop_with_empty_axes == 1) {
-				resize_tensor(reduced, data->dimension, data->dimension_size, data->type);
-				error = OPS_SUCCESS;
-				goto cleanup;
-			}
-			else {
-				error = OPS_INVALID_ARGUMENT;
-				goto cleanup;
-			}
-		}
-		else {
-			error = OPS_INVALID_ARGUMENT;
+		if (*noop_with_empty_axes == 1) {
+			resize_tensor(reduced, data->dimension, data->dimension_size, data->type);
+			error = OPS_SUCCESS;
 			goto cleanup;
 		}
 	}
+	printf("\n\n\ncalculate reduce shape\n\n\n");
 	reduced_dim = create_array_from_array(data->dimension, data->dimension_size, sizeof(int64_t));
 	if (reduced_dim == NULL) {
 		error = OPS_ALLOCATION_FAIL;
@@ -496,9 +485,9 @@ int set_reducemean_shape(struct tensor* axes, int64_t* noop_with_empty_axes, int
 			}
 		}
 	}
-	resize_tensor(reduced, reduced_dim->data, reduced_dim->size, data->type);
+	resize_tensor(reduced, (int64_t*)reduced_dim->data, reduced_dim->size, data->type);
 	error = OPS_SUCCESS;
 cleanup:
-	release_array(reduced_dim);
+	release_array(&reduced_dim);
 	return error;
 }

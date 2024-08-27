@@ -1,12 +1,14 @@
+#pragma once
 #define BLOCK_LENGTH 512
 #define BLOCK_SHIFT 128
 #define BLOCK_FFT 257
-#pragma once
-
 
 #include <iostream>
+extern "C"
+{
+    #include "model2.h"
+}
 #include <memory>
-
 #include <vector>
 #include <algorithm>
 #include <math.h>
@@ -15,7 +17,8 @@
 #include <iterator>
 #include "mkl_dfti.h"
 #include "onnxruntime.hpp"
-#include "model2.h"
+
+
 
 
 class DTLN
