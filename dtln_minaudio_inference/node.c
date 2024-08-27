@@ -1,7 +1,6 @@
 #include "node.h"
 
 struct node* create_node() {
-	// or use calloc?
 	struct node* NewNode = (struct node*)calloc(1, sizeof(struct node));
 	if (NewNode == NULL) return NULL;
 	NewNode->type = UNDEFINED;
@@ -12,7 +11,6 @@ struct node* create_node() {
 }
 
 struct node* create_add_node(struct tensor* A, struct tensor* B, struct tensor* C) {
-	printf("Add node create\n");
 	struct node* new_node = create_node();
 	if (new_node == NULL) return NULL;
 	new_node->type = Add;

@@ -76,6 +76,10 @@ int model1::Inference(std::vector < std::vector<float>*>& input, std::vector<std
 	for (int i = 0; i < OutputTensor.size(); i++) {
 		memcpy(output[i]->data(), OutputTensor.at(i).GetTensorMutableData<float>(), OutputTensor.at(i).GetTensorTypeAndShapeInfo().GetElementCount());
 	}
+
+	/*for (int i = 0; i < InputTensor.size(); i++) {
+		InputTensor.at(i).;
+	}*/
 	return true;
 }
 
@@ -119,5 +123,9 @@ int model2::Inference(std::vector<std::vector<float>*>& input, std::vector< std:
 	for (int i = 0; i < OutputTensor.size(); i++) {
 		memcpy(output[i]->data(), OutputTensor.at(i).GetTensorMutableData<float>(), OutputTensor.at(i).GetTensorTypeAndShapeInfo().GetElementCount());
 	}
+	/*for (int i = 0; i < InputTensor.size(); i++) {
+		InputTensor.at(i).release();
+	}*/
+	
 	return true;
 }

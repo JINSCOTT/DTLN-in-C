@@ -29,22 +29,22 @@ enum NODE_TYPE {
 	Squeeze,		// 1. tested
 	LSTM,			// 1
 	Concat,			// 1. tested
-	MatMul,			// 1
-	Unsqueeze,		// 1
+	MatMul,			// 1, pass
+	Unsqueeze,		// 1, pass
 	Conv,			// 1. tested
-	ReduceMean,		// 1
-	Sub,			// 1
-	Mul,			// 1
-	Add,			// 1
-	Sqrt,			// 1
-	Div,			// 1
-	Split,			// 1
+	ReduceMean,		// 1, tested
+	Sub,			// 1, tested
+	Mul,			// 1, pass
+	Add,			// 1, pass
+	Sqrt,			// 1, pass
+	Div,			// 1, pass
+	Split,			// 1, pass
 	Tanh,			// 1. tested
-	Sigmoid,		// 1
+	Sigmoid,		// 1. tested
 	Pad,			// 1
 	Gemm,			// 1
 	Reshape,		// 1
-	Constant		// 1
+	Constant		// 1. seems to work
 
 
 }typedef NODE_TYPE;

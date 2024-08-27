@@ -34,7 +34,14 @@ struct tensor* create_tensor(const void* data, int num_elements, int64_t* dimens
 
 		}
 		newTensor->data_size = num_elements;
-		newTensor->dimension = dimension;
+		if (is_static) {
+			newTensor->dimension = dimension;
+		}
+		else {
+			newTensor->dimension = malloc(num_dimension * sizeof(int64_t));
+			if (newTensor->dimension == NULL) return NULL;
+			memcpy(newTensor->dimension, dimension, num_dimension * sizeof(int64_t));
+		}
 		newTensor->dimension_size = num_dimension;
 		newTensor->type = DataType;
 		newTensor->is_static = is_static;
