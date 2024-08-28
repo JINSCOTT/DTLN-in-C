@@ -392,51 +392,51 @@ int inference_node(struct node* node) {
 	}
 	case Transpose: {
 		//printf("inference transpose\n");
-		//result = inference_transpose_node(node);
+		result = inference_transpose_node(node);
 		//print_ops_error(result);
-		//if (result != OPS_SUCCESS)return 0;
+		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Slice: {
 		//printf("Inference slice\n");
-		//result = inference_slice_node(node);
+		result = inference_slice_node(node);
 		//print_ops_error(result);
-		//if (result != OPS_SUCCESS)return 0;
+		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case MatMul: {
 		//printf("inference matmul\n");
-		//result = inference_matmul_node(node);
+		result = inference_matmul_node(node);
 		//print_ops_error(result);
-		//if (result != OPS_SUCCESS)return 0;
+		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Gemm: {
 		//printf("inference gemm\n");
-		//result = inference_gemm_node(node);
+		result = inference_gemm_node(node);
 		//print_ops_error(result);
-		//if (result != OPS_SUCCESS)return 0;
+		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Reshape: {
 		//printf("inference reshape\n");
-		//result = inference_reshape_node(node);
+		result = inference_reshape_node(node);
 		//print_ops_error(result);
-		//if (result != OPS_SUCCESS)return 0;
+		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Concat: {
 		//printf("inference concat\n");
-		//result = inference_concat_node(node);
+		result = inference_concat_node(node);
 		//print_ops_error(result);
-		//if (result != OPS_SUCCESS)return 0;
+		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Split: {
 		//printf("inference split\n");
-		//result = inference_split_node(node);
+		result = inference_split_node(node);
 		//print_ops_error(result);
-		//if (result != OPS_SUCCESS)return 0;
+		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Pad: {
@@ -448,23 +448,23 @@ int inference_node(struct node* node) {
 	}
 	case Constant: {
 		//printf("inference consant\n");
-		//result = inference_constant_node(node);
+		result = inference_constant_node(node);
 		//print_ops_error(result);
-		//if (result != OPS_SUCCESS)return 0;
+		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Conv: {
 		//printf("inference conv\n");
-		//result = inference_conv_node(node);
+		result = inference_conv_node(node);
 		//print_ops_error(result);
-		//if (result != OPS_SUCCESS)return 0;
+		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case ReduceMean: {
 		//printf("inference reducemean\n");
-		//result = inference_reducemean_node(node);
+		result = inference_reducemean_node(node);
 		//print_ops_error(result);
-		//if (result != OPS_SUCCESS)return 0;
+		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case LSTM: {

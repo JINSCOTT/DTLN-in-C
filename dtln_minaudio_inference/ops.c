@@ -694,8 +694,6 @@ int conv_function(struct tensor* x, struct tensor* w, struct tensor* b, struct t
 	float pad_value = 0;
 	int error = 0;
 	if (x == NULL || w == NULL || y == NULL)return OPS_INPUT_IS_NULL;
-	x_copy = create_tensor_copy(x);
-	if (x_copy == NULL) return OPS_ALLOCATION_FAIL;
 
 	if (pads != NULL) {
 		padded_dimension = malloc(x->dimension_size * sizeof(int64_t));
