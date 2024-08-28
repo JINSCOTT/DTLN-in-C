@@ -1,29 +1,32 @@
 #include "ops.h"
 
 int16_t broadcast_function(struct tensor* A, struct tensor* B, struct tensor* C, NODE_TYPE op_type) {
+	int error = 0;
 	int64_t* c_dim = NULL, c_dim_length = 0;
 	struct tensor_iterator* A_iter = NULL, * B_iter = NULL, * C_iter = NULL;
 	// Check if input is NULL;
-	if (A == NULL || B == NULL || C == NULL) {
-		return OPS_INPUT_IS_NULL;
-	}
+	if (A == NULL || B == NULL || C == NULL) return OPS_INPUT_IS_NULL;
 	// Check BROADCASTABLE;
 	c_dim_length = is_shape_broadcastable_tensor(A, B, &c_dim);
-	if (c_dim_length <= 0) {
-		return OPS_NOT_BROADCASTABLE;
-	}
-	// cHECK IF c TENSOR DIMENSION MATCH
-	if (!is_dimension_tensor(C, c_dim, c_dim_length)) {
-		return OPS_DIMENSION_MISMATCH;
-	}
+	if (c_dim_length <= 0) return OPS_NOT_BROADCASTABLE;
+	// Check if C dimension match
+	if (!is_dimension_tensor(C, c_dim, c_dim_length))return OPS_DIMENSION_MISMATCH;
 
 	A_iter = create_tensor_iterator(A);
-	if (A_iter <= 0) return OPS_ALLOCATION_FAIL;
+	if (A_iter <= 0) {
+		error = OPS_ALLOCATION_FAIL;
+		goto cleanup;
+	}
 	B_iter = create_tensor_iterator(B);
-	if (B_iter <= 0) return OPS_ALLOCATION_FAIL;
+	if (B_iter <= 0) {
+		error = OPS_ALLOCATION_FAIL;
+		goto cleanup;
+	}
 	C_iter = create_tensor_iterator(C);
-	if (C_iter <= 0) return OPS_ALLOCATION_FAIL;
-
+	if (C_iter <= 0) {
+		error = OPS_ALLOCATION_FAIL;
+		goto cleanup;
+	}
 	// Main loop
 	while (1) {
 		if (A->type == DATATYPE_FLOAT32) {
@@ -40,7 +43,8 @@ int16_t broadcast_function(struct tensor* A, struct tensor* B, struct tensor* C,
 				*(float*)get_data_tensor_iter(C_iter) = *(float*)get_data_tensor_iter(A_iter) / *(float*)get_data_tensor_iter(B_iter);
 			}
 			else {
-				return OPS_UNDEFINED;
+				error =  OPS_UNDEFINED;
+				goto cleanup;
 			}
 
 		}
@@ -58,7 +62,8 @@ int16_t broadcast_function(struct tensor* A, struct tensor* B, struct tensor* C,
 				*(int32_t*)get_data_tensor_iter(C_iter) = *(int32_t*)get_data_tensor_iter(A_iter) / *(int32_t*)get_data_tensor_iter(B_iter);
 			}
 			else {
-				return OPS_UNDEFINED;
+				error = OPS_UNDEFINED;
+				goto cleanup;
 			}
 
 		}
@@ -76,11 +81,13 @@ int16_t broadcast_function(struct tensor* A, struct tensor* B, struct tensor* C,
 				*(int64_t*)get_data_tensor_iter(C_iter) = *(int64_t*)get_data_tensor_iter(A_iter) / *(int64_t*)get_data_tensor_iter(B_iter);
 			}
 			else {
-				return OPS_UNDEFINED;
+				error = OPS_UNDEFINED;
+				goto cleanup;
 			}
 		}
-		else {
-			return OPS_TYPE_NOT_SUPPORTED;
+		else {	// type not supported
+			error =  OPS_TYPE_NOT_SUPPORTED;
+			goto cleanup;
 		}
 
 		if (!is_not_done_tensor_iter(C_iter)) {
@@ -101,18 +108,17 @@ int16_t broadcast_function(struct tensor* A, struct tensor* B, struct tensor* C,
 			reset_tensor_iter(A_iter);
 		}
 	}
-
+	error = OPS_SUCCESS;
+cleanup:
 	release_tensor_iterator(&A_iter);
 	release_tensor_iterator(&B_iter);
 	release_tensor_iterator(&C_iter);
-	return OPS_SUCCESS;
+	return error ;
 }
 int tanh_function(struct tensor* A, struct tensor* B) {
 	int error = 0;
 	struct tensor_iterator* A_iter = NULL, * B_iter = NULL;
-	if (A == NULL || B == NULL) {
-		return OPS_INPUT_IS_NULL;
-	}
+	if (A == NULL || B == NULL) return OPS_INPUT_IS_NULL;
 	if (!is_shape_compatible_tensor(A, B)) {
 		return OPS_DIMENSION_MISMATCH;
 	}
@@ -149,9 +155,7 @@ cleanup:
 int sigmoid_function(struct tensor* A, struct tensor* B) {
 	int error = 0;
 	struct tensor_iterator* A_iter = NULL, * B_iter = NULL;
-	if (A == NULL || B == NULL) {
-		return OPS_INPUT_IS_NULL;
-	}
+	if (A == NULL || B == NULL) return OPS_INPUT_IS_NULL;
 	if (!is_shape_compatible_tensor(A, B)) {
 		return OPS_DIMENSION_MISMATCH;
 	}
@@ -189,9 +193,7 @@ cleanup:
 int relu_function(struct tensor* A, struct tensor* B) {
 	int error = 0;
 	struct tensor_iterator* A_iter = NULL, * B_iter = NULL;
-	if (A == NULL || B == NULL) {
-		return OPS_INPUT_IS_NULL;
-	}
+	if (A == NULL || B == NULL) return OPS_INPUT_IS_NULL;
 	if (!is_shape_compatible_tensor(A, B)) {
 		return OPS_DIMENSION_MISMATCH;
 	}
@@ -229,9 +231,7 @@ cleanup:
 int sqrt_function(struct tensor* A, struct tensor* B) {
 	int error = 0;
 	struct tensor_iterator* A_iter = NULL, * B_iter = NULL;
-	if (A == NULL || B == NULL) {
-		return OPS_INPUT_IS_NULL;
-	}
+	if (A == NULL || B == NULL) return OPS_INPUT_IS_NULL;
 	if (!is_shape_compatible_tensor(A, B)) {
 		return OPS_DIMENSION_MISMATCH;
 	}
@@ -245,7 +245,6 @@ int sqrt_function(struct tensor* A, struct tensor* B) {
 		error = OPS_ALLOCATION_FAIL;
 		goto cleanup;
 	}
-
 	while (1) {
 		if (A->type == DATATYPE_FLOAT32) {
 			*(float*)get_data_tensor_iter(B_iter) = sqrtf(*(float*)get_data_tensor_iter(A_iter));
@@ -288,16 +287,7 @@ int copy_function(struct tensor* A, struct tensor* B) {
 
 	while (1) {
 		// Assign
-		if (A->type == DATATYPE_FLOAT32) {
-			*(float*)get_data_tensor_iter(B_iter) = *(float*)get_data_tensor_iter(A_iter);
-		}
-		else if (B->type == DATATYPE_INT64) {
-			*(int64_t*)get_data_tensor_iter(B_iter) = *(int64_t*)get_data_tensor_iter(A_iter);
-		}
-		else {
-			error =  OPS_TYPE_NOT_SUPPORTED;
-			goto cleanup;
-		}
+		memcpy(get_data_tensor_iter(B_iter), get_data_tensor_iter(A_iter), A->item_size);
 		if (!is_not_done_tensor_iter(B_iter)) {
 			break;
 		}
@@ -316,7 +306,6 @@ int slice_function(struct tensor* data, struct tensor* output, int64_t* starts, 
 	struct tensor_iterator* data_iter = NULL, * output_iter = NULL;
 	int64_t* data_index = NULL;	
 	if (data == NULL || output == NULL) return OPS_INPUT_IS_NULL;
-
 	data_iter = create_tensor_iterator(data);
 	if (data_iter <= 0) {
 		error = OPS_ALLOCATION_FAIL;
@@ -327,7 +316,7 @@ int slice_function(struct tensor* data, struct tensor* output, int64_t* starts, 
 	item_size = data_iter->stride[data_iter->dimension_size - 1];
 	data_index = (int64_t*)malloc(data_iter->dimension_size * sizeof(int64_t));
 
-	for (i = 0; i < data_iter->dimension_size; i++) {
+	for (i = 0; i < data_iter->dimension_size; i++) {		// starts and end inside dimension bounds
 		if (starts[axes[i]] < 0)starts[axes[i]] += data_iter->dimension_size;
 		if (starts[axes[i]] > data_iter->dimension[i])starts[axes[i]] = data_iter->dimension[i];
 		if (ends[axes[i]] < 0)ends[axes[i]] += data_iter->dimension_size;
@@ -335,11 +324,9 @@ int slice_function(struct tensor* data, struct tensor* output, int64_t* starts, 
 		data_index[i] = starts[axes[i]];
 	}
 	goto_tensor_iter(data_iter, data_index);
-	
-	//
 	while (data_index[0] < ends[0])
 	{
-		// assgine
+		// assign
 		memcpy(get_data_tensor_iter(output_iter), get_data_tensor_iter(data_iter), data->item_size);
 		// Calculate next index
 		data_index[data_iter->dimension_size - 1] += steps[axes[data_iter->dimension_size - 1]];
@@ -349,7 +336,6 @@ int slice_function(struct tensor* data, struct tensor* output, int64_t* starts, 
 			data_index[i - 1] += steps[axes[i - 1]];
 			i--;
 		}
-		
 		goto_tensor_iter(data_iter, data_index);
 		next_tensor_iter(output_iter);
 	}
@@ -365,7 +351,6 @@ int transpose_function(struct tensor* data, struct tensor* transposed, int64_t* 
 	struct tensor_iterator* data_iter = NULL, * transposed_iter = NULL;
 	int64_t* transposed_coordinate = NULL;
 	if (data == NULL || perm == NULL || transposed == NULL) return OPS_INPUT_IS_NULL;
-
 	data_iter = create_tensor_iterator(data);
 	if (data_iter <= 0) return OPS_ALLOCATION_FAIL;
 	transposed_iter = create_tensor_iterator(transposed);
@@ -381,7 +366,6 @@ int transpose_function(struct tensor* data, struct tensor* transposed, int64_t* 
 		}
 		next_tensor_iter(data_iter);
 		for (i = 0; i < data_iter->dimension_size; i++) {
-
 			transposed_coordinate[i] = data_iter->coordinate[perm[i]];
 		}
 		j++;
@@ -389,7 +373,6 @@ int transpose_function(struct tensor* data, struct tensor* transposed, int64_t* 
 		// assign
 		memcpy_s(get_data_tensor_iter(transposed_iter), item_size, get_data_tensor_iter(data_iter), item_size);
 	}
-
 	release_tensor_iterator(&transposed_iter);
 	release_tensor_iterator(&data_iter);
 	free(transposed_coordinate);
@@ -397,7 +380,6 @@ int transpose_function(struct tensor* data, struct tensor* transposed, int64_t* 
 }
 int matmul_array(void* A, void* B, void* C, int64_t n, int64_t m, int64_t p, int type) {
 	int64_t i = 0, j = 0, k = 0;
-
 	if (type == DATATYPE_FLOAT32) {
 		for (i = 0; i < n; i++) {
 			for (j = 0; j < p; j++) {
@@ -415,7 +397,6 @@ int matmul_array(void* A, void* B, void* C, int64_t n, int64_t m, int64_t p, int
 				for (k = 0; k < m; k++) {
 					((int32_t*)C)[i * p + j] += ((int32_t*)A)[i * m + k] * ((int32_t*)B)[k * p + j];
 				}
-
 			}
 		}
 	}
@@ -672,7 +653,6 @@ int pad_function_simple(struct tensor* data, struct tensor* output, int64_t* pad
 
 	release_tensor_iterator(&data_iter);
 	release_tensor_iterator(&output_iter);
-
 	return OPS_SUCCESS;
 }
 
@@ -680,9 +660,7 @@ int gemm_function(struct tensor* a, struct tensor* b, struct tensor* c, struct t
 	int error = 0;
 	int64_t l = 0, m = 0, n = 0, k = 0, lda = 0, ldb = 0, ldc = 0;
 	int transA_num = CblasNoTrans, transB_num = CblasNoTrans;
-	if (a == NULL || b == NULL || output == NULL) {
-		return OPS_INPUT_IS_NULL;
-	}
+	if (a == NULL || b == NULL || output == NULL) return OPS_INPUT_IS_NULL;
 	lda = a->dimension[1];
 	ldb = b->dimension[1];
 	ldc = output->dimension[1];
@@ -705,7 +683,6 @@ int gemm_function(struct tensor* a, struct tensor* b, struct tensor* c, struct t
 	}
 	memset(output->data, 0, output->data_size * output->item_size);
 	if (c != NULL)memcpy(output->data, c->data, c->data_size * c->item_size);
-
 	cblas_sgemm(CblasRowMajor, transA_num, transB_num, m, n, k, alpha, a->data, lda, b->data, ldb, beta, output->data, ldc);
 	return OPS_SUCCESS;
 }
@@ -1255,7 +1232,6 @@ int split_function(int64_t axis, int64_t num_outputs, struct tensor* input, int6
 	if (axis < 0) axis += input->dimension_size;
 
 	if (split == NULL) {
-
 		for (j = 0; j < input->dimension_size; j++) {
 			if (j == axis)interval *= (input->dimension[axis] / num_outputs);
 			else interval *= input->dimension[j];
@@ -1285,9 +1261,7 @@ int split_function(int64_t axis, int64_t num_outputs, struct tensor* input, int6
 			axisoffset += split[i] * interval;
 		}
 	}
-
 	release_tensor_iterator(&input_iter);
-
 	return OPS_SUCCESS;
 }
 

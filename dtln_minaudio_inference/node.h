@@ -72,6 +72,12 @@ struct node* create_sigmoid_node(struct tensor* X, struct tensor* Y);
 /// <param name="Y">Output 0</param>
 struct node* create_sqrt_node(struct tensor* X, struct tensor* Y);
 /// <summary>
+/// Create relu node.
+/// </summary>
+/// <param name="X">Input 0</param>
+/// <param name="Y">Output 0</param>
+struct node* create_sqrt_node(struct tensor* X, struct tensor* Y);
+/// <summary>
 /// Create squeeze node
 /// </summary>
 /// <param name="data">input 0</param>
@@ -226,6 +232,7 @@ int inference_div_node(struct node* n);
 int inference_tanh_node(struct node* n);
 int inference_sigmoid_node(struct node* n);
 int inference_sqrt_node(struct node* n);
+int inference_relu_node(struct node* n);
 int inference_squeeze_node(struct node* n);
 int inference_unsqueeze_node(struct node* n);
 int inference_transpose_node(struct node* n);

@@ -55,7 +55,8 @@ enum NODE_TYPE {
 	Pad,			// 1
 	Gemm,			// 1
 	Reshape,		// 1
-	Constant		// 1. seems to work
+	Constant,		// 1. seems to work
+	Relu
 
 
 }typedef NODE_TYPE;

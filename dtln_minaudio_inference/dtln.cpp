@@ -128,7 +128,10 @@ bool DTLN::inference(std::vector<float>& input, std::vector<float>& output)
 	inference_model(m2);
 	memcpy(outblock.data(), conv1d_3_array, 512 * sizeof(float));
 	memcpy(state_2.data(), tf_op_layer_stack_5_array, 512 * sizeof(float));
-
+	for (int i = 0; i < outblock.size(); i++)
+	{
+		outblock[i] *=2.0f;
+	}
 	std::rotate(out_buffer.begin(), out_buffer.begin() + BLOCK_SHIFT, out_buffer.end());
 	for (int i = BLOCK_LENGTH - BLOCK_SHIFT; i < BLOCK_LENGTH; i++)
 	{

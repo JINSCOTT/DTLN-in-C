@@ -1,7 +1,7 @@
 #include "tensor.h"
 
 
-struct tensor* create_tensor(const void* data, int64_t num_elements, int64_t* dimension, int64_t num_dimension, short DataType, short is_static) {
+struct tensor* create_tensor( void* data, int64_t num_elements, int64_t* dimension, int64_t num_dimension, short DataType, short is_static) {
 	struct tensor* newTensor = (struct tensor*)calloc(1, sizeof(struct tensor));
 	int64_t* Stride = NULL, i = 0;
 	if (newTensor != NULL) {
@@ -98,9 +98,11 @@ struct tensor* create_tensor_copy(struct tensor* t) {
 }
 
 int resize_tensor(struct tensor* t, int64_t* new_dimension, int64_t new_dimension_size, int item_type) {
+	char* temp_ptr = NULL;
 	int64_t i = 0, new_total = 1;
 	if (t == NULL || new_dimension == NULL) return NULL;
-	if (t->is_static) return -1;
+
+	if (t->is_static) return 0;
 	t->type = item_type;
 	if (item_type == DATATYPE_FLOAT32 || item_type == DATATYPE_INT32) {
 		t->item_size = 4;
@@ -109,43 +111,49 @@ int resize_tensor(struct tensor* t, int64_t* new_dimension, int64_t new_dimensio
 		t->item_size = 8;
 	}
 	else {
-		return -1;
+		return 0;
 	}
 	for (i = 0; i < new_dimension_size; i++) {
 		new_total *= new_dimension[i];
 	}
+	// Set data
 	if (new_total != t->data_size) {
 		if (t->data == NULL) t->data = malloc(new_total * t->item_size);
-		else t->data = realloc(t->data, new_total * t->item_size);
+		else {
+			temp_ptr = realloc(t->data, new_total * t->item_size);
+			if (temp_ptr != NULL) t->data = temp_ptr;
+			else return NULL;
+		}
 		if (t->data == NULL) return NULL;
 		t->data_size = new_total;
 	}
+	//Set dimension
 	if (t->dimension == NULL) {
 		t->dimension = malloc(new_dimension_size * sizeof(int64_t));
 	}
 	else {
-		t->dimension = (int64_t*)realloc(t->dimension, new_dimension_size * sizeof(int64_t));
+		temp_ptr = realloc(t->dimension, new_dimension_size * sizeof(int64_t));
+		if (temp_ptr != NULL) t->dimension = (int64_t*)temp_ptr;
+		else return NULL;
 	}
 	if (t->dimension == NULL) return NULL;
 
 	memcpy_s(t->dimension, new_dimension_size * sizeof(int64_t), new_dimension, new_dimension_size * sizeof(int64_t));
 	t->dimension_size = new_dimension_size;
-
+	// Set stride
 	if (t->stride == NULL) {
 		t->stride = malloc(t->dimension_size * sizeof(int64_t));
 	}
 	else {
-		t->stride = (int64_t*)realloc(t->stride, t->dimension_size * sizeof(int64_t));
+		temp_ptr = realloc(t->stride, t->dimension_size * sizeof(int64_t));
+		if(temp_ptr != NULL) t->stride = (int64_t*)temp_ptr;
 	}
-
-
 	if (t->stride == NULL) return 0;
 	t->stride[t->dimension_size - 1] = t->item_size;
-
-	for (i = t->dimension_size - 2; i >= 0; i--) {
+	for (i = t->dimension_size - 2; i >= 0; i--) {	// Calcualte stride
 		t->stride[i] = t->stride[i + 1] * t->dimension[i + 1];
 	}
-	t->is_size_unknown = false;
+	t->is_size_unknown = false;	// Size must be known
 	return 1;
 }
 int overwrite_tensor(struct tensor* to, struct tensor* from) {
@@ -379,7 +387,7 @@ int16_t goto_tensor_iter(struct tensor_iterator* it, int64_t* target_coordinate)
 	if (it->helper == NULL) {
 		for (i = 0; i < it->dimension_size; i++) {
 			// Out of bounds
-			if (target_coordinate[i] >= it->dimension[i])return -1;
+			if (target_coordinate[i] >= it->dimension[i])return NULL;
 		}
 		it->index = 0;
 		for (i = 0; i < it->dimension_size; i++) {
@@ -388,6 +396,7 @@ int16_t goto_tensor_iter(struct tensor_iterator* it, int64_t* target_coordinate)
 			it->coordinate[i] = target_coordinate[i];
 		}
 	}
+	return 1;
 }
 int16_t goto_1d_tensor_iter(struct tensor_iterator* it, int64_t index) {
 	int64_t i = 0, j = 0;

@@ -159,18 +159,24 @@ void release_darray(struct dynamic_array** arr) {
 	}
 }
 void shrink_to_fit_darray(struct dynamic_array* arr) {
+	char *temp_ptr = NULL;
 	if (arr!= NULL) {
 		if (arr->size >= 1) {
 			if (arr->capacity != arr->size) {
-				arr->data = realloc(arr->data, arr->size * arr->item_size);
-				arr->capacity = arr->size;
+				if (arr->data != NULL) {
+					temp_ptr = (char*)realloc(arr->data, arr->size * arr->item_size);
+					if (temp_ptr != NULL) {
+						arr->data = temp_ptr;
+					}// Use the original block if shrink fails
+					arr->capacity = arr->size;
+				}
 			}
 		}
 	}
 }
 void release_darray_keep_data(struct dynamic_array** arr) {
 	if (arr != NULL) {
-		shrink_to_fit_darray(arr);
+		shrink_to_fit_darray(*arr);
 		free(*arr);
 		arr = NULL;
 	}

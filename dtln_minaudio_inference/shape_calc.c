@@ -2,7 +2,6 @@
 int set_broadcast_shape(struct tensor* A, struct tensor* B, struct tensor* C) {
 	int64_t* dims = NULL, i = 0, j = 0, k = 0, c_dimsize = 0;
 	if (A == NULL || B == NULL || C == NULL) return OPS_INPUT_IS_NULL;
-
 	if (A->dimension_size > B->dimension_size) c_dimsize = A->dimension_size;
 	else c_dimsize = B->dimension_size;
 	dims = calloc(c_dimsize , sizeof(int64_t));
@@ -272,7 +271,7 @@ int set_gemm_shape(struct tensor* A, struct tensor* B, int64_t* transA, int64_t*
 	pushback_darray(y_dim, get_darray(a_dim, 0));
 	pushback_darray(y_dim, get_darray(b_dim, 1));
 
-	resize_tensor(Y, y_dim->data, y_dim->size, A->type);
+	resize_tensor(Y, (int64_t*)y_dim->data, y_dim->size, A->type);
 	print_tensor(Y);
 	error = OPS_SUCCESS;
 cleanup:
@@ -322,7 +321,7 @@ int set_concat_shape(int64_t* axis, struct list* inputs, struct tensor* concat_r
 			}
 		}
 	}
-	resize_tensor(concat_result, y_dim->data, y_dim->size, ((struct tensor*)get_list(inputs, 0))->type);
+	resize_tensor(concat_result, (int64_t*)y_dim->data, y_dim->size, ((struct tensor*)get_list(inputs, 0))->type);
 	error = OPS_SUCCESS;
 cleanup:
 	release_darray(&y_dim);
@@ -395,7 +394,7 @@ int set_pad_shape(struct tensor* data, struct tensor* pads, struct tensor* axes,
 	for (i = 0; i < axes->data_size; i++) {
 		*(int64_t*)get_darray(output_dim, ((int64_t*)axes->data)[i]) += ((int64_t*)pads->data)[i] + ((int64_t*)pads->data)[i + axes->data_size];
 	}
-	resize_tensor(output, output_dim->data, output_dim->size, data->type);
+	resize_tensor(output, (int64_t*)output_dim->data, output_dim->size, data->type);
 
 	error = OPS_SUCCESS;
 cleanup:

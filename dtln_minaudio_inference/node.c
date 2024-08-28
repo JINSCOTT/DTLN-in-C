@@ -369,6 +369,13 @@ int inference_node(struct node* node) {
 		if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
+	case Relu: {
+		//printf("inference relu\n");
+		result = inference_relu_node(node);
+		//print_ops_error(result);
+		if (result != OPS_SUCCESS)return 0;
+		return 1;
+	}
 	case Squeeze: {
 		//printf("inference squeeze\n");
 		result = inference_squeeze_node(node);
@@ -385,86 +392,86 @@ int inference_node(struct node* node) {
 	}
 	case Transpose: {
 		//printf("inference transpose\n");
-		result = inference_transpose_node(node);
+		//result = inference_transpose_node(node);
 		//print_ops_error(result);
-		if (result != OPS_SUCCESS)return 0;
+		//if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Slice: {
 		//printf("Inference slice\n");
-		result = inference_slice_node(node);
+		//result = inference_slice_node(node);
 		//print_ops_error(result);
-		if (result != OPS_SUCCESS)return 0;
+		//if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case MatMul: {
 		//printf("inference matmul\n");
-		result = inference_matmul_node(node);
+		//result = inference_matmul_node(node);
 		//print_ops_error(result);
-		if (result != OPS_SUCCESS)return 0;
+		//if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Gemm: {
 		//printf("inference gemm\n");
-		result = inference_gemm_node(node);
+		//result = inference_gemm_node(node);
 		//print_ops_error(result);
-		if (result != OPS_SUCCESS)return 0;
+		//if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Reshape: {
 		//printf("inference reshape\n");
-		result = inference_reshape_node(node);
+		//result = inference_reshape_node(node);
 		//print_ops_error(result);
-		if (result != OPS_SUCCESS)return 0;
+		//if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Concat: {
 		//printf("inference concat\n");
-		result = inference_concat_node(node);
+		//result = inference_concat_node(node);
 		//print_ops_error(result);
-		if (result != OPS_SUCCESS)return 0;
+		//if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Split: {
 		//printf("inference split\n");
-		result = inference_split_node(node);
+		//result = inference_split_node(node);
 		//print_ops_error(result);
-		if (result != OPS_SUCCESS)return 0;
+		//if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Pad: {
 		//printf("inference pad\n");
-		result = inference_pad_node(node);
+		//result = inference_pad_node(node);
 		//print_ops_error(result);
-		if (result != OPS_SUCCESS)return 0;
+		//if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Constant: {
 		//printf("inference consant\n");
-		result = inference_constant_node(node);
+		//result = inference_constant_node(node);
 		//print_ops_error(result);
-		if (result != OPS_SUCCESS)return 0;
+		//if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case Conv: {
 		//printf("inference conv\n");
-		result = inference_conv_node(node);
+		//result = inference_conv_node(node);
 		//print_ops_error(result);
-		if (result != OPS_SUCCESS)return 0;
+		//if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case ReduceMean: {
 		//printf("inference reducemean\n");
-		result = inference_reducemean_node(node);
+		//result = inference_reducemean_node(node);
 		//print_ops_error(result);
-		if (result != OPS_SUCCESS)return 0;
+		//if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	case LSTM: {
 		//printf("inference lstm\n");
-		result = inference_lstm_node(node);
+		//result = inference_lstm_node(node);
 		//print_ops_error(result);
-		if (result != OPS_SUCCESS)return 0;
+		//if (result != OPS_SUCCESS)return 0;
 		return 1;
 	}
 	default:
@@ -659,6 +666,32 @@ int inference_sqrt_node(struct node* n) {
 	return error;
 }
 
+int inference_relu_node(struct node* n) {
+	int error = 0;
+	struct tensor* X = NULL, * Y = NULL;
+	X = (struct tensor*)get_list(&n->input, 0);
+	Y = (struct tensor*)get_list(&n->output, 0);
+	if (X == NULL || Y == NULL) return OPS_INPUT_IS_NULL;
+	// Calculate Y shape is it doesn't have a shape
+	if (Y->is_size_unknown == true) {
+		error = resize_tensor(Y, X->dimension, X->dimension_size, X->type);
+		if (error < 1) {
+			return OPS_ALLOCATION_FAIL;
+		}
+		Y->is_size_unknown = 0;
+	}
+	error = relu_function(X, Y);
+#ifdef DEBUG
+	printf("Relu node result\n");
+	printf("print tensor X:\n");
+	print_tensor(X);
+	printf("print tensor Y:\n");
+	print_tensor(Y);
+	printf("\n\n\n");
+#endif // DEBUG
+	return error;
+}
+
 
 int inference_squeeze_node(struct node* n) {
 	int error = OPS_SUCCESS;
@@ -752,7 +785,7 @@ int inference_transpose_node(struct node* n) {
 	printf("\n\n\n");
 #endif // DEBUG
 cleanup:
-	if (get_list(&n->attribute, 0) == NULL) safe_free(perm);
+	if (get_list(&n->attribute, 0) == NULL) safe_free(&perm);
 	return error;
 }
 
@@ -808,7 +841,7 @@ int inference_slice_node(struct node* n) {
 		for (i = 0; i < data->dimension_size; i++) { // axes default 0,1,2,3,...
 			axes_arr[i] = i;
 		}
-		temp = malloc(1, sizeof(int64_t));	// Dimension of axes
+		temp = malloc( sizeof(int64_t));	// Dimension of axes
 		if (temp == NULL) {
 			error = OPS_ALLOCATION_FAIL;
 			goto cleanup;
@@ -831,7 +864,7 @@ int inference_slice_node(struct node* n) {
 		for (i = 0; i < data->dimension_size; i++) {	// default to 1s
 			steps_arr[i] = 1;
 		}
-		temp = malloc(1, sizeof(int64_t));	// Dimension of steps
+		temp = malloc(sizeof(int64_t));	// Dimension of steps
 		if (temp == NULL) {
 			error = OPS_ALLOCATION_FAIL;
 			goto cleanup;
@@ -864,7 +897,7 @@ int inference_slice_node(struct node* n) {
 	printf("\n\n\n");
 #endif
 cleanup:
-	if (axes == NULL)safe_free(axes_arr);
+	if (axes == NULL)safe_free(&axes_arr);
 	if (steps == NULL) safe_free(&steps_arr);
 	free(temp);
 	return error;
@@ -1321,13 +1354,13 @@ int inference_lstm_node(struct node* n) {
 			j *= *(int64_t*)get_darray(temp_dim, i);
 		}
 		shrink_to_fit_darray(temp_dim);
-		initial_h = create_tensor(NULL, j, temp_dim->data, temp_dim->size, x->type, false);
+		initial_h = create_tensor(NULL, j, (int64_t*)temp_dim->data, temp_dim->size, x->type, false);
 		if (initial_h == NULL) {
 			error = OPS_ALLOCATION_FAIL;
 			goto cleanup;
 		}
 		replace_list(&n->input, initial_h, 5);
-		release_darray_keep_data(temp_dim);
+		release_darray_keep_data(&temp_dim);
 	}
 	if (initial_c == NULL) {
 		temp_dim = create_darray(sizeof(int64_t));
@@ -1336,15 +1369,15 @@ int inference_lstm_node(struct node* n) {
 			goto cleanup;
 		}
 		pushback_darray(temp_dim, &num_direction);		//[num_directions, batch_size, hidden_size].
-		pushback_darray(temp_dim, x->dimension[1]);
-		pushback_darray(temp_dim, hidden_size);
+		pushback_darray(temp_dim, &x->dimension[1]);
+		pushback_darray(temp_dim, &hidden_size);
 		j = 1;
 		for (i = 0; i < temp_dim->size; i++) {
 			j *= *(int64_t*)get_darray(temp_dim, i);
 		}
 	
 		shrink_to_fit_darray(temp_dim);
-		initial_c = create_tensor(NULL, j, temp_dim->data, temp_dim->size, x->type, false);
+		initial_c = create_tensor(NULL, j, (int64_t*)temp_dim->data, temp_dim->size, x->type, false);
 		if (initial_c == NULL) goto cleanup;
 		replace_list(&n->input, initial_c, 6);
 		release_darray_keep_data(&temp_dim);
@@ -1363,8 +1396,8 @@ int inference_lstm_node(struct node* n) {
 		for (i = 0; i < temp_dim->size; i++) {
 			j *= *(int64_t*)get_darray(temp_dim, i);
 		}
-		shrink_to_fit_darray(temp_dim);
-		p = create_tensor(NULL, j, temp_dim->data, temp_dim->size, x->type, false);
+		//shrink_to_fit_darray(temp_dim);
+		p = create_tensor(NULL, j, (int64_t*)temp_dim->data, temp_dim->size, x->type, false);
 		if (p == NULL) {
 			error = OPS_ALLOCATION_FAIL;
 			goto cleanup;
