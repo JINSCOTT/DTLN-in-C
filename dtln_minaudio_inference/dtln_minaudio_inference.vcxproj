@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.ML.OnnxRuntime.1.19.0\build\native\Microsoft.ML.OnnxRuntime.props" Condition="Exists('..\packages\Microsoft.ML.OnnxRuntime.1.19.0\build\native\Microsoft.ML.OnnxRuntime.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -148,7 +147,6 @@
     <ClCompile Include="model1.c" />
     <ClCompile Include="model2.c" />
     <ClCompile Include="node.c" />
-    <ClCompile Include="onnxruntime.cpp" />
     <ClCompile Include="ops.c" />
     <ClCompile Include="shape_calc.c" />
     <ClCompile Include="tensor.c" />
@@ -163,7 +161,6 @@
     <ClInclude Include="model1.h" />
     <ClInclude Include="model2.h" />
     <ClInclude Include="node.h" />
-    <ClInclude Include="onnxruntime.hpp" />
     <ClInclude Include="ops.h" />
     <ClInclude Include="shape_calc.h" />
     <ClInclude Include="tensor.h" />
@@ -177,7 +174,6 @@
     <Import Project="..\packages\intelmkl.redist.win-x64.2024.2.1.102\build\native\intelmkl.redist.win-x64.targets" Condition="Exists('..\packages\intelmkl.redist.win-x64.2024.2.1.102\build\native\intelmkl.redist.win-x64.targets')" />
     <Import Project="..\packages\inteltbb.devel.win.2021.13.1.11\build\native\inteltbb.devel.win.targets" Condition="Exists('..\packages\inteltbb.devel.win.2021.13.1.11\build\native\inteltbb.devel.win.targets')" />
     <Import Project="..\packages\intelmkl.devel.win-x64.2024.2.1.102\build\native\intelmkl.devel.win-x64.targets" Condition="Exists('..\packages\intelmkl.devel.win-x64.2024.2.1.102\build\native\intelmkl.devel.win-x64.targets')" />
-    <Import Project="..\packages\Microsoft.ML.OnnxRuntime.1.19.0\build\native\Microsoft.ML.OnnxRuntime.targets" Condition="Exists('..\packages\Microsoft.ML.OnnxRuntime.1.19.0\build\native\Microsoft.ML.OnnxRuntime.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -189,7 +185,5 @@
     <Error Condition="!Exists('..\packages\intelmkl.redist.win-x64.2024.2.1.102\build\native\intelmkl.redist.win-x64.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\intelmkl.redist.win-x64.2024.2.1.102\build\native\intelmkl.redist.win-x64.targets'))" />
     <Error Condition="!Exists('..\packages\inteltbb.devel.win.2021.13.1.11\build\native\inteltbb.devel.win.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\inteltbb.devel.win.2021.13.1.11\build\native\inteltbb.devel.win.targets'))" />
     <Error Condition="!Exists('..\packages\intelmkl.devel.win-x64.2024.2.1.102\build\native\intelmkl.devel.win-x64.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\intelmkl.devel.win-x64.2024.2.1.102\build\native\intelmkl.devel.win-x64.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.ML.OnnxRuntime.1.19.0\build\native\Microsoft.ML.OnnxRuntime.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.OnnxRuntime.1.19.0\build\native\Microsoft.ML.OnnxRuntime.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.ML.OnnxRuntime.1.19.0\build\native\Microsoft.ML.OnnxRuntime.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.OnnxRuntime.1.19.0\build\native\Microsoft.ML.OnnxRuntime.targets'))" />
   </Target>
 </Project>

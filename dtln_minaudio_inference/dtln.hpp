@@ -2,11 +2,8 @@
 #define BLOCK_SHIFT 128
 #define BLOCK_FFT 257
 #pragma once
-
-
 #include <iostream>
 #include <memory>
-
 #include <vector>
 #include <algorithm>
 #include <math.h>
@@ -14,24 +11,18 @@
 #include <string>
 #include <iterator>
 #include "mkl_dfti.h"
-#include "onnxruntime.hpp"
-extern "C" {
-    #include "model2.h"
+extern "C" {  
     #include "model1.h"
+    #include "model2.h"
 }
-
-
-
 
 class DTLN
 {
 private:
-    OnnxENV Env;
-    model1 *model_1 = NULL;
-    model2 *model_2 = NULL;
+ 
+    // DTLN model
     struct model* m1 = NULL;
     struct model* m2 = NULL; 
-
     // buffers
     std::vector<float> in_buffer = std::vector<float>(BLOCK_LENGTH, 0);
     std::vector<float> outblock = std::vector<float>(BLOCK_LENGTH, 0);
@@ -49,8 +40,6 @@ private:
     DFTI_DESCRIPTOR_HANDLE handle = NULL;
     MKL_LONG status;
     std::vector<std::complex<float>> fd = std::vector<std::complex<float>>(BLOCK_FFT, std::complex<float>(0.0f, 0.0f));
-    //fftwf_plan rfft = fftwf_plan_dft_r2c_1d(BLOCK_LENGTH, in_buffer.data(), reinterpret_cast<fftwf_complex*>(&fd[0]), FFTW_ESTIMATE);
-    //fftwf_plan irfft = fftwf_plan_dft_c2r_1d(BLOCK_LENGTH, reinterpret_cast<fftwf_complex*>(&fd[0]), outblock.data(), FFTW_ESTIMATE);
 public:
     DTLN();
     // inference with input vector with size "block_shift" and output vector "block_len"

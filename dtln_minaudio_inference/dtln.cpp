@@ -79,22 +79,7 @@ bool DTLN::inference(std::vector<float>& input, std::vector<float>& output)
 {
 	int error = 0;
 	std::vector<std::vector<float>*> input_vec, output_vec;
-	if (model_1 == NULL) {
-		try {
-			model_1 = new model1(&Env);
-		}
-		catch (std::exception& e) {
-			return 0;
-		}
-	}
-	if (model_2 == NULL) {
-		try {
-			model_2 = new model2(&Env);
-		}
-		catch (std::exception& e) {
-			return 0;
-		}
-	}
+	
 	// check IO size
 	if (input.size() < BLOCK_SHIFT || output.size() < BLOCK_LENGTH)
 	{
@@ -123,11 +108,11 @@ bool DTLN::inference(std::vector<float>& input, std::vector<float>& output)
 	//error = model_1->Inference(input_vec, output_vec);
 	// estimated_complex = in_mag * out_mask * np.exp(1j * in_phase)
 
-	memcpy(input_2_61256185_array, in_mag.data(), 257 * sizeof(float));
-	memcpy(input_3_69919881_array, state_1.data(), 512 * sizeof(float));
+	memcpy(input_2_array, in_mag.data(), 257 * sizeof(float));
+	memcpy(input_3_array, state_1.data(), 512 * sizeof(float));
 	inference_model(m1);
-	memcpy(out_mask.data(), activation_2_10618041_array, 257 * sizeof(float));
-	memcpy(state_1.data(), tf_op_layer_stack_2_31969183_array, 512 * sizeof(float));
+	memcpy(out_mask.data(), activation_2_array, 257 * sizeof(float));
+	memcpy(state_1.data(), tf_op_layer_stack_2_array, 512 * sizeof(float));
 
 
 
