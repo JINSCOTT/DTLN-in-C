@@ -2,10 +2,12 @@
 #define LINKEDLIST_H
 
 # define DYNAMIC_ARRAY_EXPAND 5
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
+
 /// <summary>
 /// node of list
 /// </summary>
@@ -24,26 +26,31 @@ struct list
     struct list_node* first;
 };
 
-struct list* create_list_from_array(void* data,int64_t num_items, int64_t item_size);
+
 /// <summary>
 /// Get node from index
 /// </summary>
-void* get_data_list(struct list* list, int64_t index);
-
-void* replace_data_list(struct list* list, void* new_data, int64_t index);
+void* get_list(struct list* list, int64_t index);
+/// <summary>
+///  change data in node
+/// </summary>
+void* replace_list(struct list* list, void* new_data, int64_t index);
 /// <summary>
 /// Get node from index
 /// </summary>
-int push_back_list(struct list* list, void* new_data);
-
+int pushback_list(struct list* list, void* new_data);
 /// <summary>
 /// Retreives node from the back and pop from list. Do remember to free popped object
 /// </summary>
-struct list_node* pop_back_list(struct list* list);
+struct list_node* popback_list(struct list* list);
 
 
+
+/// <summary>
+/// contiguous data array
+/// </summary>
 struct dynamic_array {
-    // element size
+    // number of elements
     int64_t size;
     // byte size of item
     int64_t item_size;
@@ -52,19 +59,68 @@ struct dynamic_array {
     //data pointer
     char *data;
 };
-struct  dynamic_array* create_array(int64_t item_size);
-struct  dynamic_array* create_array_from_array(void* data, int64_t num_items, int64_t item_size);
-int popfront_array(struct dynamic_array* arr);
-int popback_array(struct dynamic_array* arr);
-int pushfront_array(struct dynamic_array* arr, void* item);
-int pushback_array(struct dynamic_array* arr, void *item);
-void delete_item_array(struct dynamic_array* arr, int64_t pos);
-char* get_item_array(struct dynamic_array* arr, int64_t pos);
-char* front_array(struct dynamic_array* arr);
-char* back_array(struct dynamic_array* arr);
-void release_array(struct dynamic_array* arr);
-void print_array_int64(struct dynamic_array* arr);
-void clear_array(struct dynamic_array* arr);
+
+struct  dynamic_array* create_darray(int64_t item_size);
+/// <summary>
+/// Create array from 
+/// </summary>
+/// <param name="data"></param>
+/// <param name="num_items"></param>
+/// <param name="item_size"></param>
+/// <returns>Address or NULL if fails</returns>
+struct  dynamic_array* create_darray_array(void* data, int64_t num_items, int64_t item_size);
+/// <summary>
+/// Pop front
+/// </summary>
+/// <param name="arr"></param>
+/// <returns>1, if something is popped.0, if nothing popped.</returns>
+int popfront_darray(struct dynamic_array* arr);
+/// <summary>
+/// Pop back
+/// </summary>
+/// <param name="arr"></param>
+/// <returns>1, if something is popped.0, if nothing popped.</returns>
+int popback_darray(struct dynamic_array* arr);
+/// <summary>
+/// Push front
+/// </summary>
+/// <param name="arr"></param>
+/// <returns>1, if succes.0, if fail.</returns>
+int pushfront_darray(struct dynamic_array* arr, void* item);
+/// <summary>
+/// Push back
+/// </summary>
+/// <param name="arr"></param>
+/// <returns>1, if succes.0, if fail.</returns>
+int pushback_darray(struct dynamic_array* arr, void *item);
+
+/// <summary>
+/// Delete array data at pos
+/// </summary>
+/// <param name="arr"></param>
+/// <param name="pos"></param>
+void delete_darray(struct dynamic_array* arr, int64_t pos);
+/// <summary>
+/// get array data at pos
+/// </summary>
+char* get_darray(struct dynamic_array* arr, int64_t pos);
+char* front_darray(struct dynamic_array* arr);
+char* back_darray(struct dynamic_array* arr);
+void clear_darray(struct dynamic_array* arr);
+
+void release_darray(struct dynamic_array** arr);
+/// <summary>
+/// Shring data size to current number of data
+/// </summary>
+/// <param name="arr"></param>
+void shrink_to_fit_darray(struct dynamic_array* arr);
+/// <summary>
+/// release dynamic array, but does not free data
+/// </summary>
+void release_darray_keep_data(struct dynamic_array** arr);
+
+void print_darray_int64(struct dynamic_array* arr);
+
 #endif // LINKEDLIST_H
 
 

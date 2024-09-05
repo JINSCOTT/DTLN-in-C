@@ -34,18 +34,34 @@ struct tensor {
 
 //Tensor functions
 
-//Creator tensor
-struct tensor* create_tensor(void* data, int num_elements, int64_t* dimension, int64_t num_dimension, short DataType, short is_static);
+/// <summary>
+/// Creates tensor. If tensor is created this way, do "not" free data and dimension after tensor creation;
+/// </summary>
+/// <param name="data"></param>
+/// <param name="num_elements"></param>
+/// <param name="dimension"></param>
+/// <param name="num_dimension"></param>
+/// <param name="DataType"></param>
+/// <param name="is_static"></param>
+/// <returns></returns>
+struct tensor* create_tensor( void* data, int64_t num_elements, int64_t* dimension, int64_t num_dimension, short DataType, short is_static);
 
 struct tensor* create_empty_tensor();
 // Create a direct copy, will not be static
 struct tensor* create_tensor_copy(struct tensor* t);
-// Chnage dimension
+/// <summary>
+/// Resize tensor with new dimension. new_dimension has to be freed.
+/// </summary>
+/// <param name="t"></param>
+/// <param name="new_dimension"></param>
+/// <param name="new_dimension_size"></param>
+/// <param name="item_type"></param>
+/// <returns></returns>
 int resize_tensor(struct tensor* t, int64_t* new_dimension, int64_t new_dimension_size, int item_type);
 // change content if their dimension and datasize match 
 int overwrite_tensor(struct tensor* to, struct tensor* from);
 //release data
-void release_tensor(struct tensor* t);
+void release_tensor(struct tensor** t);
 //check if both tensor has the same shape and type
 int is_shape_compatible_tensor(struct tensor* A, struct tensor* B);
 //debug function
@@ -74,7 +90,7 @@ struct tensor_iterator {
 	int64_t  index;			// 1d position
 	int64_t* coordinate;	// multi dimension position (e.g. (x,y,z))
 	int64_t* dimension;		// dimension ref to tensor
-	int64_t dimension_size;// number of dimension
+	int64_t  dimension_size;// number of dimension
 	int64_t* stride;		// How many bytes needed to jump to the next element in each dimension. point to tensor stride
 	int64_t* backstride;   // How many bytes needed to jump from the end of a dimension back to its beginning
 	int64_t* factor;       // Factor used to convert 1d index into multi-dimension coordinate;
@@ -105,9 +121,9 @@ int16_t is_not_done_tensor_iter(struct tensor_iterator* it);
 // Get current data from iterator
 void* get_data_tensor_iter(struct tensor_iterator* it);
 
-
+void print_tensor_dim(struct tensor* t);
 //debug function
 void print_tensor_iter(struct tensor_iterator* it);
 //release data
-void release_tensor_iterator(struct tensor_iterator* it);
+void release_tensor_iterator(struct tensor_iterator** it);
 #endif	 // TENSOR_H

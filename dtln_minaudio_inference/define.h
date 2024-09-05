@@ -1,12 +1,23 @@
 #ifndef DEFINE_H
 #define DEFINE_H
 
-#define DEBUG
+//#define DEBUG
 //#define OMP
 //#define ONE_MKL
+
+
+
+#ifndef NULL
 #define NULL 0
+#endif // !NULL
+#ifndef true
 #define true 1
+#endif // !true
+
+#ifndef false
 #define false 0
+#endif // !false
+
 
 enum OPS_FUNCTION_RETURN {
 	OPS_UNDEFINED,
@@ -18,34 +29,34 @@ enum OPS_FUNCTION_RETURN {
 	OPS_TYPE_UNIMPLEMENTED,
 	OPS_TYPE_NOT_SUPPORTED,
 	OPS_INVALID_ARGUMENT,
-	OPS_NOT_BROADCAST,
 	OPS_NO_OUTPUT_SHAPE
 };
 
 
 enum NODE_TYPE {
 	UNDEFINED,
-	Transpose,		// 1
-	Slice,			// 1
-	Squeeze,		// 1
+	Transpose,		// 1. tested
+	Slice,			// 1. tested
+	Squeeze,		// 1. tested
 	LSTM,			// 1
-	Concat,			// 1
-	MatMul,			// 1
-	Unsqueeze,		// 1
-	Conv,			// 1
-	ReduceMean,		// 1
-	Sub,			// 1
-	Mul,			// 1
-	Add,			// 1
-	Sqrt,			// 1
-	Div,			// 1
-	Split,			// 1
-	Tanh,			// 1
-	Sigmoid,		// 1
+	Concat,			// 1. tested
+	MatMul,			// 1, pass
+	Unsqueeze,		// 1, pass
+	Conv,			// 1. tested
+	ReduceMean,		// 1, tested
+	Sub,			// 1, tested
+	Mul,			// 1, pass
+	Add,			// 1, pass
+	Sqrt,			// 1, pass
+	Div,			// 1, pass
+	Split,			// 1, pass
+	Tanh,			// 1. tested
+	Sigmoid,		// 1. tested
 	Pad,			// 1
 	Gemm,			// 1
 	Reshape,		// 1
-	Constant		// 1
+	Constant,		// 1. seems to work
+	Relu
 
 
 }typedef NODE_TYPE;

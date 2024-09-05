@@ -16,6 +16,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="$(MSBuildThisFileDirectory)..\..\runtimes\win-x64\native\onnxruntime.dll" />
+    <None Include="$(MSBuildThisFileDirectory)..\..\runtimes\win-x64\native\onnxruntime_providers_shared.dll" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -46,6 +48,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="onnxruntime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,10 +91,10 @@
     <ClInclude Include="utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="weight2.h">
+    <ClInclude Include="onnxruntime.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="onnxruntime.hpp">
+    <ClInclude Include="model1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

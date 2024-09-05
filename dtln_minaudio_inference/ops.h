@@ -45,27 +45,19 @@ int pad_function(char* mode, struct tensor* data, struct tensor* pads, struct te
 int pad_function_simple(struct tensor* data, struct tensor* output, int64_t* pads, char* mode,void* constant_value );
 // gemm for tensor
 int gemm_function(struct tensor* a, struct tensor* b, struct tensor* c, struct tensor* output,float alpha, float beta, int64_t transA, int64_t transB);
-
-int lstm_function(float* activation_alpha, float* activation_beta, struct list* activations, float clip, char* direction, int64_t hidden_size, int64_t input_forget, int64_t layout,
+ 
+int lstm_function(float* activation_alpha, float* activation_beta, struct list* activations, float* clip, char* direction, int64_t hidden_size, int64_t* input_forget, int64_t* layout,
 	struct tensor* x, struct tensor* w, struct tensor* r, struct tensor* b, int64_t* seq_length, struct tensor* initial_h, struct tensor* initial_c, struct tensor* P, struct tensor* Y, struct tensor* Y_h, struct tensor* Y_c);
 
 
 int conv_function(struct tensor* x, struct tensor* w, struct tensor* b, struct tensor* y, int64_t* dilations, int64_t groups, int64_t* kernel_shapes, int64_t* pads, int64_t* stride);
-int concat_function(int64_t axis, struct list* inputs, struct tensor* concat_result);
+int concat_function(int64_t* axis, struct list* inputs, struct tensor* concat_result);
 int split_function(int64_t axis, int64_t num_outputs, struct tensor* input, int64_t* split, struct list* outputs);
 int reducemean_function(int64_t keepdims, int64_t noop_with_empty_axes, struct tensor* data, struct list* axes, struct tensor* reduced);
 /*----------------------------FLOAT FUNCTIONS----------------------------*/
 
 
 int transposef_2d(float* x, int64_t n, int64_t m ); 
-/// <summary>
-/// gemm only row major. Parameters datatypes changed to match onnx
-/// </summary>
-///  <param name="m">Number of rows in matrices A and C.</param>
-///  <param name="n">Number of columns in matrices B and C.</param>
-///  <param name="k">Number of columns in matrix A; number of rows in matrix B.</param>
-/// <returns></returns>
-int fgemm(int transpose_A, int transpos_b,int64_t m, int64_t n , int64_t k,float alpha, float *A, int64_t lda, float* B, int64_t ldb, float beta, float *c , int64_t ldc  );
 
 int addf_array(float* a, float* b, float* c, int64_t a_size, int64_t b_size, int64_t c_size);
 int mulf_array(float* a, float* b, float* c, int64_t a_size, int64_t b_size, int64_t c_size);
@@ -85,5 +77,28 @@ int reluf_array(float* input, float* output, int64_t size);
 /// <param name=""></param>
 /// <returns></returns>
 int conv1df(float* x, float* w, float* b, float* y, int64_t C, int64_t F, int64_t M, int64_t k, int64_t NF, int64_t stride, int64_t dilation);
+
+
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="x">Input[C][H][W]</param>
+/// <param name="w">kernel[M][C][kH][kW]</param>
+/// <param name="b">bias[M]</param>
+/// <param name="y">[M][nH][nW]</param>
+/// <param name="C"></param>
+/// <param name="H"></param>
+/// <param name="W"></param>
+/// <param name="M"></param>
+/// <param name="kH"></param>
+/// <param name="kW"></param>
+/// <param name="nH"></param>
+/// <param name="nW"></param>
+/// <param name="stride"></param>
+/// <param name="dilation"></param>
+int conv2df(float* input, float* kernels, float* bias, float* output, int64_t C, int64_t H, int64_t W, int64_t M, int64_t kH, int64_t kW, int64_t nH, int64_t nW,int64_t* stride, int64_t* dilation);
+
 
 #endif // !OPS_H

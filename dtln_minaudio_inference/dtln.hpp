@@ -15,13 +15,21 @@
 #include <iterator>
 #include "mkl_dfti.h"
 #include "onnxruntime.hpp"
-#include "model2.h"
+extern "C" {
+    #include "model2.h"
+    #include "model1.h"
+}
+
+
+
+
 class DTLN
 {
 private:
     OnnxENV Env;
     model1 *model_1 = NULL;
     model2 *model_2 = NULL;
+    struct model* m1 = NULL;
     struct model* m2 = NULL; 
 
     // buffers

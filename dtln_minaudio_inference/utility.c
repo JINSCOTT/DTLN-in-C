@@ -7,9 +7,23 @@ void swap(void* a, void* b)
 	 b = c;
 }
 
-void safe_free(void* p) {
-	if (p != 0) {
-		free(p);
-		p = 0;
+void swapf(float* a, float* b)
+{
+	float c = *a;
+	*a = *b;
+	*b = c;
+}
+void safe_free(void** p) {
+	if (*p != 0) {
+		free(*p);
+		*p = 0;
 	}
+}
+void print_int64_t(int64_t* arr, int len) {
+
+	for (int i = 0; i < len; i++) {
+		printf("%lld, " ,arr[i]);
+	}
+	printf("\b\b");
+
 }

@@ -17,6 +17,34 @@ DTLN::DTLN()
 	}
 	//home brew
 
+	m1 = (struct model*)calloc(1, sizeof(struct model));
+	if (m1 == NULL) {
+		printf("allocate for model fail\n");
+		throw std::runtime_error("model 1 allocate fail");
+	}
+
+	error = create_model1_onnx_tensor();
+	if (error == NULL) {
+		printf("Create tensor fail\n");
+		throw std::runtime_error("model 1 tensorc create fail");
+	}
+	else {
+		printf("create tensor success\n");
+	}
+
+	error = create_model1_onnx_attributes();
+	error = setup_model1_onnx(m1);
+	if (error == 0) {
+		printf("set up mode error\n");
+		throw std::runtime_error("model 1 setup fail");
+	}
+	else {
+		printf("create model success\n");
+	}
+
+
+
+
 	m2 = (struct model*)calloc(1, sizeof(struct model));
 	if (m2 == NULL) {
 		printf("allocate for model fail\n");
@@ -34,13 +62,16 @@ DTLN::DTLN()
 
 	error = create_model2_onnx_attributes();
 	error = setup_model2_onnx(m2);
-	if (error ==0) {
+	if (error == 0) {
 		printf("set up mode error\n");
 		throw std::runtime_error("model 2 setup fail");
 	}
 	else {
 		printf("create model success\n");
 	}
+
+	
+
 }
 
 // Should incorporate more error checks
@@ -84,13 +115,23 @@ bool DTLN::inference(std::vector<float>& input, std::vector<float>& output)
 		in_phase[i] = std::arg(fd[i]); // np.angle
 	}
 	// set input
-	input_vec.push_back(&in_mag);
-	input_vec.push_back(&state_1);
-	output_vec.push_back(&out_mask);
-	output_vec.push_back(&state_1);
-	//execute
-	error = model_1->Inference(input_vec, output_vec);
+	//input_vec.push_back(&in_mag);
+	//input_vec.push_back(&state_1);
+	//output_vec.push_back(&out_mask);
+	//output_vec.push_back(&state_1);
+	////execute
+	//error = model_1->Inference(input_vec, output_vec);
 	// estimated_complex = in_mag * out_mask * np.exp(1j * in_phase)
+
+	memcpy(input_2_61256185_array, in_mag.data(), 257 * sizeof(float));
+	memcpy(input_3_69919881_array, state_1.data(), 512 * sizeof(float));
+	inference_model(m1);
+	memcpy(out_mask.data(), activation_2_10618041_array, 257 * sizeof(float));
+	memcpy(state_1.data(), tf_op_layer_stack_2_31969183_array, 512 * sizeof(float));
+
+
+
+
 	for (int i = 0; i < BLOCK_FFT; i++)
 	{
 		fd[i] = std::complex<float>(0, 1);
@@ -118,7 +159,7 @@ bool DTLN::inference(std::vector<float>& input, std::vector<float>& output)
 	output_vec.push_back(&outblock);
 	output_vec.push_back(&state_2);
 	// execute
-	model_2->Inference(input_vec, output_vec);
+	//model_2->Inference(input_vec, output_vec);
 	
 	memcpy(input_4_array, outblock.data(), 512*sizeof(float));
 	memcpy(input_5_array, state_2.data(), 512 * sizeof(float));

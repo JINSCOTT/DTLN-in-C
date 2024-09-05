@@ -14,10 +14,10 @@ int error = 0;
 std::vector<float> output = std::vector<float>(512, 0);
 void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount)
 {
-	std::cout << frameCount << std::endl;
+	/*std::cout << frameCount << std::endl;
 	MA_ASSERT(pDevice->capture.format == pDevice->playback.format);
 	MA_ASSERT(pDevice->capture.channels == pDevice->playback.channels);
-	assert(frameCount == 128);
+	assert(frameCount == 128);*/
 
 	std::vector<float> input((float*)pInput, (float*)pInput + 128);
 	error = d.inference(input, output);
@@ -64,10 +64,10 @@ std:freopen_s(&stream, "output.txt", "w", stdout);
 
 	ma_device_start(&device);
 
-	std::vector<float> input(512, 0);
-	std::vector<float> output(512, 0);
-	error = d.inference(input, output);
-	std::cout << error << ", " << output.size() << "\n";
+	//std::vector<float> input(512, 0);
+	//std::vector<float> output(512, 0);
+	//error = d.inference(input, output);
+	//std::cout << error << ", " << output.size() << "\n";
 
 
 
