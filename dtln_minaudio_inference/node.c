@@ -272,7 +272,7 @@ struct node* create_reducemean_node(int64_t* keepdim, int64_t* noop_with_empty_a
 struct node* create_constant_node(struct tensor* value, float* value_float, float* value_floats, int64_t* value_int, int64_t* value_ints, struct tensor* output) {
 	struct node* new_node = create_node();
 	new_node->type = Constant;
-	if(new_node== NULL)
+	if (new_node == NULL) return NULL;
 	pushback_list(&new_node->attribute, value);
 	pushback_list(&new_node->attribute, value_float);
 	pushback_list(&new_node->attribute, value_floats);
