@@ -10,7 +10,7 @@ struct node* create_node() {
 struct node* create_add_node(struct tensor* A, struct tensor* B, struct tensor* C) {
 	struct node* new_node = create_node();
 	if (new_node == NULL) return NULL;
-	new_node->type = Add;
+	new_node->type = ADD;
 	pushback_list(&new_node->input, A);
 	pushback_list(&new_node->input, B);
 	pushback_list(&new_node->output, C);
@@ -20,7 +20,7 @@ struct node* create_add_node(struct tensor* A, struct tensor* B, struct tensor* 
 struct node* create_sub_node(struct tensor* A, struct tensor* B, struct tensor* C) {
 	struct node* new_node = create_node();
 	if (new_node == NULL) return NULL;
-	new_node->type = Sub;
+	new_node->type = SUB;
 	pushback_list(&new_node->input, A);
 	pushback_list(&new_node->input, B);
 	pushback_list(&new_node->output, C);
@@ -30,7 +30,7 @@ struct node* create_sub_node(struct tensor* A, struct tensor* B, struct tensor* 
 struct node* create_mul_node(struct tensor* A, struct tensor* B, struct tensor* C) {
 	struct node* new_node = create_node();
 	if (new_node == NULL) return NULL;
-	new_node->type = Mul;
+	new_node->type = MUL;
 	pushback_list(&new_node->input, A);
 	pushback_list(&new_node->input, B);
 	pushback_list(&new_node->output, C);
@@ -40,7 +40,7 @@ struct node* create_mul_node(struct tensor* A, struct tensor* B, struct tensor* 
 struct node* create_div_node(struct tensor* A, struct tensor* B, struct tensor* C) {
 	struct node* new_node = create_node();
 	if (new_node == NULL) return NULL;
-	new_node->type = Div;
+	new_node->type = DIV;
 	pushback_list(&new_node->input, A);
 	pushback_list(&new_node->input, B);
 	pushback_list(&new_node->output, C);
@@ -50,7 +50,7 @@ struct node* create_div_node(struct tensor* A, struct tensor* B, struct tensor* 
 struct node* create_tanh_node(struct tensor* input, struct tensor* output) {
 	struct node* new_node = create_node();
 	if (new_node == NULL) return NULL;
-	new_node->type = Tanh;
+	new_node->type = TANH;
 	pushback_list(&new_node->input, input);
 	pushback_list(&new_node->output, output);
 	return new_node;
@@ -59,7 +59,7 @@ struct node* create_tanh_node(struct tensor* input, struct tensor* output) {
 struct node* create_sigmoid_node(struct tensor* X, struct tensor* Y) {
 	struct node* new_node = create_node();
 	if (new_node == NULL) return NULL;
-	new_node->type = Sigmoid;
+	new_node->type = SIGMOID;
 	pushback_list(&new_node->input, X);
 	pushback_list(&new_node->output, Y);
 	return new_node;
@@ -68,7 +68,7 @@ struct node* create_sigmoid_node(struct tensor* X, struct tensor* Y) {
 struct node* create_sqrt_node(struct tensor* X, struct tensor* Y) {
 	struct node* new_node = create_node();
 	if (new_node == NULL) return NULL;
-	new_node->type = Sqrt;
+	new_node->type = SQRT;
 	pushback_list(&new_node->input, X);
 	pushback_list(&new_node->output, Y);
 	return new_node;
@@ -77,7 +77,7 @@ struct node* create_sqrt_node(struct tensor* X, struct tensor* Y) {
 struct node* create_squeeze_node(struct tensor* data, struct tensor* axes, struct tensor* squeezed) {
 	struct node* new_node = create_node();
 	if (new_node == NULL) return NULL;
-	new_node->type = Squeeze;
+	new_node->type = SQUEEZE;
 	pushback_list(&new_node->input, data);
 	pushback_list(&new_node->input, axes);
 	pushback_list(&new_node->output, squeezed);
@@ -87,7 +87,7 @@ struct node* create_squeeze_node(struct tensor* data, struct tensor* axes, struc
 struct node* create_unsqueeze_node(struct tensor* data, struct tensor* axes, struct tensor* expanded) {
 	struct node* new_node = create_node();
 	if (new_node == NULL) return NULL;
-	new_node->type = Unsqueeze;
+	new_node->type = UNSQUEEZE;
 	pushback_list(&new_node->input, data);
 	pushback_list(&new_node->input, axes);
 	pushback_list(&new_node->output, expanded);

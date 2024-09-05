@@ -37,7 +37,6 @@ enum NODE_TYPE {
 	Transpose,		
 	Slice,		
 	Squeeze,	
-	LSTM,
 	Concat,		
 	MatMul,
 	Unsqueeze,		
@@ -55,7 +54,29 @@ enum NODE_TYPE {
 	Gemm,			
 	Reshape,		
 	Constant,		
-	Relu
+	Relu,
+	TRANSPOSE,
+	SLICE,
+	SQUEEZE,
+	LSTM,
+	CONCAT,
+	MATMUL,
+	UNSQUEEZE, 
+	CONV,
+	REDUCEMEAN,
+	SUB,
+	MUL,
+	ADD,
+	SQRT,
+	DIV,
+	SPLIT,
+	TANH,
+	SIGMOID,
+	PAD,
+	GEMM,
+	RESHAPE,
+	CONSTANT,
+	RELU
 
 
 }typedef NODE_TYPE;
