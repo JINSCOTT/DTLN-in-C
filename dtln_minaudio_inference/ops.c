@@ -1,6 +1,6 @@
 #include "ops.h"
 
-int16_t broadcast_function(struct tensor* A, struct tensor* B, struct tensor* C, NODE_TYPE op_type) {
+int broadcast_function(struct tensor* A, struct tensor* B, struct tensor* C, NODE_TYPE op_type) {
 	int error = 0;
 	int64_t* c_dim = NULL, c_dim_length = 0;
 	struct tensor_iterator* A_iter = NULL, * B_iter = NULL, * C_iter = NULL;
@@ -654,14 +654,12 @@ int pad_function_simple(struct tensor* data, struct tensor* output, int64_t* pad
 }
 
 int gemm_function(struct tensor* a, struct tensor* b, struct tensor* c, struct tensor* output, float alpha, float beta, int64_t transA, int64_t transB) {
-	int error = 0;
-	int64_t l = 0, m = 0, n = 0, k = 0, lda = 0, ldb = 0, ldc = 0;
-	int transA_num = CblasNoTrans, transB_num = CblasNoTrans;
+	int error = 0, transA_num = CblasNoTrans, transB_num = CblasNoTrans;
+	int64_t m = 0, n = 0, k = 0, lda = 0, ldb = 0, ldc = 0;
 	if (a == NULL || b == NULL || output == NULL) return OPS_INPUT_IS_NULL;
 	lda = a->dimension[1];
 	ldb = b->dimension[1];
 	ldc = output->dimension[1];
-
 	if (transA == 0) {
 		m = a->dimension[0];
 		k = a->dimension[1];
@@ -851,7 +849,6 @@ int conv2df(float* input, float* kernels, float* bias, float* output, int64_t C,
 				sum = 0.f;
 				if (bias != NULL) {
 					sum += bias[m];
-
 				}
 				for (kh = 0; kh < kH; kh++) {
 					for (kw = 0; kw < kW; kw++) {
@@ -1084,8 +1081,7 @@ int lstm_function(float* activation_alpha, float* activation_beta, struct list* 
 
 				cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasTrans, 1, hidden_size, input_size, 1.0f, (float*)get_data_tensor_iter(x_iter), input_size, (float*)get_data_tensor_iter(w_iter), input_size, 1.0, XW, hidden_size);
 				cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasTrans, 1, hidden_size, hidden_size, 1.0f, (float*)get_data_tensor_iter(yh_iter), hidden_size, (float*)get_data_tensor_iter(r_iter), hidden_size, 1.0, HR, hidden_size);
-				mulf_array((float*)get_data_tensor_iter(p_iter),(float*) get_data_tensor_iter(yc_iter), PC, hidden_size, hidden_size, hidden_size);
-				//memcpy_s(ft, hidden_size * sizeof(int64_t), XW, hidden_size * sizeof(int64_t));
+				mulf_array((float*)get_data_tensor_iter(p_iter), (float*)get_data_tensor_iter(yc_iter), PC, hidden_size, hidden_size, hidden_size);
 				addf_array(XW, HR, ft, hidden_size, hidden_size, hidden_size);
 				addf_array(ft, PC, ft, hidden_size, hidden_size, hidden_size);
 				addf_array(ft, get_data_tensor_iter(b_iter), ft, hidden_size, hidden_size, hidden_size);
@@ -1112,7 +1108,6 @@ int lstm_function(float* activation_alpha, float* activation_beta, struct list* 
 
 				cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasTrans, 1, hidden_size, input_size, 1.0f, (float*)get_data_tensor_iter(x_iter), input_size, (float*)get_data_tensor_iter(w_iter), input_size, 1.0f, XW, hidden_size);
 				cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasTrans, 1, hidden_size, hidden_size, 1.0f, (float*)get_data_tensor_iter(yh_iter), hidden_size, (float*)get_data_tensor_iter(r_iter), hidden_size, 1.0, HR, hidden_size);
-				//memcpy_s(ct, hidden_size * sizeof(int64_t), XW, hidden_size * sizeof(int64_t));
 				addf_array(XW, HR, ct, hidden_size, hidden_size, hidden_size);
 				addf_array(ct, (float*)get_data_tensor_iter(b_iter), ct, hidden_size, hidden_size, hidden_size);
 				b_coordinate[1] = (4 + 3) * hidden_size;
@@ -1142,7 +1137,6 @@ int lstm_function(float* activation_alpha, float* activation_beta, struct list* 
 				cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasTrans, 1, hidden_size, input_size, 1.0f, (float*)get_data_tensor_iter(x_iter), input_size, (float*)get_data_tensor_iter(w_iter), input_size, 1.0, XW, hidden_size);
 				cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasTrans, 1, hidden_size, hidden_size, 1.0f, (float*)get_data_tensor_iter(yh_iter), hidden_size, (float*)get_data_tensor_iter(r_iter), hidden_size, 1.0, HR, hidden_size);
 				mulf_array(get_data_tensor_iter(p_iter), get_data_tensor_iter(yc_iter), PC, hidden_size, hidden_size, hidden_size);
-				//memcpy_s(get_data_tensor_iter(y_iter), hidden_size * sizeof(int64_t), XW, hidden_size * sizeof(int64_t));
 				addf_array(XW, HR, ot, hidden_size, hidden_size, hidden_size);
 				addf_array(ot, PC, ot, hidden_size, hidden_size, hidden_size);
 				addf_array(ot, get_data_tensor_iter(b_iter), ot, hidden_size, hidden_size, hidden_size);
@@ -1177,7 +1171,7 @@ int lstm_function(float* activation_alpha, float* activation_beta, struct list* 
 
 	}
 
-	free(it); free(ct); free(ft); free(ot); 
+	free(it); free(ct); free(ft); free(ot);
 	free(XW); free(HR); free(PC);
 	release_tensor_iterator(&x_iter);
 	release_tensor_iterator(&w_iter);

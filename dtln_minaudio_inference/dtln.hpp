@@ -15,20 +15,18 @@ extern "C" {
     #include "model1.h"
     #include "model2.h"
 }
-
+// DTLN model
 class DTLN
 {
 private:
  
-    // DTLN model
+    // model implementation
     struct model* m1 = NULL;
     struct model* m2 = NULL; 
     // buffers
     std::vector<float> in_buffer = std::vector<float>(BLOCK_LENGTH, 0);
     std::vector<float> outblock = std::vector<float>(BLOCK_LENGTH, 0);
     std::vector<float> out_buffer = std::vector<float>(BLOCK_LENGTH, 0);
-
-
     std::vector<float> in_mag = std::vector<float>(BLOCK_FFT, 0);
     std::vector<float> in_phase= std::vector<float>(BLOCK_FFT, 0);
     std::vector<float> out_mask = std::vector<float>(BLOCK_FFT, 0);
@@ -44,7 +42,5 @@ public:
     DTLN();
     // inference with input vector with size "block_shift" and output vector "block_len"
     bool inference(std::vector<float>& input, std::vector<float>& output);
-
-
 
 };

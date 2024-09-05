@@ -150,7 +150,7 @@ struct node* create_concat_node(int64_t* axis, struct tensor* concat_result, int
 	if (new_node == NULL) return NULL;
 	new_node->type = Concat;
 	input_list = calloc(1, sizeof(struct list));
-	if (input_list == NULL) return NULL;	// fail to create list to hold inputs
+	if (input_list == NULL) return NULL;	// Fail to create list to hold inputs
 
 	pushback_list(&new_node->attribute, axis);
 	// Push inputs from variadic
@@ -166,7 +166,6 @@ struct node* create_concat_node(int64_t* axis, struct tensor* concat_result, int
 }
 
 struct node* create_split_node(int64_t* axis, int64_t* num_outputs, struct tensor* input, int64_t* split, ...) {
-	;
 	va_list ptr;
 	int64_t i = 0;
 	struct list* output_list = NULL;
@@ -191,6 +190,7 @@ struct node* create_split_node(int64_t* axis, int64_t* num_outputs, struct tenso
 }
 struct node* create_reshape_node(int64_t* allowzero, struct tensor* data, struct tensor* shape, struct tensor* reshaped) {
 	struct node* new_node = create_node();
+	if (new_node == NULL) return 0;
 	new_node->type = Reshape;
 	pushback_list(&new_node->attribute, allowzero);
 	pushback_list(&new_node->input, data);
@@ -201,6 +201,7 @@ struct node* create_reshape_node(int64_t* allowzero, struct tensor* data, struct
 
 struct node* create_pad_node(char* mode, struct tensor* data, struct tensor* pads, struct tensor* constant_value, struct tensor* axes, struct tensor* output) {
 	struct node* new_node = create_node();
+	if (new_node == NULL) return 0;
 	new_node->type = Pad;
 	pushback_list(&new_node->attribute, mode);
 	pushback_list(&new_node->input, data);
@@ -213,6 +214,7 @@ struct node* create_pad_node(char* mode, struct tensor* data, struct tensor* pad
 
 struct node* create_conv_node(char* auto_pad, int64_t* dilations, int64_t* group, int64_t* kernel_shape, int64_t* pads, int64_t* strides, struct tensor* x, struct tensor* w, struct tensor* b, struct tensor* y) {
 	struct node* new_node = create_node();
+	if (new_node == NULL) return NULL;
 	new_node->type = Conv;
 	pushback_list(&new_node->attribute, auto_pad);
 	pushback_list(&new_node->attribute, dilations);
@@ -231,6 +233,7 @@ struct node* create_lstm_node(float* activation_alpha, float* activation_beta, s
 	struct tensor* x, struct tensor* w, struct tensor* r, struct tensor* b, int64_t* sequence_lens, struct tensor* initial_h, struct tensor* initial_c, struct tensor* p,
 	struct tensor* y, struct tensor* y_h, struct tensor* y_c) {
 	struct node* new_node = create_node();
+	if (new_node == NULL) return 0;
 	new_node->type = LSTM;
 	pushback_list(&new_node->attribute, activation_alpha);
 	pushback_list(&new_node->attribute, activation_beta);
@@ -256,6 +259,7 @@ struct node* create_lstm_node(float* activation_alpha, float* activation_beta, s
 
 struct node* create_reducemean_node(int64_t* keepdim, int64_t* noop_with_empty_axes, struct tensor* data, struct tensor* axes, struct tensor* reduced) {
 	struct node* new_node = create_node();
+	if (new_node == NULL) return NULL;
 	new_node->type = ReduceMean;
 	pushback_list(&new_node->attribute, keepdim);
 	pushback_list(&new_node->attribute, noop_with_empty_axes);
@@ -268,6 +272,7 @@ struct node* create_reducemean_node(int64_t* keepdim, int64_t* noop_with_empty_a
 struct node* create_constant_node(struct tensor* value, float* value_float, float* value_floats, int64_t* value_int, int64_t* value_ints, struct tensor* output) {
 	struct node* new_node = create_node();
 	new_node->type = Constant;
+	if(new_node== NULL)
 	pushback_list(&new_node->attribute, value);
 	pushback_list(&new_node->attribute, value_float);
 	pushback_list(&new_node->attribute, value_floats);

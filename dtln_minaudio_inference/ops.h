@@ -19,7 +19,7 @@
 /// <param name="C"></param>
 /// <param name="op_type"></param>
 /// <returns></returns>
-int16_t broadcast_function(struct tensor* A, struct tensor* B, struct tensor* C, NODE_TYPE op_type);
+int broadcast_function(struct tensor* A, struct tensor* B, struct tensor* C, NODE_TYPE op_type);
 
 // one to one TENSORS
 int tanh_function(struct tensor* A, struct tensor* B);

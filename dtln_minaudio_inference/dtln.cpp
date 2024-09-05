@@ -2,6 +2,7 @@
 DTLN::DTLN()
 {
 	int error = 0;
+	// Set up dft 
 	status = DftiCreateDescriptor(&handle, DFTI_SINGLE,
 		DFTI_REAL, 1, 512);
 	if (status && !DftiErrorClass(status, DFTI_NO_ERROR))
@@ -15,14 +16,12 @@ DTLN::DTLN()
 	{
 		printf("Error: %s\n", DftiErrorMessage(status));
 	}
-	//home brew
-
+	// Create model 1
 	m1 = (struct model*)calloc(1, sizeof(struct model));
 	if (m1 == NULL) {
 		printf("allocate for model fail\n");
 		throw std::runtime_error("model 1 allocate fail");
 	}
-
 	error = create_model1_onnx_tensor();
 	if (error == NULL) {
 		printf("Create tensor fail\n");
@@ -31,7 +30,6 @@ DTLN::DTLN()
 	else {
 		printf("create tensor success\n");
 	}
-
 	error = create_model1_onnx_attributes();
 	error = setup_model1_onnx(m1);
 	if (error == 0) {
@@ -41,16 +39,12 @@ DTLN::DTLN()
 	else {
 		printf("create model success\n");
 	}
-
-
-
-
+	// Create model 2
 	m2 = (struct model*)calloc(1, sizeof(struct model));
 	if (m2 == NULL) {
 		printf("allocate for model fail\n");
 		throw std::runtime_error("model 2 allocate fail");
 	}
-
 	error = create_model2_onnx_tensor();
 	if (error == NULL) {
 		printf("Create tensor fail\n");
@@ -69,16 +63,12 @@ DTLN::DTLN()
 	else {
 		printf("create model success\n");
 	}
-
-	
-
 }
 
 // Should incorporate more error checks
 bool DTLN::inference(std::vector<float>& input, std::vector<float>& output)
 {
 	int error = 0;
-	std::vector<std::vector<float>*> input_vec, output_vec;
 	
 	// check IO size
 	if (input.size() < BLOCK_SHIFT || output.size() < BLOCK_LENGTH)
@@ -99,23 +89,12 @@ bool DTLN::inference(std::vector<float>& input, std::vector<float>& output)
 		in_mag[i] = std::abs(fd[i]);   // np.abs
 		in_phase[i] = std::arg(fd[i]); // np.angle
 	}
-	// set input
-	//input_vec.push_back(&in_mag);
-	//input_vec.push_back(&state_1);
-	//output_vec.push_back(&out_mask);
-	//output_vec.push_back(&state_1);
-	////execute
-	//error = model_1->Inference(input_vec, output_vec);
-	// estimated_complex = in_mag * out_mask * np.exp(1j * in_phase)
-
+	// Inference model 1
 	memcpy(input_2_array, in_mag.data(), 257 * sizeof(float));
 	memcpy(input_3_array, state_1.data(), 512 * sizeof(float));
 	inference_model(m1);
 	memcpy(out_mask.data(), activation_2_array, 257 * sizeof(float));
 	memcpy(state_1.data(), tf_op_layer_stack_2_array, 512 * sizeof(float));
-
-
-
 
 	for (int i = 0; i < BLOCK_FFT; i++)
 	{
@@ -129,23 +108,12 @@ bool DTLN::inference(std::vector<float>& input, std::vector<float>& output)
 	{
 		printf("Error: %s\n", DftiErrorMessage(status));
 	}
-
-
 	// Normalize
 	for (int i = 0; i < outblock.size(); i++)
 	{
 		outblock[i] /= (float)BLOCK_LENGTH;
 	}
-	input_vec.clear();
-	output_vec.clear();
-	// set input
-	input_vec.push_back(&outblock);
-	input_vec.push_back(&state_2);
-	output_vec.push_back(&outblock);
-	output_vec.push_back(&state_2);
-	// execute
-	//model_2->Inference(input_vec, output_vec);
-	
+	// Inference model 2
 	memcpy(input_4_array, outblock.data(), 512*sizeof(float));
 	memcpy(input_5_array, state_2.data(), 512 * sizeof(float));
 	inference_model(m2);

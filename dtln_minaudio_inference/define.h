@@ -32,37 +32,38 @@ enum OPS_FUNCTION_RETURN {
 	OPS_NO_OUTPUT_SHAPE
 };
 
-
 enum NODE_TYPE {
 	UNDEFINED,
-	Transpose,		// 1. tested
-	Slice,			// 1. tested
-	Squeeze,		// 1. tested
-	LSTM,			// 1
-	Concat,			// 1. tested
-	MatMul,			// 1, pass
-	Unsqueeze,		// 1, pass
-	Conv,			// 1. tested
-	ReduceMean,		// 1, tested
-	Sub,			// 1, tested
-	Mul,			// 1, pass
-	Add,			// 1, pass
-	Sqrt,			// 1, pass
-	Div,			// 1, pass
-	Split,			// 1, pass
-	Tanh,			// 1. tested
-	Sigmoid,		// 1. tested
-	Pad,			// 1
-	Gemm,			// 1
-	Reshape,		// 1
-	Constant,		// 1. seems to work
+	Transpose,		
+	Slice,		
+	Squeeze,	
+	LSTM,
+	Concat,		
+	MatMul,
+	Unsqueeze,		
+	Conv,
+	ReduceMean,		
+	Sub,
+	Mul,
+	Add,			
+	Sqrt,		
+	Div,		
+	Split,		
+	Tanh,			
+	Sigmoid,		
+	Pad,			
+	Gemm,			
+	Reshape,		
+	Constant,		
 	Relu
 
 
 }typedef NODE_TYPE;
 
-
-enum datatype {
+/// <summary>
+///  Data type of operation.
+/// </summary>
+enum DATATYPE {
 	DATATYPE_UKNOWN,
 	DATATYPE_INT32,
 	DATATYPE_INT64,
