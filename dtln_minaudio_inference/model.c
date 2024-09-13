@@ -18,6 +18,7 @@ int inference_model(struct model* m) {
 	struct Node* cur_node = NULL;
 	num_nodes = m->node.size;
 	for (i = 0; i < num_nodes; i++) {
+		printf ("%d", i);
 		cur_node = (struct Node*)get_list(&m->node, i);
 		if (cur_node == NULL) {
 			printf("Encountered NULL node\n");
