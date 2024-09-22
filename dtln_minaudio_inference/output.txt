@@ -1,3869 +1,752 @@
 Press Enter to quit...
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inference model 2
-inf
+0.020504s
+0.0011133s
+0.0014909s
+0.003904s
+0.0022465s
+0.0011881s
+0.0052739s
+0.0019465s
+0.0024018s
+0.0031419s
+0.0024449s
+0.0025591s
+0.0033813s
+0.0029452s
+0.0023474s
+0.0024825s
+0.005288s
+0.002581s
+0.0026082s
+0.002953s
+0.0016502s
+0.0021516s
+0.0029818s
+0.0032658s
+0.0033094s
+0.0015315s
+0.002572s
+0.0026492s
+0.0014646s
+0.0026693s
+0.0018073s
+0.0029822s
+0.0008192s
+0.0013422s
+0.0012936s
+0.0011904s
+0.0008926s
+0.0017392s
+0.0013906s
+0.0011422s
+0.0007753s
+0.0010263s
+0.0010099s
+0.0009477s
+0.0010732s
+0.0008436s
+0.0010817s
+0.0011269s
+0.0021748s
+0.0021134s
+0.0016731s
+0.0022439s
+0.0020901s
+0.0013947s
+0.0021196s
+0.0034866s
+0.0028569s
+0.0019909s
+0.0021197s
+0.0040982s
+0.0026873s
+0.0030897s
+0.0036477s
+0.003079s
+0.0022347s
+0.0014128s
+0.0029325s
+0.0021549s
+0.0014639s
+0.0020982s
+0.0024427s
+0.0021887s
+0.0017904s
+0.0013735s
+0.0013392s
+0.0016148s
+0.0016822s
+0.0012826s
+0.0013167s
+0.0010869s
+0.000966s
+0.0014946s
+0.0026003s
+0.0014386s
+0.0017006s
+0.0015871s
+0.0011016s
+0.0022493s
+0.001638s
+0.0019016s
+0.00159s
+0.0016611s
+0.0015462s
+0.0021984s
+0.0020538s
+0.0018914s
+0.0009654s
+0.0016241s
+0.0013583s
+0.0018135s
+0.0008633s
+0.0010863s
+0.001094s
+0.0011063s
+0.001013s
+0.0008659s
+0.0010224s
+0.0010922s
+0.0017769s
+0.0014678s
+0.0009854s
+0.0010405s
+0.0020372s
+0.0008974s
+0.0011839s
+0.0010206s
+0.0012308s
+0.0012156s
+0.001007s
+0.0010025s
+0.0011458s
+0.0008105s
+0.0013464s
+0.0008447s
+0.001116s
+0.0010348s
+0.0011536s
+0.0010389s
+0.0014012s
+0.0018984s
+0.0017334s
+0.0016877s
+0.0015907s
+0.0015026s
+0.0034565s
+0.0013179s
+0.0011952s
+0.0015108s
+0.0013352s
+0.0014766s
+0.0012331s
+0.0015351s
+0.0010828s
+0.0016905s
+0.001058s
+0.0011634s
+0.0009185s
+0.0010507s
+0.0015294s
+0.001925s
+0.000866s
+0.0018653s
+0.0021198s
+0.0017376s
+0.0019054s
+0.0008329s
+0.0016263s
+0.0017969s
+0.0018396s
+0.0010582s
+0.0008211s
+0.0016582s
+0.0008486s
+0.0023589s
+0.0015396s
+0.0008702s
+0.0016998s
+0.0014291s
+0.0013446s
+0.0020426s
+0.0007929s
+0.0020188s
+0.0021562s
+0.0021049s
+0.0020621s
+0.0017536s
+0.0025066s
+0.0025581s
+0.0024558s
+0.0024007s
+0.0015819s
+0.0021757s
+0.0017413s
+0.002198s
+0.0017839s
+0.0015368s
+0.0025925s
+0.001538s
+0.0021664s
+0.0020661s
+0.0018802s
+0.00162s
+0.0021357s
+0.0018341s
+0.0023895s
+0.0012385s
+0.0010836s
+0.0027554s
+0.0017484s
+0.0020134s
+0.0009303s
+0.0011269s
+0.0011692s
+0.0016161s
+0.0013992s
+0.0010927s
+0.000979s
+0.0013436s
+0.0015554s
+0.0010577s
+0.0007752s
+0.0013378s
+0.0012232s
+0.0016518s
+0.0016847s
+0.0008357s
+0.0011297s
+0.002871s
+0.0018388s
+0.0013028s
+0.0010635s
+0.0015742s
+0.0016252s
+0.0021681s
+0.0028362s
+0.0017309s
+0.0015033s
+0.0024746s
+0.0026923s
+0.0018792s
+0.0012201s
+0.0018725s
+0.0016876s
+0.0017689s
+0.0011744s
+0.0008988s
+0.0013857s
+0.0012008s
+0.0011941s
+0.0010446s
+0.0008575s
+0.0013717s
+0.0014342s
+0.0017191s
+0.0011134s
+0.001276s
+0.0009933s
+0.0010484s
+0.0008644s
+0.0021906s
+0.0009043s
+0.001162s
+0.0014744s
+0.0016923s
+0.0018591s
+0.0008986s
+0.0012696s
+0.0022459s
+0.0021461s
+0.003317s
+0.0021961s
+0.0016228s
+0.001904s
+0.0025187s
+0.0023074s
+0.0022512s
+0.0030306s
+0.0037572s
+0.0023393s
+0.0024s
+0.0012635s
+0.0013254s
+0.0025687s
+0.0014843s
+0.0026487s
+0.0014787s
+0.0012854s
+0.0011438s
+0.0027392s
+0.0027313s
+0.0019954s
+0.0010335s
+0.0020207s
+0.0013024s
+0.0023088s
+0.0018019s
+0.0020168s
+0.0017161s
+0.0010554s
+0.0012817s
+0.0011032s
+0.0025706s
+0.0022174s
+0.003021s
+0.002173s
+0.0017855s
+0.0015984s
+0.0020803s
+0.0020491s
+0.0020122s
+0.001624s
+0.0014671s
+0.0018784s
+0.0019059s
+0.0026058s
+0.0019959s
+0.0017077s
+0.0016851s
+0.0014678s
+0.0018852s
+0.0020344s
+0.0014801s
+0.0012576s
+0.0009747s
+0.0013492s
+0.0007666s
+0.0009258s
+0.0012577s
+0.0016359s
+0.0026761s
+0.0022966s
+0.0019908s
+0.0029803s
+0.0031521s
+0.0039085s
+0.003848s
+0.0025527s
+0.0021398s
+0.0020938s
+0.0025709s
+0.0018347s
+0.0018448s
+0.0019381s
+0.001538s
+0.002248s
+0.0012807s
+0.0010849s
+0.0010479s
+0.0013249s
+0.0020408s
+0.0012224s
+0.0011178s
+0.0012687s
+0.0025461s
+0.0024429s
+0.0016105s
+0.0013595s
+0.001632s
+0.0012776s
+0.0013955s
+0.0013589s
+0.0021464s
+0.0018207s
+0.0013384s
+0.0013493s
+0.0009658s
+0.0026925s
+0.0008676s
+0.0018647s
+0.0017339s
+0.0013355s
+0.0023396s
+0.0017255s
+0.0025144s
+0.0021461s
+0.0010231s
+0.0010541s
+0.0018329s
+0.0015898s
+0.000999s
+0.0008758s
+0.0008873s
+0.0017055s
+0.0014639s
+0.0012624s
+0.0008689s
+0.001314s
+0.0011253s
+0.0021258s
+0.0010282s
+0.0012449s
+0.0015262s
+0.001122s
+0.0009046s
+0.0022315s
+0.0017024s
+0.0012078s
+0.0014468s
+0.002238s
+0.002366s
+0.00201s
+0.0026903s
+0.0013172s
+0.0011756s
+0.0026367s
+0.0017542s
+0.0017589s
+0.0036404s
+0.0020316s
+0.0011574s
+0.0009131s
+0.0009847s
+0.0009734s
+0.0011105s
+0.0020857s
+0.000955s
+0.0010853s
+0.0010269s
+0.0013437s
+0.0013092s
+0.0013497s
+0.0011188s
+0.001379s
+0.0013028s
+0.0010219s
+0.0007645s
+0.0014464s
+0.0011801s
+0.0009113s
+0.0011576s
+0.0008439s
+0.0009277s
+0.0011092s
+0.0012304s
+0.0011796s
+0.0014477s
+0.0009032s
+0.001083s
+0.00141s
+0.0018875s
+0.0008676s
+0.0010406s
+0.0011087s
+0.0012915s
+0.001241s
+0.0013892s
+0.0010734s
+0.0021061s
+0.0013958s
+0.0014143s
+0.0016582s
+0.0012526s
+0.0012721s
+0.0010872s
+0.0010432s
+0.0008009s
+0.000994s
+0.001141s
+0.001125s
+0.0010909s
+0.0010163s
+0.0012802s
+0.0018364s
+0.0025082s
+0.0031275s
+0.0029314s
+0.0016087s
+0.0026441s
+0.0017948s
+0.0018659s
+0.0013128s
+0.0016913s
+0.0011701s
+0.0011249s
+0.00133s
+0.0013247s
+0.0013441s
+0.0010075s
+0.0011851s
+0.0010544s
+0.0008094s
+0.0018752s
+0.0018164s
+0.0014436s
+0.0018794s
+0.0012326s
+0.0017431s
+0.0012478s
+0.002596s
+0.0015507s
+0.0021294s
+0.0013385s
+0.0020658s
+0.0017023s
+0.0015623s
+0.0010911s
+0.0011371s
+0.0014596s
+0.0024959s
+0.0022777s
+0.0016472s
+0.0018445s
+0.0014691s
+0.0009326s
+0.0014937s
+0.001137s
+0.0015082s
+0.0014447s
+0.0022343s
+0.0021222s
+0.0019518s
+0.0017701s
+0.0008458s
+0.0007964s
+0.0012969s
+0.001144s
+0.0009008s
+0.0010645s
+0.0018153s
+0.0018066s
+0.0013957s
+0.0010452s
+0.0013568s
+0.000774s
+0.0010134s
+0.0009099s
+0.0012692s
+0.0011027s
+0.0008787s
+0.0008099s
+0.0007456s
+0.0009777s
+0.0010034s
+0.0011556s
+0.0012086s
+0.0011179s
+0.0012953s
+0.0010638s
+0.0019748s
+0.0020085s
+0.0012505s
+0.0013631s
+0.0016873s
+0.0014834s
+0.0010764s
+0.0007403s
+0.0008764s
+0.0009244s
+0.0017233s
+0.0008291s
+0.0007288s
+0.000893s
+0.0012245s
+0.0010052s
+0.0008679s
+0.0006806s
+0.0016302s
+0.0014962s
+0.0008244s
+0.0012049s
+0.0010858s
+0.0013358s
+0.0014993s
+0.000975s
+0.0009439s
+0.000859s
+0.0013404s
+0.001667s
+0.0017124s
+0.0013111s
+0.0011158s
+0.0013163s
+0.0019023s
+0.0015619s
+0.0032972s
+0.0015762s
+0.0015952s
+0.001517s
+0.002055s
+0.0018961s
+0.001769s
+0.0017699s
+0.0016875s
+0.0019534s
+0.0013528s
+0.0010903s
+0.0018425s
+0.0026703s
+0.0018005s
+0.0024731s
+0.002087s
+0.0025177s
+0.0017112s
+0.0012411s
+0.0016678s
+0.0014021s
+0.0016386s
+0.00299s
+0.0012869s
+0.001344s
+0.0009496s
+0.0019615s
+0.0015722s
+0.0016771s
+0.0018926s
+0.0008732s
+0.0012155s
+0.0011821s
+0.0013406s
+0.0023765s
+0.0015389s
+0.0020457s
+0.0028603s
+0.0011655s
+0.0009483s
+0.0008103s
+0.0018819s
+0.0015333s
+0.0011713s
+0.0017784s
+0.0014614s
+0.001466s
+0.0010892s
+0.0018908s
+0.0022511s
+0.0014506s
+0.001365s
+0.0018858s
+0.0015288s
+0.0025358s
+0.001293s
+0.0008467s
+0.0010744s
+0.0017561s
+0.0015602s
+0.0011869s
+0.0013862s
+0.0014882s
+0.0013199s
+0.0022522s
+0.0011662s
+0.0009209s
+0.0014143s
+0.0011277s
+0.0010551s
+0.0016679s
+0.0011638s
+0.0011478s
+0.0009465s
+0.0010094s
+0.0008785s
+0.0011161s
+0.0011977s
+0.0014705s
+0.0014507s
+0.0012677s
+0.0013166s
+0.0022444s
+0.0020411s
+0.0014355s
+0.0013683s
+0.0014375s
+0.0016463s
+0.0017276s
+0.0019602s
+0.0018923s
+0.0015805s
+0.0019069s
+0.0020877s
+0.0023595s
+0.0019342s
+0.0019474s
+0.0020113s
+0.0020262s
+0.003077s
+0.0016358s
+0.0015399s
+0.0014636s
+0.0019096s
+0.0016645s
+0.0014814s
+0.0014656s
+0.0018405s
+0.0021171s
+0.0016327s
+0.0016081s
+0.0016821s
+0.0014746s
+0.0012213s
+0.0013347s
+0.0011901s
+0.0009186s
+0.0012454s
+0.00109s
+0.0017635s
+0.0016119s
+0.0022745s
+0.0019511s
+0.0009747s
+0.0017091s
+0.0013596s
+0.0012834s
+0.0011205s
+0.0014961s
+0.0020413s
+0.0016118s
+0.0012822s
+0.0012795s
+0.0008146s
+0.0009397s
+0.0011099s
+0.0011329s
+0.0012868s
+0.0014505s
+0.0016898s
+0.0014721s
+0.0020092s
+0.000933s
+0.0008221s
+0.0011318s
+0.0008739s
+0.001125s
+0.0010656s
+0.0010545s
+0.0013912s
+0.0013683s
+0.0013973s
+0.0013333s
+0.0011897s
+0.0014658s
+0.00152s
+0.001394s
+0.0026162s
+0.0032221s
+0.0027026s
+0.0022296s
+0.000891s
+0.0014158s
+0.0021312s
+0.0018457s
+0.0013894s
+0.0019258s
+0.0025497s
+0.0013406s
+0.0013333s
+0.0013573s
+0.0013666s
+0.0025946s
+0.0032169s
+0.0011373s
+0.000785s
+0.0013809s
+0.0017985s
+0.002263s
+0.0028041s
+0.00185s
+0.0021651s
+0.0018509s
+0.0022492s
+0.0029046s
+0.0025

@@ -4,29 +4,28 @@
 #include <stdio.h>
 #include "dtln.hpp"
 #include <complex>
+#include <chrono>
 #ifdef __EMSCRIPTEN__
 void main_loop__em()
 {
 }
 #endif
 
-	DTLN d;
-	int error = 0;
-	std::vector<float> output = std::vector<float>(512, 0);
+DTLN d;
+int error = 0;
+std::vector<float> output = std::vector<float>(512, 0);
 
 void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount)
 {
-	/*std::cout << frameCount << std::endl;
-	MA_ASSERT(pDevice->capture.format == pDevice->playback.format);
-	MA_ASSERT(pDevice->capture.channels == pDevice->playback.channels);
-	assert(frameCount == 128);*/
 
+	auto start = std::chrono::steady_clock::now();
 	std::vector<float> input((float*)pInput, (float*)pInput + 128);
 	error = d.inference(input, output);
 	memcpy((float*)pOutput, output.data(), 128 * sizeof(float));
-
-	/* In this example the format and channel count are the same for both input and output which means we can just memcpy(). */
-	//MA_COPY_MEMORY(pOutput, pInput, frameCount * ma_get_bytes_per_frame(pDevice->capture.format, pDevice->capture.channels));
+	auto finish = std::chrono::steady_clock::now();
+	double elapsed_seconds = std::chrono::duration_cast<
+		std::chrono::duration<double>>(finish - start).count();
+	std::cout << elapsed_seconds << "s\n";
 }
 
 int main(int argc, char** argv)
@@ -60,14 +59,6 @@ int main(int argc, char** argv)
 #endif
 
 	ma_device_start(&device);
-
-	//std::vector<float> input(512, 0);
-	//std::vector<float> output(512, 0);
-	//error = d.inference(input, output);
-	//std::cout << error << ", " << output.size() << "\n";
-
-
-
 
 #ifdef __EMSCRIPTEN__
 	emscripten_set_main_loop(main_loop__em, 0, 1);

@@ -114,7 +114,6 @@ bool DTLN::inference(std::vector<float>& input, std::vector<float>& output)
 		outblock[i] /= (float)BLOCK_LENGTH;
 	}
 	// Inference model 2
-	printf("inference model 2\n");
 	memcpy(input_4_array, outblock.data(), 512 * sizeof(float));
 	memcpy(input_5_array, state_2.data(), 512 * sizeof(float));
 	inference_model(m2);
