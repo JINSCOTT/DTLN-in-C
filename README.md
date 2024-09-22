@@ -1,4 +1,4 @@
-#DTLN in C
+# DTLN in C
 ## Project description
 * This is a project trying to create my own neural network inference library.
 * This project has two parts, one is the parser part which has yet been made public and this is the inference part which is made public but I considered not done, and I will try to spend time to make it much better.
