@@ -1,6 +1,6 @@
 # DTLN in C
 ## Project description
-* This is a project trying to create my own neural network inference library.
+* This is a project aiming to create my own neural network inference library.
 * This project has two parts, one is the parser part which has yet been made public and this is the inference part which is made public but I considered not done, and I will try to spend time to make it much better.
 * This program here utilized the Dual-signal Transformation LSTM Network(DTLN) to denoise audio comming in from a microphone(with miniaudio full duplex)
 * This part is made public first because it can produce it's own goal, and I must push my Medium story immediatedly so I rushed this out.
