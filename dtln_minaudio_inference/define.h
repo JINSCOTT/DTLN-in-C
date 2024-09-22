@@ -3,9 +3,11 @@
 
 //#define DEBUG
 //#define OMP
-//#define ONE_MKL
+#define ONE_MKL
 
-
+// Assume shape will be stable during inference
+// In other words the dimension will always be the same
+#define ASSUME_SHAPE_STABLE
 
 #ifndef NULL
 #define NULL 0
@@ -33,35 +35,15 @@ enum OPS_FUNCTION_RETURN {
 };
 
 enum NODE_TYPE {
+	// dtln operators
 	UNDEFINED,
-	Transpose,		
-	Slice,		
-	Squeeze,	
-	Concat,		
-	MatMul,
-	Unsqueeze,		
-	Conv,
-	ReduceMean,		
-	Sub,
-	Mul,
-	Add,			
-	Sqrt,		
-	Div,		
-	Split,		
-	Tanh,			
-	Sigmoid,		
-	Pad,			
-	Gemm,			
-	Reshape,		
-	Constant,		
-	Relu,
 	TRANSPOSE,
 	SLICE,
 	SQUEEZE,
 	LSTM,
 	CONCAT,
 	MATMUL,
-	UNSQUEEZE, 
+	UNSQUEEZE,
 	CONV,
 	REDUCEMEAN,
 	SUB,
@@ -76,9 +58,23 @@ enum NODE_TYPE {
 	GEMM,
 	RESHAPE,
 	CONSTANT,
-	RELU
-
-
+	RELU,
+	//tested
+	CLIP,
+	ARGMAX,
+	// untested
+	ARGMIN,// Very close to argmax
+	ABS,
+	ACOS,
+	ACOSH,
+	ATAN,
+	ATANH,
+	ASIN,
+	ASINH,
+	// Implemented
+	AVERAGEPOOL,
+	// not panned to implement
+	AND // bool type not supported
 }typedef NODE_TYPE;
 
 /// <summary>
@@ -88,7 +84,8 @@ enum DATATYPE {
 	DATATYPE_UKNOWN,
 	DATATYPE_INT32,
 	DATATYPE_INT64,
-	DATATYPE_FLOAT32
-};
+	DATATYPE_FLOAT,
+	DATATYPE_DOUBLE	// New added, not integrated yet
+}typedef DATATYPE;
 
 #endif // !DEFINE_H

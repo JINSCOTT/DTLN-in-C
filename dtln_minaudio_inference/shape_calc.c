@@ -1,10 +1,15 @@
+// Shape calculation for node operation.
+// Shepes should be done in parsing rathe rather than counting them here to reduce complexity;
+
 #include "shape_calc.h"
+
+
 int set_broadcast_shape(struct tensor* A, struct tensor* B, struct tensor* C) {
 	int64_t* dims = NULL, i = 0, j = 0, k = 0, c_dimsize = 0;
 	if (A == NULL || B == NULL || C == NULL) return OPS_INPUT_IS_NULL;
 	if (A->dimension_size > B->dimension_size) c_dimsize = A->dimension_size;
 	else c_dimsize = B->dimension_size;
-	dims = calloc(c_dimsize , sizeof(int64_t));
+	dims = calloc(c_dimsize, sizeof(int64_t));
 	if (dims == NULL) return OPS_ALLOCATION_FAIL;
 	i = A->dimension_size - 1;
 	j = B->dimension_size - 1;
@@ -367,7 +372,7 @@ cleanup:
 
 int set_reshaped_shape(struct tensor* input, struct tensor* shape, struct tensor* reshaped) {
 	int error = 0;
-	int64_t i = 0,total= 1;
+	int64_t i = 0, total = 1;
 
 	if (input == NULL || shape == NULL || reshaped == NULL) {
 		return OPS_INPUT_IS_NULL;
@@ -380,11 +385,11 @@ int set_reshaped_shape(struct tensor* input, struct tensor* shape, struct tensor
 	return OPS_SUCCESS;
 }
 
-int set_pad_shape(struct tensor* data, struct tensor* pads, struct tensor* axes, struct tensor* output){
+int set_pad_shape(struct tensor* data, struct tensor* pads, struct tensor* axes, struct tensor* output) {
 	int error = 0;
 	int64_t i = 0;
 	struct dynamic_array* output_dim = NULL;
-	if (data == NULL || pads == NULL || axes== NULL||output == NULL) return OPS_INPUT_IS_NULL;
+	if (data == NULL || pads == NULL || axes == NULL || output == NULL) return OPS_INPUT_IS_NULL;
 
 	output_dim = create_darray_array(data->dimension, data->dimension_size, sizeof(int64_t));
 	if (output_dim == NULL) {
@@ -490,3 +495,51 @@ cleanup:
 	release_darray(&reduced_dim);
 	return error;
 }
+
+
+//int set_zeropad_shape(int64_t* ceilmode, struct tensor* x, struct tensor* y, int64_t* kernel_shape, int64_t* dilation, int64_t* pads, int64_t* strides) {
+//	int error = 0;
+//	int64_t* pads_ = NULL, * strides_ = NULL, ceilmode_ = 0, i = 0, temp_value = 0;
+//	struct dynamic_array* padded_dimension = NULL;
+//	if (x == NULL || y == NULL || kernel_shape == NULL) return OPS_INPUT_IS_NULL;
+//#ifdef assume_stable_inference
+//	// Shape is stable
+//	if (!y->is_size_unknown) {
+//		return OPS_SUCCESS;
+//	}
+//#endif // assume_stable_inference
+//	// Assign default
+//	if (ceilmode != NULL)ceilmode_ = *ceilmode;
+//	if (pads == NULL) {
+//		pads_ = calloc( 2 *(x->dimension_size - 2), sizeof(int64_t));
+//		if (pads_ == NULL)goto cleanup;
+//	}
+//	else pads_ = pads;
+//	if (strides == NULL) {
+//		strides_ = calloc(x->dimension_size - 2, sizeof(int64_t));
+//		if (strides_ == NULL)goto cleanup;
+//		for (i = 0; i < x->dimension_size - 2; i++) {
+//			strides_[i] = 1;
+//		}
+//	}
+//	else strides_ = strides;
+//	// Calculate
+//	padded_dimension = create_darray(sizeof(int64_t));
+//	if (padded_dimension == NULL) goto cleanup;
+//	pushback_darray(padded_dimension, x->dimension[0]); // n
+//	pushback_darray(padded_dimension, x->dimension[1]); // c
+//	for (i = 2; i < x->dimension_size; i++) {
+//
+//		temp_value = (x->dimension[i] -kernel_shape[i-2] + pads[i - 2] + pads[i - 2 + x->dimension_size - 2]) / strides[i - 2] + 1;
+//		pushback_darray(y_dim, &temp);
+//
+//	}
+//
+//cleanup:
+//	release_darray(&padded_dimension);
+//	if( pads == NULL)safe_free(&pads_);
+//	if (strides == NULL)safe_free(&strides_);
+//	return error;
+//
+//
+//}

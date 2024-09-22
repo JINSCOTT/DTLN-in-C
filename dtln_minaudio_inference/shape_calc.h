@@ -17,6 +17,7 @@ int set_split_shape(int64_t axis, int64_t num_outputs, struct tensor* input, int
 int set_reshaped_shape(struct tensor* input, struct tensor* shape, struct tensor* reshaped);
 int set_pad_shape(struct tensor* data, struct tensor* pads, struct tensor* axes,  struct tensor* output);
 int set_conv_shape(struct tensor* x, struct tensor* w, struct tensor* y, int64_t* pads, int64_t* strides);
+//int set_zeropad_shape(int64_t* ceilmode ,struct tensor* x, struct tensor* y, int64_t* kernel_shape,int64_t* dilation, int64_t* pads, int64_t* strides);
 int set_lstm_shape(struct tensor* x, int64_t num_direction, int64_t hidden_size, struct tensor* y, struct tensor* y_h, struct tensor* y_c);
 int set_reducemean_shape(struct tensor* axes, int64_t* noop_with_empty_axes, int64_t keepdims, struct tensor* data, struct tensor* reduced);
 #endif // SHAPE_CALC_H

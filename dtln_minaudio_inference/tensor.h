@@ -28,21 +28,20 @@ struct tensor {
 	short type;				// Data type
 	short item_size;		// size of the data type
 	int64_t* stride;		// number of bytes that must be skipped to get to the next element in that dimension
-	short is_static;		// don't change shape and free static
+	short is_static;		// don't change shape and free. Tensor is created from generated header, not calculated after inference
 	short is_size_unknown;  // Tensor is created without informationj
 };
 
 //Tensor functions
-
 /// <summary>
-/// Creates tensor. If tensor is created this way, do "not" free data and dimension after tensor creation;
+/// Creates tensor.
 /// </summary>
 /// <param name="data"></param>
 /// <param name="num_elements"></param>
 /// <param name="dimension"></param>
 /// <param name="num_dimension"></param>
 /// <param name="DataType"></param>
-/// <param name="is_static"></param>
+/// <param name="is_static">This is true tensor created in header file. The data of these tensors should not be freed</param>
 /// <returns></returns>
 struct tensor* create_tensor( void* data, int64_t num_elements, int64_t* dimension, int64_t num_dimension, short DataType, short is_static);
 
@@ -114,7 +113,7 @@ void reset_tensor_iter(struct tensor_iterator* iti);
 int16_t next_tensor_iter(struct tensor_iterator* it);
 // Go to with multi-dimension coordinate
 int16_t goto_tensor_iter(struct tensor_iterator* it, int64_t* target_coordinate);
-// Go to with id index
+// Go to with 1d index
 int16_t goto_1d_tensor_iter(struct tensor_iterator* it, int64_t index);
 // check if this is the last element
 int16_t is_not_done_tensor_iter(struct tensor_iterator* it);

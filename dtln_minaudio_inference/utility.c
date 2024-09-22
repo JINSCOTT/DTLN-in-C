@@ -27,3 +27,16 @@ void print_int64_t(int64_t* arr, int len) {
 	printf("\b\b");
 
 }
+
+size_t datatype_size(const DATATYPE type) {
+	if (type == DATATYPE_FLOAT) {
+		return 4;
+	}
+	else if (type == DATATYPE_INT32) {
+		return 4;
+	}
+	else if (type == DATATYPE_INT64) {
+		return 8;
+	}
+	return 0;
+}

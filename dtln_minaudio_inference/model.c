@@ -15,11 +15,10 @@ struct model* create_model() {
 int inference_model(struct model* m) {
 	int  error = 0;
 	int64_t num_nodes = 0, i = 0;
-	struct Node* cur_node = NULL;
+	struct node* cur_node = NULL;
 	num_nodes = m->node.size;
 	for (i = 0; i < num_nodes; i++) {
-		printf ("%d", i);
-		cur_node = (struct Node*)get_list(&m->node, i);
+		cur_node = (struct node*)get_list(&m->node, i);
 		if (cur_node == NULL) {
 			printf("Encountered NULL node\n");
 			return 0;

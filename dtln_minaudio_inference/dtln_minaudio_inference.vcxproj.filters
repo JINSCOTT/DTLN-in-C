@@ -15,11 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="$(MSBuildThisFileDirectory)..\..\runtimes\win-x64\native\onnxruntime.dll" />
-    <None Include="$(MSBuildThisFileDirectory)..\..\runtimes\win-x64\native\onnxruntime_providers_shared.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -47,13 +42,13 @@
     <ClCompile Include="utility.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="onnxruntime.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="model1.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="model2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="function_ops.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -91,11 +86,14 @@
     <ClInclude Include="utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="onnxruntime.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="model1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="function_ops.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

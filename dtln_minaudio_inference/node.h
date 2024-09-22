@@ -6,6 +6,7 @@
 #include "define.h"
 #include "linkedlist.h"
 #include "ops.h"
+#include "function_ops.h"
 #include "tensor.h"
 #include "shape_calc.h"
 #include "utility.h"
@@ -32,6 +33,7 @@ void print_ops_error(int i);
 /// <param name="B">Input 1</param>
 /// <param name="C">Output 0</param>
 struct node* create_add_node(struct tensor* A, struct tensor* B, struct tensor* C);
+
 /// <summary>
 /// Create sub node.
 /// </summary>
@@ -76,7 +78,62 @@ struct node* create_sqrt_node(struct tensor* X, struct tensor* Y);
 /// </summary>
 /// <param name="X">Input 0</param>
 /// <param name="Y">Output 0</param>
-struct node* create_sqrt_node(struct tensor* X, struct tensor* Y);
+struct node* create_relu_node(struct tensor* X, struct tensor* Y);
+/// <summary>
+/// Create abs node.
+/// </summary>
+/// <param name="X">Input 0</param>
+/// <param name="Y">Output 0</param>
+struct node* create_abs_node(struct tensor* X, struct tensor* Y);
+/// <summary>
+/// Create acos node.
+/// </summary>
+/// <param name="X">Input 0</param>
+/// <param name="Y">Output 0</param>
+struct node* create_acos_node(struct tensor* X, struct tensor* Y);
+/// <summary>
+/// Create acosh node.
+/// </summary>
+/// <param name="X">Input 0</param>
+/// <param name="Y">Output 0</param>
+struct node* create_acosh_node(struct tensor* X, struct tensor* Y);
+/// <summary>
+/// Create tanh node.
+/// </summary>
+/// <param name="X">Input 0</param>
+/// <param name="Y">Output 0</param>
+struct node* create_tanh_node(struct tensor* X, struct tensor* Y);
+/// <summary>
+/// Create atan node.
+/// </summary>
+/// <param name="X">Input 0</param>
+/// <param name="Y">Output 0</param>
+struct node* create_atan_node(struct tensor* X, struct tensor* Y);
+/// <summary>
+/// Create atanh node.
+/// </summary>
+/// <param name="X">Input 0</param>
+/// <param name="Y">Output 0</param>
+struct node* create_atanh_node(struct tensor* X, struct tensor* Y);
+/// <summary>
+/// Create asin node.
+/// </summary>
+/// <param name="X">Input 0</param>
+/// <param name="Y">Output 0</param>
+struct node* create_asin_node(struct tensor* X, struct tensor* Y);
+/// <summary>
+/// Create asinh node.
+/// </summary>
+/// <param name="X">Input 0</param>
+/// <param name="Y">Output 0</param>
+struct node* create_asinh_node(struct tensor* X, struct tensor* Y);
+
+/// <summary>
+/// Create abs node.
+/// </summary>
+/// <param name="X">Input 0</param>
+/// <param name="Y">Output 0</param>
+struct node* create_abs_node(struct tensor* X, struct tensor* Y);
 /// <summary>
 /// Create squeeze node
 /// </summary>
@@ -222,6 +279,51 @@ struct node* create_reducemean_node(int64_t* keepdim, int64_t* noop_with_empty_a
 /// <param name="output">Output 0</param>
 struct node* create_constant_node(struct tensor* value, float* value_float, float* value_floats, int64_t* value_int, int64_t* value_ints, struct tensor* output);
 
+/// <summary>
+/// Create clip node
+/// </summary>
+/// <param name="input">input 0.</param>
+/// <param name="min">input 1. optional</param>
+/// <param name="max">input 2. optional</param>
+/// <param name="output">output 0 </param>
+/// <returns></returns>
+struct node* create_clip_node(struct tensor* input, struct tensor* min, struct tensor* max, struct tensor* output);
+
+/// <summary>
+/// Create ArgMax node
+/// </summary>
+/// <param name="axis">attribute 0. optional</param>
+/// <param name="keepdims">attribute 1. optional</param>
+/// <param name="select_last_index">attribute 2. optional</param>
+/// <param name="data">input 0.</param>
+/// <param name="reduced">output 0.</param>
+/// <returns></returns>
+struct node* create_argmax_node(int64_t* axis, int64_t* keepdims, int64_t* select_last_index, struct tensor* data, struct tensor* reduced);
+/// <summary>
+/// Create ArgMin node
+/// </summary>
+/// <param name="axis">attribute 0. optional</param>
+/// <param name="keepdims">attribute 1. optional</param>
+/// <param name="select_last_index">attribute 2. optional</param>
+/// <param name="data">input 0.</param>
+/// <param name="reduced">output 0.</param>
+/// <returns></returns>
+struct node* create_argmin_node(int64_t* axis, int64_t* keepdims, int64_t* select_last_index, struct tensor* data, struct tensor* reduced);
+/// <summary>
+/// Create AveragePool node
+/// </summary>
+/// <param name="autopad">attribute. 0. Optional. default: "NOTSET"</param>
+/// <param name="ceilmode">attribute. 1. Optional. default: 0</param>
+/// <param name="count_include_pad">attrinute. 2. Optional. default 0</param>
+/// <param name="dilations">attribute 3. optional, default 1 array</param>
+/// <param name="kernel_shape">attribute 4.</param>
+/// <param name="pads">attribute 5. Optional 0 array</param>
+/// <param name="strides">attribute 6. Optional 1 array</param>
+/// <param name="x">Input 0.</param>
+/// <param name="y">Output 0.</param>
+/// <returns></returns>
+struct node* create_averagepool_node(char* autopad, int64_t* ceilmode, int64_t* count_include_pad, int64_t* dilations, int64_t* kernel_shape, int64_t* pads, int64_t* strides, struct tensor* x, struct tensor* y);
+
 //// nodes inferemce
 int inference_node(struct node* node);
 
@@ -247,6 +349,17 @@ int inference_conv_node(struct node* n);
 int inference_lstm_node(struct node* n);
 int inference_reducemean_node(struct node* n);
 int inference_constant_node(struct node* n);
+int inference_clip_node(struct node* n);
+int inference_argmax_node(struct node* n);
+int inference_argmin_node(struct node* n);
+int inference_abs_node(struct node* n);
+int inference_atan_node(struct node* n);
+int inference_atanh_node(struct node* n);
+int inference_acos_node(struct node* n);
+int inference_acosh_node(struct node* n);
+int inference_asin_node(struct node* n);
+int inference_asinh_node(struct node* n);
+int inference_averagepool_node(struct node * n);
 //
 
 

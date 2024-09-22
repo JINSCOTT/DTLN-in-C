@@ -7,7 +7,7 @@ struct tensor* create_tensor( void* data, int64_t num_elements, int64_t* dimensi
 	if (newTensor != NULL) {
 		newTensor->is_size_unknown = false;
 		// Set datatype
-		if (DataType == DATATYPE_FLOAT32 || DataType == DATATYPE_INT32) {
+		if (DataType == DATATYPE_FLOAT || DataType == DATATYPE_INT32) {
 			newTensor->item_size = 4;
 		}
 		else if (DataType == DATATYPE_INT64) {
@@ -23,7 +23,8 @@ struct tensor* create_tensor( void* data, int64_t num_elements, int64_t* dimensi
 		else {
 
 #ifdef ONE_MKL
-			newTensor->data = mkl_malloc(num_elements * newTensor->item_size);
+			newTensor->data = mkl_malloc(num_elements * newTensor->item_size, 64);
+			memset(newTensor->data, 0 , num_elements * newTensor->item_size);
 #else
 			newTensor->data = calloc(num_elements, newTensor->item_size);
 #endif
@@ -106,7 +107,7 @@ int resize_tensor(struct tensor* t, int64_t* new_dimension, int64_t new_dimensio
 
 	if (t->is_static) return 0;
 	t->type = item_type;
-	if (item_type == DATATYPE_FLOAT32 || item_type == DATATYPE_INT32) {
+	if (item_type == DATATYPE_FLOAT || item_type == DATATYPE_INT32) {
 		t->item_size = 4;
 	}
 	else if (item_type == DATATYPE_INT64) {
@@ -231,10 +232,12 @@ int is_dimension_tensor(struct tensor* t, int64_t* dimension, int64_t length) {
 	return 1;
 }
 void print_tensor(struct tensor* t) {
+	
 	if (t == NULL) {
-		printf("t is null\n");
+		printf("tensor is null\n");
 		return;
 	}
+	printf("\nPRINT start\n");
 	if (t->is_size_unknown) {
 		printf("Unknown size tensor\n");
 	}
@@ -244,23 +247,31 @@ void print_tensor(struct tensor* t) {
 			printf("%"PRId64", ", t->dimension[i]);
 		}
 		printf("\ndata:\n ");
-		if (t->type == DATATYPE_FLOAT32) {
-			float* d = t->data;
+		if (t->type == DATATYPE_FLOAT) {
+			float* d = t->data, total = 0;
 			for (int64_t i = 0; i < t->data_size; i++) {
 				printf("%f, ", d[i]);
+				total += d[i];
 			}
+			total /= t->data_size;
+			printf("\n Average: %f\n", total);
 		}
 		else if (t->type == DATATYPE_INT32) {
-			int32_t* d = t->data;
+			int32_t* d = t->data, total = 0;
 			for (int64_t i = 0; i < t->data_size; i++) {
 				printf("%d, ", d[i]);
+				total += d[i];
 			}
+			total /= t->data_size;
+			printf("\n Average: %ld\n", total);
 		}
 		else if (t->type == DATATYPE_INT64) {
-			int64_t* d = t->data;
+			int64_t* d = t->data, total = 0;
 			for (int64_t i = 0; i < t->data_size; i++) {
 				printf("%lld, ", d[i]);
+				total += d[i];
 			}
+			printf("\n Average: %lld\n", total);
 		}
 		else {
 			printf("Unsupported type\n");
@@ -296,10 +307,7 @@ void print_tensor_dim(struct tensor* t) {
 			printf("%"PRId64" ", t->stride[i]);
 		}
 	}
-
 	printf("\nPRINT END\n");
-
-
 }
 
 

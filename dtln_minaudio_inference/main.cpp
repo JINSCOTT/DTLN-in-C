@@ -9,9 +9,11 @@ void main_loop__em()
 {
 }
 #endif
+
 	DTLN d;
 	int error = 0;
 	std::vector<float> output = std::vector<float>(512, 0);
+
 void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount)
 {
 	/*std::cout << frameCount << std::endl;
@@ -24,7 +26,7 @@ void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uin
 	memcpy((float*)pOutput, output.data(), 128 * sizeof(float));
 
 	/* In this example the format and channel count are the same for both input and output which means we can just memcpy(). */
-	MA_COPY_MEMORY(pOutput, pInput, frameCount * ma_get_bytes_per_frame(pDevice->capture.format, pDevice->capture.channels));
+	//MA_COPY_MEMORY(pOutput, pInput, frameCount * ma_get_bytes_per_frame(pDevice->capture.format, pDevice->capture.channels));
 }
 
 int main(int argc, char** argv)

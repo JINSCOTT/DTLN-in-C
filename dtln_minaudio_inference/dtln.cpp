@@ -90,11 +90,11 @@ bool DTLN::inference(std::vector<float>& input, std::vector<float>& output)
 		in_phase[i] = std::arg(fd[i]); // np.angle
 	}
 	// Inference model 1
-	//memcpy(input_2_array, in_mag.data(), 257 * sizeof(float));
-	//memcpy(input_3_array, state_1.data(), 512 * sizeof(float));
-	//inference_model(m1);
-	//memcpy(out_mask.data(), activation_2_array, 257 * sizeof(float));
-	//memcpy(state_1.data(), tf_op_layer_stack_2_array, 512 * sizeof(float));
+	memcpy(input_2_array, in_mag.data(), 257 * sizeof(float));
+	memcpy(input_3_array, state_1.data(), 512 * sizeof(float));
+	inference_model(m1);
+	memcpy(out_mask.data(), activation_2_array, 257 * sizeof(float));
+	memcpy(state_1.data(), tf_op_layer_stack_2_array, 512 * sizeof(float));
 
 	for (int i = 0; i < BLOCK_FFT; i++)
 	{
@@ -114,6 +114,7 @@ bool DTLN::inference(std::vector<float>& input, std::vector<float>& output)
 		outblock[i] /= (float)BLOCK_LENGTH;
 	}
 	// Inference model 2
+	printf("inference model 2\n");
 	memcpy(input_4_array, outblock.data(), 512 * sizeof(float));
 	memcpy(input_5_array, state_2.data(), 512 * sizeof(float));
 	inference_model(m2);

@@ -16,7 +16,6 @@
 struct model {
 	struct list node;
 	struct list tensor;
-
 };
 
 //Create empty model 
