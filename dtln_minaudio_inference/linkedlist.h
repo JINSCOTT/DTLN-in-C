@@ -1,7 +1,7 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
-#define DYNAMIC_ARRAY_EXPAND 5  // Expand increment of dynamic_array
+#define DYNAMIC_ARRAY_EXPAND 5  // Expand increment of dynamic_array, this dependes on your need it should be made more dynamic 
 
 #include <stdio.h>
 #include <stdlib.h>

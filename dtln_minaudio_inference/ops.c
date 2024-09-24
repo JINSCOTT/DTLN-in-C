@@ -16,6 +16,10 @@ int add_array(const void* a, const void* b, void* c, const int64_t a_size, const
 		for (i = 0; i < c_size; i++) {
 			((float*)c)[i] = ((float*)a)[i % a_size] + ((float*)b)[i % b_size];
 		}
+	if (type == DATATYPE_DOUBLE)
+		for (i = 0; i < c_size; i++) {
+			((double*)c)[i] = ((double*)a)[i % a_size] + ((double*)b)[i % b_size];
+		}
 	else return OPS_TYPE_NOT_SUPPORTED;
 
 	return OPS_SUCCESS;
@@ -184,6 +188,7 @@ int transposef_2d(float* x, int64_t  n, int64_t m) {
 	}
 	return 1;
 }
+
 int conv1df(float* x, float* w, float* b, float* y, int64_t C, int64_t F, int64_t M, int64_t K, int64_t NF, int64_t stride, int64_t dilation) {
 	int64_t c = 0, f = 0, m = 0, k = 0, nf = 0, dilate = 0; float sum = 0;
 	if (x == NULL || w == NULL || y == NULL) return OPS_INPUT_IS_NULL;
@@ -209,7 +214,6 @@ int conv1df(float* x, float* w, float* b, float* y, int64_t C, int64_t F, int64_
 	}
 	return OPS_SUCCESS;
 }
-
 
 int conv2df(float* input, float* kernels, float* bias, float* output, int64_t C, int64_t H, int64_t W, int64_t M, int64_t kH, int64_t kW, int64_t nH, int64_t nW, int64_t* stride, int64_t* dilation) {
 	int64_t c = 0, h = 0, w = 0, m = 0, kh = 0, kw = 0, dilateH = 0, dilateW = 0; float sum = 0;
@@ -376,9 +380,6 @@ int reluf_array(float* input, float* output, int64_t size) {
 
 int activationf_array(float* input, float* output, char* type, int64_t size, float alpha, float beta) {
 	if (input == NULL || output == NULL || type == NULL) {
-		if (type == NULL) {
-			printf("type is nul\n");
-		}
 		printf("activation input is NULL!\n");
 		return OPS_INPUT_IS_NULL;
 	}
@@ -400,12 +401,22 @@ int activationf_array(float* input, float* output, char* type, int64_t size, flo
 }
 
 int activation_array(const void* input, void* output, char* activation, int64_t size, float* alpha, float* beta, const DATATYPE type) {
-
+	if (input == NULL || output == NULL || type == NULL) {
+		printf("activation input is NULL!\n");
+		return OPS_INPUT_IS_NULL;
+	}
+	if (strcmp(type, "Relu") == 0) return relu_array(input, output, size, type);
+	else if (strcmp(type, "Sigmoid") == 0) return sigmoid_array(input, output, size,type);
+	else if (strcmp(type, "Tanh") == 0) return tanh_array(input, output, size,type);
+	else {
+		printf("Undefined activalion\n");
+		//system("puase\n");
+		return OPS_UNDEFINED;
+	}
 }
 
 int clip_array(const void* input, const void* min, const void* max, void* output, const int64_t size, const DATATYPE type) {
-	printf("clip\n");
-	system("pause");
+	double double_max = DBL_MAX, double_min = DBL_MIN;
 	float float_max = FLT_MAX, float_min = FLT_MIN;
 	int32_t int32_max = INT32_MAX, int32_min = INT32_MIN;
 	int64_t int64_max = INT64_MAX, int64_min = INT64_MIN;
@@ -444,6 +455,17 @@ int clip_array(const void* input, const void* min, const void* max, void* output
 			}
 		}
 	}
+	else if (type == DATATYPE_DOUBLE) {
+		if (min != NULL) if (*((double*)min) != 0) double_min = *((double*)min);
+		if (max != NULL) if (*((double*)max) != 0) double_max = *((double*)max);
+		for (i = 0; i < size; i++) {
+			if (((double*)input)[i] > double_max) ((double*)output)[i] = double_max;
+			else if (((double*)input)[i] < double_min) ((double*)output)[i] = double_min;
+			else {
+				((double*)output)[i] = ((double*)input)[i];
+			}
+		}
+	}
 	else {	// Unknown type
 		return OPS_TYPE_NOT_SUPPORTED;
 	}
@@ -465,6 +487,11 @@ int abs_array(const void* x, void* y, const int64_t size, const DATATYPE type) {
 		}
 	}
 	else if (type == DATATYPE_FLOAT) {
+		for (i = 0; i < size; i++) {
+			((float*)y)[i] = fabsf(((float*)x)[i]);
+		}
+	}
+	else if (type == DATATYPE_DOUBLE) {
 		for (i = 0; i < size; i++) {
 			((float*)y)[i] = fabsf(((float*)x)[i]);
 		}
