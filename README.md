@@ -1,4 +1,6 @@
 # DTLN in C
+## Required package
+* Intel MKL dev
 ## Project description
 * This is a project aiming to create my own neural network inference library.
 * This project has two parts, one is the parser part which has not yet been made public and this is the inference part which has been made public but I considered not done, I will try to spend time to make it much better.
