@@ -557,7 +557,7 @@ int asinh_array(const void* x, void* y, const int64_t size, const DATATYPE type)
 		for (i = 0; i < size; i++) {
 			((float*)y)[i] = asinhf(((float*)x)[i]);
 		}
-	}		// add in double type maaybe
+	}		// add in double type maybe
 	else {	// Unknown type
 		return OPS_TYPE_NOT_SUPPORTED;
 	}
