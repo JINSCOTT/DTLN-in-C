@@ -405,9 +405,9 @@ int activation_array(const void* input, void* output, char* activation, int64_t 
 		printf("activation input is NULL!\n");
 		return OPS_INPUT_IS_NULL;
 	}
-	if (strcmp(type, "Relu") == 0) return relu_array(input, output, size, type);
-	else if (strcmp(type, "Sigmoid") == 0) return sigmoid_array(input, output, size,type);
-	else if (strcmp(type, "Tanh") == 0) return tanh_array(input, output, size,type);
+	if (strcmp(activation, "Relu") == 0) return relu_array(input, output, size, type);
+	else if (strcmp(activation, "Sigmoid") == 0) return sigmoid_array(input, output, size,type);
+	else if (strcmp(activation, "Tanh") == 0) return tanh_array(input, output, size,type);
 	else {
 		printf("Undefined activalion\n");
 		//system("puase\n");
